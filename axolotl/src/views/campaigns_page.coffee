@@ -25,7 +25,7 @@ class CampaignsView extends BaseView
             {
                 model   : @model.get('campaigns').model
                 page    : 1
-                perPage : 100
+                perPage : 60
                 
                 filterFn : (campaign, filterValue) ->
                     isArchived = campaign.get 'isArchived'
