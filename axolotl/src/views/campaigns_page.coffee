@@ -23,7 +23,9 @@ class CampaignsView extends BaseView
         @filteredCollection = new FilteredCollection(
             @model.get('campaigns').models
             {
-                model : @model.get('campaigns').model
+                model   : @model.get('campaigns').model
+                page    : 1
+                perPage : 100
                 
                 filterFn : (campaign, filterValue) ->
                     isArchived = campaign.get 'isArchived'
