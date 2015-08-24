@@ -31,7 +31,7 @@ class CoverflowView extends BaseView
         data = super
         data.collection = @collection.map (model, i) ->
             item              = model.toJSON()
-            item.thumbnailUrl = "/assets/coverflow/#{i+1}.png"
+            item.thumbnailUrl = "../assets/coverflow/#{i+1}.png"
             item
         data
 

@@ -5323,7 +5323,7 @@ CoverflowView = (function(superClass) {
     data.collection = this.collection.map(function(model, i) {
       var item;
       item = model.toJSON();
-      item.thumbnailUrl = "/assets/coverflow/" + (i + 1) + ".png";
+      item.thumbnailUrl = "../assets/coverflow/" + (i + 1) + ".png";
       return item;
     });
     return data;
