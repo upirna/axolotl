@@ -19,6 +19,7 @@ open http://localhost:8080/
 
 For details look into `package.json` `scripts`.
 
+Axolotl is extracted from Celtra AdCreator.
 
 ## Deploy to Github pages
 
