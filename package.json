@@ -7,13 +7,10 @@
     "build": "npm run build-ab-less && npm run build-ab-coffee && npm run build-pg",
     "build-pg": "npm run build-pg-less && npm run build-pg-coffee",
     "watch-ab-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
-    "watch-pg-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify playground/src/app.coffee -o public/assets/playground.js",
     "build-ab-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
-    "build-pg-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify playground/src/app.coffee -o public/assets/playground.js",
     "watch-ab-less": "nodemon -e less --exec 'npm run build-ab-less'",
     "watch-pg-less": "nodemon -e less --exec 'npm run build-pg-less'",
-    "build-ab-less": "lessc axolotl/less/index.less public/assets/axolotl.css",
-    "build-pg-less": "lessc playground/less/index.less public/assets/playground.css"
+    "build-ab-less": "lessc axolotl/less/index.less public/assets/axolotl.css"
   },
   "devDependencies": {
     "backbone": "1.1.2",

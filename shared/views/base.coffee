@@ -19,8 +19,7 @@ templates = {
     'progress'          : require '../../axolotl/templates/progress.thtml'
     'coverflow'         : require '../../axolotl/templates/coverflow.thtml'
 
-    'playground'               : require '../../playground/templates/playground.thtml'
-    'default-layout'           : require '../templates/default-layout.thtml'
+    'default-layout'    : require '../templates/default-layout.thtml'
 }
 
 
