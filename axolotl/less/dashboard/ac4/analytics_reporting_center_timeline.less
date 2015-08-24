@@ -1,0 +1,521 @@
+.timeline-container {
+    color            : @rcTextColor;
+    background-color : @rcBackgroundColor;
+    font-family      : @main-font-ultra-light;
+
+    .campaign-name {
+        .m-ellipsis;
+        width        : 640px;
+        padding-left : 10px;
+    }
+
+    .pct-creative-loads-with-measurable-viewability-00 {
+        width      : 100px;
+        text-align : right;
+    }
+
+    .viewable-rate-00 {
+        width         : 170px;
+        text-align    : right;
+    }
+
+    .sessions {
+        width         : 220px;
+        padding-right : 13px;
+        text-align    : right;
+        font-family   : @main-font;
+    }
+
+    .expanded .sessions { width: 224px; }
+}
+
+.timeline-header {
+    width          : 100%;
+    font-size      : 10px;
+    font-family    : @main-font;
+    text-transform : uppercase;
+
+    .icon-table-sort {
+        position : absolute;
+        left     : -5px;
+        width    : 10px;
+        height   : 10px;
+
+        &.desc { .m-transform(rotate(-180deg)); }
+    }
+
+    .content {
+        padding-top   : 20px;
+        height        : 40px;
+        border-bottom : 4px solid #505050;
+    }
+
+    &.sticky {
+        position         : fixed;
+        top              : 59px;
+        z-index          : 2;
+        background-color : #151515;
+    }
+
+    .header-title {
+        float    : left;
+        position : relative;
+        top      : 12px;
+        cursor   : pointer;
+
+        &.sessions {
+            float: right;
+            width: 80px;
+        }
+    }
+
+    .industry {
+        width      : @industryColumnWidth;
+        top        : 24px;
+        text-align : center;
+    }
+
+    .campaign-name {
+        overflow : visible;
+        top      : 24px;
+    }
+
+
+    .viewable-rate-00 .icon-table-sort { left: 74px; }
+}
+
+
+.timeline-body {
+    .campaign-line {
+        height: 70px;
+
+        .campaign-line-wrapper {
+            .user-select();
+            width  : 1230px;
+            margin : 0 auto;
+            cursor : pointer;
+            height : 70px;
+        }
+
+        .line-data-wrapper {
+            display : inline-block;
+            width   : 100%;
+        }
+
+        &.expanded {
+            height           : auto;
+            width            : 100%;
+            background-color : #000000;
+            border-top       : 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom    : 1px solid rgba(255, 255, 255, 0.2);
+
+            .top-dividing-line { display: none; }
+
+            .campaign-line-wrapper {
+                .user-select(text);
+                cursor : auto;
+                height : auto;
+            }
+
+            .line-data-wrapper { letter-spacing: -2px; }
+        }
+
+        &.no-activity {
+            height      : 138px;
+            line-height : 138px;
+            color       : @darkestColor;
+            text-align  : center;
+            font-size   : 100px;
+
+            &:after {
+                content       : "";
+                position      : relative;
+                bottom        : 50%;
+                display       : block;
+                width         : 1230px;
+                margin        : 0 auto;
+                border-bottom : 1px solid @darkestColor;
+            }
+        }
+
+        .campaign-graph {
+            position : absolute !important;
+            left     : auto !important;
+        }
+
+        &:not(.expanded) .campaign-line-wrapper:hover {
+            background: rgba(255, 255, 255, 0.07);
+
+            .industry svg {
+                box-shadow    : 0 0 10px 0 #151515;
+                border-radius : 50%;
+            }
+        }
+
+        &:not(.expanded).art    .campaign-line-wrapper:hover { .industry-svg-colorize(@art-industry-color   );        }
+        &:not(.expanded).auto   .campaign-line-wrapper:hover { .industry-svg-colorize(@auto-industry-color  );        }
+        &:not(.expanded).edu    .campaign-line-wrapper:hover { .industry-svg-colorize(@edu-industry-color   );        }
+        &:not(.expanded).ener   .campaign-line-wrapper:hover { .industry-svg-colorize(@ener-industry-color  );        }
+        &:not(.expanded).entr   .campaign-line-wrapper:hover { .industry-svg-colorize(@entr-industry-color  );        }
+        &:not(.expanded).cpg    .campaign-line-wrapper:hover { .industry-svg-colorize(@cpg-industry-color   );        }
+        &:not(.expanded).fin    .campaign-line-wrapper:hover { .industry-svg-colorize(@fin-industry-color   );        }
+        &:not(.expanded).food   .campaign-line-wrapper:hover { .industry-svg-colorize(@food-industry-color  );        }
+        &:not(.expanded).gov    .campaign-line-wrapper:hover { .industry-svg-colorize(@gov-industry-color   );        }
+        &:not(.expanded).heal   .campaign-line-wrapper:hover { .industry-svg-colorize(@heal-industry-color  );        }
+        &:not(.expanded).phar   .campaign-line-wrapper:hover { .industry-svg-colorize(@phar-industry-color  );        }
+        &:not(.expanded).qsr    .campaign-line-wrapper:hover { .industry-svg-colorize(@qsr-industry-color   );        }
+        &:not(.expanded).retail .campaign-line-wrapper:hover { .industry-svg-colorize(@retail-industry-color);        }
+        &:not(.expanded).logist .campaign-line-wrapper:hover { .industry-svg-colorize(@logist-industry-color);        }
+        &:not(.expanded).tech   .campaign-line-wrapper:hover { .industry-svg-colorize(@tech-industry-color  );        }
+        &:not(.expanded).tele   .campaign-line-wrapper:hover { .industry-svg-colorize(@tele-industry-color  );        }
+        &:not(.expanded).trav   .campaign-line-wrapper:hover { .industry-svg-colorize(@trav-industry-color  );        }
+        &:not(.expanded).othr   .campaign-line-wrapper:hover { .industry-svg-colorize(@othr-industry-color-timeline); }
+
+        // disabled needs to only cover everything with some percentage of opacity
+        &.disabled {
+            opacity        : 0.2;
+            pointer-events : none;
+
+            &:hover { .industry-svg-colorize(@disabledColor); }
+
+            .campaign-graph path {
+                fill   : @disabledColor;
+                stroke : @disabledColor;
+            }
+        }
+    }
+
+    .expanded-line-data {
+        display       : none;
+        font-family   : @main-font-ultra-light;
+        margin-bottom : 30px;
+        z-index       : 1;
+
+        .timeline {
+            height        : 27px;
+            line-height   : 27px;
+            border-bottom : 1px solid @darkestColor;
+        }
+
+        .campaign-details, .analytics {
+            float      : left;
+            width      : 555px;
+            margin-top : 25px;
+        }
+
+        .campaign-details {
+            margin: 25px 40px 0 75px;
+
+            .label { float: left; }
+
+            .value {
+                font-family : @main-font;
+                display     : inline-block;
+                width       : 455px;
+
+                .format:not(:last-child) {
+                    &:after { content: ", "; }
+                }
+            }
+
+            li { line-height: 25px; }
+        }
+
+        .label {
+            width          : 100px;
+            display        : inline-block;
+            font-size      : 10px;
+            color          : rgba(255, 255, 255, 0.5);
+            text-transform : uppercase;
+        }
+
+        .value {
+            font-size : 16px;
+            color     : #ffffff;
+        }
+
+        .links {
+            width       : calc(~"595px + 180px");
+            margin-left : 75px;
+            padding-top : 23px;
+
+            button:nth-child(2) { float: right; }
+        }
+
+        .analytics {
+            svg {
+                position     : relative;
+                height       : 20px;
+                width        : 24px;
+                top          : 5px;
+                margin-right : 10px;
+                fill         : #777777;
+            }
+
+            ul { line-height: 34px; }
+
+            .value {
+                display    : inline-block;
+                position   : relative;
+                width      : 75px;
+                text-align : center;
+                top        : 6px;
+                font-size  : 32px;
+            }
+            .label {
+                width        : auto;
+                padding-left : 12px;
+            }
+        }
+    }
+
+    .top-dividing-line {
+        position         : relative;
+        height           : 1px;
+        top              : -1px;
+        background-color : rgba(255, 255, 255, 0.2);
+    }
+
+    .campaign-line:first-child .top-dividing-line { display: none; }
+
+    .timeline-cell {
+        float         : left;
+        position      : relative;
+        line-height   : 70px;
+        height        : 70px;
+        z-index       : 1;
+    }
+
+    .industry {
+        width : @industryColumnWidth;
+        left  : 12px;
+
+        svg {
+            position : relative;
+            height   : 37px;
+            width    : 37px;
+            top      : 15px;
+
+            .main-circle {
+                fill    : #ffffff;
+                opacity : 0.95;
+            }
+
+            path { fill: #151515; }
+        }
+
+        &.tooltip {
+            &:before {
+                bottom      : 51px;
+                margin-left : 11px;
+            }
+
+            &:after {
+                right          : -29px;
+                width          : 140px;
+                bottom         : 58px;
+                line-height    : 17px;
+                border-width   : 2px 5px 5px 2px;
+                letter-spacing : normal;
+            }
+        }
+    }
+
+    .campaign-name {
+        // Because rendering of Avenir font in Safari on GPU is terrible, we have
+        // to avoid rendering on it by making element absolutly positioned.
+        position    : absolute;
+        margin-left : 60px;
+        width       : 650px;
+        height      : 75px;
+        color       : @rcLightTextColor;
+        font-size   : 18px;
+        z-index     : 1;
+    }
+
+    .pct-creative-loads-with-measurable-viewability-00 { margin-left: 650px; }
+    .pct-creative-loads-with-measurable-viewability-00, .viewable-rate-00 { font-size: 25px; }
+
+    .sessions {
+        color     : #ffffff;
+        font-size : 25px;
+        float     : right;
+    }
+
+    .expanded {
+        .timeline-cell {
+            font-family : @main-font-ultra-light;
+            line-height : 100px;
+            height      : 100px;
+        }
+
+        .industry {
+            svg {
+                height : 60px;
+                width  : 60px;
+                top    : 20px;
+                left   : -11px;
+            }
+
+            &.tooltip {
+                &:before { bottom: 77px; }
+                &:after  { bottom: 85px; }
+            }
+        }
+
+        .expanded-line-data { display: inline-block; }
+
+        .campaign-name {
+            height    : 100px;
+            font-size : 38px;
+            color     : #ffffff;
+        }
+
+        .sessions {
+            float       : right;
+            padding     : 0 13px 0;
+            font-family : @main-font;
+            font-size   : 38px;
+        }
+
+        .pct-creative-loads-with-measurable-viewability-00, .viewable-rate-00 {
+            font-size : 38px;
+            color     : rgba(255, 255, 255, 0.8);
+        }
+    }
+}
+
+.timeline {
+    .m-display-flex;
+    .m-flex-direction(row);
+    .m-justify-content(space-between);
+
+    width       : 1230px;
+    margin      : 0 auto;
+    font-family : @secondary-font;
+    font-size   : 12px;
+    color       : #777777;
+
+    &.line {
+        padding-top : 8px;
+        border-top  : 4px solid #505050;
+        height      : 25px;
+
+        &.sticky {
+            position         : fixed;
+            bottom           : 0;
+            left             : calc(~"50% - 615px");
+            background-color : #151515;
+            z-index          : 2;
+        }
+    }
+}
+
+
+.timeline-gradients {
+    position : relative;
+    width    : 1230px;
+    margin   : 0 auto;
+
+    .gradient {
+        position       : absolute;
+        z-index        : 1;
+        pointer-events : none;
+
+        &:nth-child(even) { background-color: rgba(0, 0, 0, 0.25); }
+    }
+}
+
+.table-head:not(table), .table-body:not(table) {
+    .content-wrapper {
+        width  : 1230px; // TODO: extract to variable
+        margin : 0 auto;
+    }
+}
+
+section.cards {
+    .m-display-flex;
+    .m-flex-flow(row nowrap);
+    .m-justify-content(space-between);
+
+    margin-bottom: 60px;
+
+    &:after { content: none; }
+}
+
+.sort-toggle {
+    position : absolute;
+    right    : 0;
+    top      : 9px;
+    width    : 180px;
+
+    .label-on, .label-off {
+        position    : absolute;
+        font-family : @secondary-font;
+        font-size   : 12px;
+        line-height : 20px;
+        cursor      : pointer;
+        color       : #999999;
+
+        &:hover, &.active { color: #444444; }
+    }
+
+    .label-off {
+        top   : 0;
+        right : 0;
+    }
+
+    // https://proto.io/freebies/onoff/
+    .onoffswitch {
+        .select-disabled;
+
+        position : relative;
+        margin   : 0 auto; // doesn't go into pattern lib
+        width    : 34px;
+    }
+
+    .onoffswitch-checkbox { display: none; }
+
+    .onoffswitch-label {
+        display       : block;
+        overflow      : hidden;
+        cursor        : pointer;
+        border-radius : 50px;
+    }
+
+    .onoffswitch-inner {
+        display     : block;
+        width       : 200%;
+        margin-left : -100%;
+
+        &:before, &:after {
+            content          : "";
+            float            : left;
+            width            : 50%;
+            height           : 20px;
+            background-color : #dddddd;
+        }
+    }
+
+    .onoffswitch-switch {
+        width         : 18px;
+        margin        : 1px;
+        background    : #ffffff;
+        border-radius : 50px;
+        position      : absolute;
+        top           : 0;
+        bottom        : 0;
+        right         : 0;
+        transition    : all 0.2s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner  { margin-right : 0;    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch { right        : 14px; }
+}
+
+@-moz-document url-prefix() {
+    .timeline-body .industry svg {
+        height : 36px!important;
+        width  : 37px!important;
+    }
+}

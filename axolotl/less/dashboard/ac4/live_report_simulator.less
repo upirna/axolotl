@@ -1,0 +1,123 @@
+.template-preview {
+    padding-top      : 30px;
+    background-color : #f4f4f4;
+}
+
+.analytics-notification + .report-simulator-title { margin-top: 20px; }
+
+.report-simulator-title {
+    .m-gradient (#dcdcdc, #c8c8c8, 0%, 100%);
+    margin                  : 0 auto;
+    width                   : 1230px;
+    height                  : 26px;
+    line-height             : 28px;
+    border-top-left-radius  : 6px;
+    border-top-right-radius : 6px;
+    border-top              : 1px solid #ffffff;
+    border-bottom           : 1px solid #adadad;
+    box-shadow              : 0 0 10px -5px #000000;
+    text-align              : center;
+    font-family             : @main-font-regular;
+    font-size               : 11px;
+    color                   : rgba(0, 0, 0, .8);
+}
+
+.excel-container {
+    position   : relative;
+    margin     : 0 auto;
+    width      : 1230px;
+    height     : 245px;
+    overflow-x : auto;
+    overflow-y : hidden;
+}
+
+.gradient-overlay {
+    position            : absolute;
+    left                : 0;
+    bottom              : 0;
+    width               : 100%;
+    height              : 100%;
+    background-image    : url("./img/live-report-simulator-table-gradient.png");
+    background-position : left bottom;
+    background-repeat   : repeat-x;
+}
+
+.excel {
+    width           : auto;
+    min-width       : 1230px;
+    border-collapse : collapse;
+    font-family     : 'Arial', sans-serif;
+    line-height     : 14px;
+    font-size       : 11px;
+
+    .notice td {
+        width               : 100%;
+        height              : 230px;
+        line-height         : 230px;
+        color               : #dddddd;
+        background-color    : #ffffff !important;
+        font-size           : 110px;
+        font-family         : @main-font-ultra-light;
+        border-bottom-color : #e4e4e4 !important;
+    }
+
+    // A, B, C, D, … N
+    .sorting-arrow {
+        .m-transform(scalex(1.35));
+        width       : 0;
+        margin-top  : -10px;
+        margin-left : 5px;
+        font-size   : 8px;
+        line-height : 8px;
+        color       : #ffffff;
+        text-shadow : 0.5px 1px 0 #000000;
+    }
+
+    thead tr:first-child th {
+        .m-gradient(#e1e1e1, #d9d9d9, 0, 100%, to bottom);
+        line-height         : 12px;
+        text-align          : center;
+        border-bottom-color : #969696;
+        border-right-color  : #969696;
+    }
+    thead tr:first-child th:first-child { width: 30px; }
+
+    tbody td { white-space: nowrap; }
+    tbody td:not(:first-child) { min-width: 65px; }
+
+    thead tr:nth-child(2) { height: 72px; }
+    tr { height: auto; }
+
+    th {
+        text-align     : left;
+        text-transform : none;
+        font-weight    : normal;
+        vertical-align : bottom;
+        overflow       : hidden;
+    }
+
+    td { word-break : break-word; }
+    td.text-align-left  { &:extend(.m-text-align-left); }
+    td.text-align-right { &:extend(.m-text-align-right); }
+    
+    th:first-child, td:first-child {
+        padding             : 0 10px;
+        background-color    : #dadada;
+        border-bottom-color : #969696;
+        border-right-color  : #969696;
+    }
+
+    td:first-child, th:first-child { text-align: center; }
+    td:last-child,  th:last-child  { border-right: none; }
+
+    td, th {
+        padding          : 0 2px;
+        margin           : 0;
+        border-bottom    : 1px solid #cecece;
+        border-right     : 1px solid #cecece;
+        background-color : #ffffff;
+        font-size        : 11px;
+    }
+
+    tr:last-child td { border-bottom-width: 1px; }
+}

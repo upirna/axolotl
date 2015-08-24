@@ -1,0 +1,318 @@
+ul.statistics {
+    text-align: right;
+
+    li {
+        display      : inline-block;
+        margin-left  : 10px;
+        padding-left : 10px;
+        border-left  : 1px solid #ccc;
+
+        &:first-child {
+            border: none;
+        }
+
+        span {
+            display: block;
+
+            &.label { color: #444444; }
+            &.value { font: bold 28px Arial, Helvetica, sans-serif; }
+        }
+    }
+}
+
+.accounts-table {
+
+    /* Quick'n'dirty hack for presentation */
+    .accounts-options-top {
+        dl.legend {
+            float          : right;
+            margin-top     : 16px;
+            text-transform : uppercase;
+            font-size      : 10px;
+            line-height    : 8px;
+            color          : #888888;
+
+            dd { float: left; }
+
+            dt.block {
+                float       : left;
+                width       : 8px;
+                height      : 8px;
+                text-indent : 100%;
+                white-space : nowrap;
+                overflow    : hidden;
+                margin      : 0 5px 0 10px;
+            }
+            .dark-grey  { background-color: #afafb3; }
+            .grey       { background-color: #c4c4c4; }
+            .light-grey { background-color: #d9d9d9; }
+        }
+    }
+
+    table {
+        &.heading { margin-top: 60px; }
+
+        tbody tr td .cell-wrapper { height: 70px; }
+
+        a { text-decoration: none; color: #222222; }
+
+        thead {
+            th {
+                font-family: Arial; color: #888; padding-bottom: 0;
+
+                &.standalone {
+                    color: #222222;
+
+                    a { color: #222222; }
+                    .sort-asc:after  { border-bottom: 4px solid #222222; }
+                    .sort-desc:after { border-top: 4px solid #222222; }
+                }
+
+            }
+
+            a { color: #888888; }
+            a:after { margin-left: 3px; content: "─"; }
+            
+            a.sort-asc:after, a.sort-desc:after {
+                top          : -2px;
+                display      : inline-block;
+                position     : relative;
+                content      : "";
+                width        : 0;
+                height       : 0;
+                border-left  : 4px solid transparent;
+                border-right : 4px solid transparent;
+            }
+
+            a.sort-asc:after  { border-bottom: 4px solid #888; }
+            a.sort-desc:after { border-top: 4px solid #888; }
+
+            span.description {
+                position   : absolute;
+                color      : #000000;
+                margin-top : -55px;
+                left       : 0;
+
+                &.impressions { width: 150px; background: url(img/th-wrapper_impressions.png) no-repeat 0 4px; }
+                &.users       { width: 112px; background: url(img/th-wrapper_users.png) no-repeat 0 4px; }
+                &.campaigns   { width: 112px; background: url(img/th-wrapper_campaigns.png) no-repeat 0 4px; }
+            }
+
+            span.split { top: 2px; }
+        }
+
+        .left10px { padding-left: 9px; }
+
+        span.split { position: relative; }
+        span.split:first-child {
+            float : left;
+
+            a { text-align: right; }
+        }
+
+        span.split:last-child { float: right; }
+
+        .account {
+            width: 170px !important;
+            text-align: left;
+
+            strong {
+                top      : -9px;
+                position : relative;
+                display  : block;
+                color    : #344573;
+            }
+
+            a {
+                color: #344573;
+
+                &.item-name {
+                    white-space : nowrap;
+                    display     : inline-block;
+                }
+            }
+        }
+
+        .impressions { width: 150px !important; padding-right: 30px;
+            span.split.first-child { width: 85px; }
+
+            &.standalone {
+                strong, canvas { padding-right: 25px; }
+            }
+        }
+
+        .other {
+            width: 112px !important;
+
+            &.first { padding: 0 21px; }
+            &.last  { padding-right: 11px;
+                span.split:first-child { a { margin-left: 0; } }
+            }
+        }
+
+        strong {
+            font-family : Tahoma, sans-serif;
+            font-weight : bold;
+            font-size   : 13px;
+        }
+    }
+}
+
+.accounts-table {
+    table {
+        tbody {
+            td:not(.account) { color: #222222; }
+
+            .impressions { text-align: right; }
+            .other {
+                span.split { position: relative; top: -17px; }
+                span.split:first-child a { color: #344573; }
+            }
+
+            .rate {
+                font-family : Tahoma;
+                font-weight : normal;
+                font-size   : 11px;
+            }
+
+            .impressions-bar-chart canvas {
+                margin  : 4px 0;
+                display : inline-block;
+            }
+
+            .other {
+                span.split { display: block; width: 40px; text-align: right; }
+            }
+
+            .rate { position: relative; }
+
+            .up        { color: #344573; }
+            .up:after  { content: "↑"; }
+            .up:before { content: "+"; }
+
+            .down        { color: #888888; }
+            .down:after  { content: "↓"; }
+            .down:before { content: "-"; }
+
+            .up:before, .down:before { margin-right: -3px; }
+
+            td .cell-wrapper {
+                position    : relative;
+
+                .cell-wrapper-wrapper {
+                    position    : absolute;
+                    bottom      : 0;
+                }
+            }
+        }
+    }
+    
+    .loading { height: 9px; }
+}
+
+.campaigns-list-dialog, .creatives-list-dialog, .users-list-dialog {
+    padding-bottom : 8px;
+
+    .scroll { max-height: 352px; }
+
+    fieldset {
+        border-top : 0;
+        padding    : 0;
+        color      : #555555;
+    }
+    
+    ul {
+        line-height    : 1.7em;
+        margin-top     : 10px;
+        vertical-align : top;
+
+        span.property { vertical-align: top; display: inline-block; width: 45px; }
+        strong { font-weight: bold; }
+    }
+
+    ul.list {
+        padding         : 0 0 0 20px;
+        list-style-type : decimal;
+    }
+}
+
+.users-list-dialog {
+    width: 260px;
+    ul li { width: 100%; }
+}
+
+.campaigns-list-dialog, .creatives-list-dialog {
+    width: 450px;
+    ul li { width: 420px; }
+}
+
+.account-dialog {
+    min-height : 400px;
+    width      : 415px;
+    
+    fieldset {
+        label:not(.reform-checkbox-fake) {width : 150px; }
+    }
+    
+    menu.steps a { padding: 0 14px 0 8px; }
+
+    .owner .single-options { height: 155px; }
+
+    .link-btn { padding-top: 5px; }
+    
+    menu.tabs       a { width: 16%; }
+    menu.tabs.short a { width: 33%; }
+
+    fieldset .key-value-table {
+
+        tbody tr {
+            &:first-child td { padding-top: 7px; }
+
+            td {
+                border: 0;
+                .cell-wrapper .cell-wrapper-wrapper { padding: 2px 0; }
+            }
+        }
+
+        .field {
+            width         : auto;
+            float         : none;
+            margin-bottom : 0;
+
+            input[type=text] { height: 19px; }
+        }
+
+        .key {
+            width: 169px;
+            .field input[type=text] { width: 155px; }
+        }
+        .value {
+            width: 169px;
+            .field input[type=text] { width: 139px; }
+        }
+    }
+}
+
+.user-roles-table-head, .user-roles-table-body {
+    table {
+        .name        { width: 170px; }
+        .permissions { background-color: #ededed; }
+        .role        { padding-left: 10px; }
+
+        .delete {
+            width        : 34px;
+            padding-left : 10px;
+            text-align   : right;
+        }
+    }
+
+    thead .role .cell-wrapper-wrapper {
+        .m-rotate(-28deg);
+        .m-transform-origin(left center);
+
+        width: 54px;
+    }
+
+    tbody tr.added   { .row-added(SLIDE-DOWN); }
+    tbody tr.removed { .row-removed(SLIDE-UP); }
+}

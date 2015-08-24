@@ -1,0 +1,225 @@
+table {
+    table-layout   : fixed;
+    margin         : 0 auto;
+    width          : @main-width;
+    border-spacing : 0;
+    font-family    : @main-font-regular;
+
+    &.standalone {
+        th { .select-disabled; }
+
+        tr:not(:first-child) .title .cell-wrapper-wrapper {
+            text-overflow : ellipsis;
+            overflow      : hidden;
+        }
+    }
+
+    &.interstitial th:nth-child(2) { width: 350px; }
+    &.banner th:nth-child(2) { width: 430px; }
+
+    thead tr { height: 44px; }
+    tbody tr { height: 81px; }
+
+    thead th {
+        text-transform : uppercase;
+        font-size      : 10px;
+        padding        : 5px 10px;
+        vertical-align : bottom;
+
+        &[data-action="sort"] { cursor: pointer; }
+    }
+
+    thead th:first-child, td:first-child { text-align: left; }
+
+    th, td { text-align: right; .m-border-box; }
+
+    th.snap-edge { padding-left: 0; padding-right: 0; }
+    th.align-top { vertical-align: top; }
+
+    td {
+        padding-top    : 22px;
+        padding-right  : 10px;
+        vertical-align : top;
+        font-size      : 16px;
+
+        &.title  { padding-left: 12px; }
+        &.link a { color: #444444; }
+    }
+
+    tbody tr:nth-child(odd) { background: #f7f7f7; }
+
+    &.header-border-line tbody tr:first-child { border-top: 4px solid #444444; }
+
+    .nr-of-items {
+        width       : 45px;
+        display     : block;
+        float       : right;
+        font-family : @main-font-ultra-light;
+        font-size   : 42px;
+        line-height : 16px;
+        text-align  : center;
+    }
+
+    &.big-row-text td {
+        color       : #444444;
+        font-family : @main-font;
+        font-size   : 20px;
+        line-height : 20px;
+    }
+
+    td.svg-icon {
+        vertical-align : middle;
+        padding-top    : 0;
+
+        svg {
+            height         : 46px;
+            width          : 100%;
+            vertical-align : middle;
+        }
+    }
+
+    .format-icon {
+        display        : table-cell;
+        vertical-align : middle;
+    }
+
+    &.trailing-space {
+        th:last-child, td:last-child { padding-right: 20px; }
+    }
+
+    .cookie-chart {
+        margin-top  : -11px;
+        margin-left : 45px;
+        display     : inline-block;
+        position    : relative;
+        float       : left;
+    }
+    .cookie-chart-value { 
+        font-family    : @main-font-regular;
+        vertical-align : 18px; 
+        float          : right; 
+    }
+
+    // Sorting
+    .active-sort { background: rgba(0, 0, 0, 0.07); }
+
+    .sort-arrow {
+        content           : "";
+        display           : inline-block;
+        width             : 10px;
+        height            : 9px;
+        background-repeat : no-repeat;
+    }
+
+    .sort-arrow-asc  { background-image: url('img/sort_asc.gif'); }
+    .sort-arrow-desc { background-image: url('img/sort_desc.gif'); }
+
+    .sort-arrow-right {
+        &.sort:after  { .sort-arrow; margin-left: 3px; }
+        &.asc:after   { .sort-arrow-asc;               }
+        &.desc:after  { .sort-arrow-desc;              }
+    }
+    :not(.sort-arrow-right) {
+        &.sort:before { .sort-arrow; margin-right: 3px; }
+        &.asc:before  { .sort-arrow-asc;                }
+        &.desc:before { .sort-arrow-desc;               }   
+    }
+
+    .total td {
+        height      : 90px;
+        padding-top : 23px;
+        background  : #222222;
+        color       : #ffffff;
+        font-size   : 20px;
+
+        &:first-child { color: #777777; }
+        &.active-sort { background: #000000; }
+    }
+
+    .total td:first-child {
+        text-transform : uppercase;
+        font-size      : 25px;
+        font-family    : @main-font-thin;
+    }
+
+    .td-border-right { border-right: 2px solid rgba(0, 0, 0, 0.05); }
+    tr:last-child td { border-bottom: 2px solid #dddddd; }
+
+    .comparison {
+        display     : block;
+        padding-top : 5px;
+        color       : #777777;
+        font-size   : 0.75em;
+
+        &.up   { color: #93b93a; }
+        &.down { color: #f25d57; }
+    }
+}
+
+.table-scrollable-wrapper {
+    overflow-x  : auto;
+    overflow-y  : visible;
+
+    table { width: auto; }
+}
+
+.table-column-fixed-wrapper {
+    .column-fixed {
+        position : absolute;
+        left     : 0;
+    }
+
+    tr:nth-child(even):not(.total) td.column-fixed            { background: #ffffff;                  }
+    tr:nth-child(odd):not(.total) td.column-fixed             { background : #f7f7f7;                 }
+    tr:nth-child(odd):not(.total) td.column-fixed.active-sort { background : #e5e5e5;                 }
+    tr:last-child td.column-fixed                             { height     : 82px;                    }
+    td.column-fixed                                           { height     : 81px;                    }
+    th.column-fixed                                           { height     : 44px; padding-top: 27px; }
+    tr.total td.column-fixed                                  { height     : 90px;                    }
+}
+
+.horizontal-scroll-area {
+    position : absolute;
+    top      : 71px;
+    height   : 90px;
+
+    &.scroll-left  {
+        display: none; // initially hidden
+
+        .m-gradient(#222222, transparent, 0%, 100%, to right);
+        left  : 398px;
+        width : 130px;
+    }
+
+    &.scroll-right {
+        .m-gradient(transparent, #222222, 0%, 100%, to right);
+        right : 0;
+        width : 100px;
+    }
+}
+
+.horizontal-scroll-btn {
+    .m-hide-text;
+
+    position            : absolute;
+    top                 : 25px;
+    width               : 33px;
+    height              : 44px;
+    border-radius       : 4px;
+    background-image    : url('./img/big_arrow_right_dark.png');
+    background-repeat   : no-repeat;
+    background-size     : 10px 20px;
+    background-position : 10px 13px;
+    background-color    : rgba(255, 255, 255, 0.1);
+    opacity             : 0.6;
+
+    &:hover  { background-color: rgba(255, 255, 255, 0.15); }
+    &:active { background-color: rgba(255, 255, 255, 0.05); }
+
+    &.scroll-left {
+        left: -5px;
+        .m-rotate(180deg);
+    }
+
+    &.scroll-right { right: -5px; }
+}

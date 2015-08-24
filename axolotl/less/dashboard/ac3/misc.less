@@ -1,0 +1,202 @@
+.misc {
+
+    width : auto;
+
+    .col {
+        &:nth-child(even) { 
+            padding-left : 37px;
+            margin-left  : -7px;
+        }
+    }
+    
+    fieldset { padding-top: 18px; }
+	
+	.disabled { opacity: 0.5; }
+	
+	.form h2 {
+        font        : normal 26px Arial;
+        line-height : 60px;
+        margin-top  : 10px;
+	}
+	
+	textarea[data-action="editNotification"] {
+        .m-border-box;
+        width       : 460px;
+        height      : 140px;
+        margin-top  : 10px;
+        padding     : 16px;
+        outline     : none;
+        border      : 1px solid #cccccc;
+        font-family : @main-font;
+        font-size   : 16px;
+        color       : #222222;
+	}
+	
+	.preview-wrapper {
+        margin-top          : 10px;
+        width               : 460px;
+        height              : 140px;
+        background          : url(img/big_arrow_right.png) no-repeat;
+        background-size     : 16px 32px;
+        background-position : 0 80px;
+
+        h3 {
+            font-weight : normal;
+            color       : #888888;
+        }
+
+        .preview {
+            width            : 460px;
+            height           : 140px;
+            background-color : rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            width            : 100%;
+            height           : 50px;
+            background-color : #000000;
+        }
+		
+	    .notifications {
+            height     : auto;
+            margin-top : 3px;
+	    	
+            .notifications-counter { 
+                display     : inline-block;
+                height      : 25px;
+                margin-left : 24px;
+                margin-top  : 6px;
+
+                span {
+                    top   : 0;
+                    right : -9px;
+                }
+            }
+
+            .notifications-body {
+                display          : none;
+                width            : 450px;
+                margin-top       : 7px;
+                margin-left      : 14px;
+                background-color : #ffffff;
+                
+                li { width: 420px; }
+
+                p  {
+                    color         : #222222;
+                    font-size     : 13px;
+                    margin-bottom : 0;
+                }
+            }
+	    }
+	}
+
+    .notification { width: 440px; }
+    .placement    { width: 120px; }
+    .account      { width: 120px; }
+    .start-date   { width: 120px; }
+    .end-date     { width: 120px; }
+    .enabled      { width: 60px;  }
+
+    .in-product-notification-table {
+
+        .button {
+            width: 130px;
+            span { width: 128px; }
+        }
+
+        tbody tr td .cell-wrapper .cell-wrapper-wrapper { padding: 2px 0; }
+
+        .table-body {
+            .notification, .placement, .account, .start-date, .end-date, .enabled {
+                line-height : 45px;
+                color       : #888888;
+            }
+
+            span.account {
+                display       : block;
+                padding-right : 5px;
+                white-space   : nowrap;
+                overflow      : hidden;
+                text-overflow : ellipsis;
+            }
+
+            .name {
+                display        : inline-block;
+                width          : 100%;
+                height         : 100%;
+                vertical-align : middle;
+            }
+
+            .on-off-btn {
+                position: relative;
+                top: 7px;
+            }
+
+            .piece p.bubble-arrow-box {
+                visibility : hidden;
+                position   : absolute;
+                bottom     : 44px;
+            }
+            .piece:hover p.bubble-arrow-box { visibility: visible; }
+
+            .bubble-arrow-box {
+                width     : 165px;
+                height    : auto;
+                font-size : 11px;
+
+                &:after {
+                    width  : 9px;
+                    height : 9px;
+                }
+
+                &.arrow-bottom {
+                    margin: 0 0 0 -70px;
+
+                    &:after { left: 50%; }
+                }
+            }
+        }
+    }
+}
+
+.new-in-product-notification-dialog {
+    min-height : 424px;
+
+    .steps a { width: 140px; }
+    .scroll  { height: 235px; }
+
+    fieldset .field .dialog-autocompletebox { width : 315px; }
+
+    fieldset.select-accounts {
+        &.hidden { display: none; }
+
+        .field .option {
+            min-height : 30px;
+            width      : 100%;
+            color      : #333;
+            padding    : 0 5px 0 5px;
+
+            span {
+                height      : 30px;
+                line-height : 30px;
+            }
+
+            .simple-delete-btn {
+                display : none;
+                float   : right;
+                top     : 5px;
+            }
+
+            &:hover {
+                background-color: #ffffdd;
+                .simple-delete-btn { display: inline-block; }
+            }
+        }
+
+        .row {
+            margin-top: 28px;
+        }
+    }
+
+}

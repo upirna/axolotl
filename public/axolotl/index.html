@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024, user-scalable=no"/>
+    <title>Celtra AdCreator</title>
+    
+    <style type="text/css">
+    @font-face {
+        font-family: "Avenir Next LT Pro Ultra Light";
+        src: url("fonts/avenirnextltpro-ultlt-webfont.woff") format("woff"),
+             url("fonts/avenirnextltpro-ultlt-webfont.ttf") format("truetype");
+    }
+
+    #loading-mask {
+        position         : fixed;
+        left             : 0;
+        top              : 0;
+        right            : 0;
+        bottom           : 0;
+        z-index          : 20000;
+        background-color : white;
+    }
+
+    #loading {
+        position : fixed;
+        left     : 50%;
+        top      : 50%;
+        padding  : 2px;
+        margin   : -40px 0 0 -130px;
+        z-index  : 20001;
+        width    : 260px;
+        height   : 80px;
+    }
+
+    #loading .loading-message {
+        width       : 100%;
+        text-align  : center;
+        color       : #444;
+        font-size   : 20px;
+        font-family : "Avenir Next LT Pro Ultra Light", "Helvetica", Arial, sans-serif;
+    }
+
+    #loading-msg { font: normal 10px tahoma; }
+    
+    .noscript #loading-mask, .noscript #loading { display: none; }
+</style>    
+<script src="../assets/axolotl.js" defer crossorigin></script>
+<link rel="stylesheet" href="../assets/axolotl.css" rel="stylesheet"/>
+    
+</head>
+<body class="noscript">
+    <script type="text/javascript">document.body.className=""</script>
+    <div id="loading-mask"></div>
+    <div id="loading">
+        <svg class="icon-preloader light" viewBox="0 0 24 8">
+            <circle transform="translate(4 0)" cx="0" cy="4" r="0">
+                <animate
+                    attributeName="r"
+                    attributeType="XML"
+                    values="0;4;0;0"
+                    dur="1.1s"
+                    repeatCount="indefinite"
+                    begin="0"
+                    keytimes="0;0.2;0.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline"
+                />
+             </circle>
+             <circle transform="translate(12 0)" cx="0" cy="4" r="0">
+                <animate
+                    attributeName="r"
+                    attributeType="XML"
+                    values="0;4;0;0"
+                    dur="1.1s"
+                    repeatCount="indefinite"
+                    begin="0.3"
+                    keytimes="0;0.2;0.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline"
+                />
+             </circle>
+             <circle transform="translate(20 0)" cx="0" cy="4" r="0">
+                <animate
+                    attributeName="r"
+                    attributeType="XML"
+                    values="0;4;0;0"
+                    dur="1.1s"
+                    repeatCount="indefinite"
+                    begin="0.6"
+                    keytimes="0;0.2;0.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline"
+                />
+             </circle>
+        </svg>
+        <p class="loading-message">Opening Axolotl</p>
+    </div>
+    <noscript><p>Sorry, this application supports only JavaScript enabled browsers.</p></noscript>
+</body>
+</html>

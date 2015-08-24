@@ -1,0 +1,25 @@
+.report-generator {
+    .date-range {
+        padding-left: 150px;
+
+        span[data-field=startDate], span[data-field=endDate] {
+            width: 105px;
+
+            input { width: 105px; }
+        }
+
+        span[data-field=startDate]:after { content: "(incl) - "; }
+        span[data-field=endDate]:after   { content: "(excl)"; }
+    }
+
+    select[name=dimensions], select[name=metrics] {
+        width            : 450px;
+        height           : 300px;
+        margin-top       : 10px;
+        margin-bottom    : 30px;
+        resize           : none;
+        outline          : 1px solid #dddddd;
+        border-top       : 1px solid #888888;
+        background-color : #ffffff;
+	}
+}

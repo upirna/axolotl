@@ -1,0 +1,60 @@
+footer {
+    .m-gradient(#858585, #222222, 1px, 1px);
+
+    position         : absolute;
+    bottom           : 0;
+    width            : 100%;
+    height           : 39px;
+    background-color : #222;
+    font-size        : 12px;
+    font-family      : @secondary-font;
+    color            : #777777;
+    line-height      : 39px;
+
+    .foot-wrap {
+        .m-display-flex;
+        .m-justify-content(space-between);
+        width  : @content-width;
+        margin : 0 auto;
+    }
+
+    svg { position : relative; }
+}
+
+.ac3, .auth {
+    footer .foot-wrap { width: 992px; }
+}
+
+.auth footer .foot-wrap a { color: #777777; }
+
+.foot-wrap { max-height: 39px; }
+
+&.dark-content footer { .m-gradient(#151515, #222222, 1px, 1px); }
+
+.links {
+    a {
+        padding-right   : 16px;
+        text-decoration : none;
+        color           : inherit;
+    }
+}
+
+.icon-watch {
+    top      : 5px;
+    right    : 5px;
+    height   : 18px;
+    width    : 18px;
+}
+
+.icon-celtra-logo {
+    top    : 9px;
+    width  : 57px;
+    height : 25px;
+}
+
+.copyright, .timezone { color: #444444; }
+
+.copyright p {
+    float         : left;
+    padding-right : 15px;
+}

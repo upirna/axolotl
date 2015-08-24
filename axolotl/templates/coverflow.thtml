@@ -1,0 +1,18 @@
+<h1 class="section-heading"><span>Recent Creatives</span></h1>
+
+<div>
+    <div class="slide-container">
+        <ul>
+            {{#each collection}}
+                <li>
+                    <a style="background-image: url({{thumbnailUrl}})" href="builder/#path=creatives/{{id}}" title="Open {{name}}" data-action="goToItem"></a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="info"></div>
+    
+    <div class="scrollbar-container">
+    	<div class="bar transition"></div>
+    </div>
+</div>

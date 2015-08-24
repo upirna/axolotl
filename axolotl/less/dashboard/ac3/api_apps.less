@@ -1,0 +1,56 @@
+.api-apps-table-head, .api-apps-table-body {
+    table {
+        tbody td {
+            .cell-wrapper {
+                max-height: 61px;
+                .cell-wrapper-wrapper { padding: 5px 0; }
+            }
+        }
+
+        .name       { width: 620px; }
+        .id         { width: 150px; }
+        .secret-key { width: 150px; }
+        .delete     { width: 50px; padding-left: 10px; text-align: right; }
+
+        .id span { line-height: 26px; }
+
+        .name a.item-name { max-width: 90%; }
+        
+        textarea { width: 90%; }
+    }
+}
+
+.api-app-create-dialog {
+    min-height: 116px;
+    
+    fieldset {
+        &.buttons { position: relative; }
+
+        .row:first-child { margin-bottom: 10px; }
+    }
+
+    .notice { display: block; }
+    
+    .success {
+        .button { margin: 40px auto 0 auto; }
+    }
+}
+
+.api-app-secret-key-dialog {
+    fieldset {
+        .row:first-child { margin-bottom: 10px; }
+
+        .field {
+            float: none;
+
+            input[type=text] {
+                height: 22px;
+                width: 239px; 
+            }
+
+            button { float: right; }
+        }
+    }
+
+    .notice { display: block; }
+}

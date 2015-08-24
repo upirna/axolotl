@@ -1,0 +1,87 @@
+.campaign-memberships {
+    height: 445px;
+
+    fieldset:last-child { padding-bottom: 0px; }
+
+    .icon-magnifier, .icon-close {
+        position : absolute;
+        top      : 37px;
+        right    : 7px;
+        width    : 11px;
+        height   : 11px;
+        color    : #555555;
+    }
+
+    .icon-close { color: #cccccc; }
+
+    .field.search-people {
+        float         : none;
+        margin-bottom : 10px;
+
+        .search {
+            width        : 334px;
+            height       : 22px;
+            padding-left : 5px;
+            cursor       : default;
+        }
+    }
+
+    .groups-involved {
+        .row-group {
+            padding          : 5px 0;
+            border-bottom    : solid 1px #dddddd;
+            background-color : #f6f6f6;
+
+            &:first-child { border-top: solid 1px #dddddd; }
+
+            .group {
+                height : 15px;
+                margin : 0px;
+
+                span.expand-group-hotspot { width: 94%; }
+            }
+
+            .name {
+                color     : #333333;
+                font-size : 11px;
+            }
+
+            .total-group-members {
+                float         : right;
+                padding-right : 6px;
+                font-size     : 11px;
+            }
+
+            .arrow {
+                width         : 0;
+                height        : 0;
+                margin        : 3px 0 0 4px;
+                border-top    : 4px solid transparent;
+                border-bottom : 4px solid transparent;
+                border-left   : 4px solid black;
+
+                &.down {
+                    margin       : 5px 0 0 2px;
+                    border-left  : 4px solid transparent;
+                    border-right : 4px solid transparent;
+                    border-top   : 4px solid black;
+                }
+            }
+        }
+
+        .super-select { top: 8px; }
+
+        .no-groups {
+            padding-left     : 15px;
+            line-height      : 30px;
+            border-bottom    : solid 1px #dddddd;
+            border-top       : solid 1px #dddddd;
+            background-color : #f6f6f6;
+            font-size        : 11px;
+        }
+
+        .user-in-group { padding: 5px 0 5px 20px; }
+
+        .scroll { max-height: 200px; }
+    }
+}

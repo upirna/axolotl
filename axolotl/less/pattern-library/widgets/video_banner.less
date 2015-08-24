@@ -1,0 +1,409 @@
+/* Glass gauge ------------------------ */
+.glass-gauge {
+    @gaugeColor : rgba(255, 255, 255,  .6);
+    @railColor  : rgba(255, 255, 255, .15);
+
+    overflow : hidden;
+    width    : 60px;
+    height   : 48px;
+
+    // override pillow colors
+    .pillow-gauge-gauge {
+        &.third { border-color : transparent @gaugeColor transparent transparent !important; }
+        &.half  { border-color : @gaugeColor @gaugeColor transparent transparent !important; }
+        &.full  { border-color : @gaugeColor @gaugeColor transparent @gaugeColor !important; }
+
+        &.third:after { border-color : transparent @gaugeColor transparent transparent !important; }
+        &.half:after  { border-color : @gaugeColor @gaugeColor transparent transparent !important; }
+        &.full:after  { border-color : @gaugeColor @gaugeColor transparent @gaugeColor !important; }
+
+    }
+
+    .pillow-gauge-rail {
+        &.third { border-color : transparent @railColor transparent transparent !important; }
+        &.half  { border-color : transparent @railColor @railColor transparent !important; }
+        &.full  { border-color : transparent @railColor @railColor @railColor !important; }
+    }
+
+    .pillow-gauge-caption {
+        font-family : @main-font;
+        color       : #ffffff;
+    }
+}
+
+/* Video banner ----------------------- */
+.video-banner {
+    position : relative;
+    display  : inline-block;
+    overflow : hidden;
+    cursor   : pointer;
+
+    &:hover {
+        .video-banner-thumb       { .m-transform-gpu(scale(1)); }
+        .video-banner-overlay-img { .m-transform-gpu(scale(1.1)); }
+
+        .video-banner-button {
+            .m-transform-gpu(scale(1));
+
+            opacity: 1;
+        }
+    }
+}
+
+// override for not-available items so we can click them
+// pointer-events on child will override pointer-events on parent element
+// because events bubble up
+// https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events (Notes section)
+.video-slider {
+    .video-banner:not(.video-slider-item-available) {
+        .video-banner-thumb {
+            .m-transition(none);
+            .m-transform(none);
+        }
+
+        .video-banner-details { pointer-events: none; }
+
+        &:hover {
+            .video-banner-thumb {
+                .m-transition(none);
+                .m-transform(none);
+            }
+
+            .video-banner-button {
+                .m-transition(none);
+                .m-transform(none);
+
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.video-banner-thumb-wrap {
+    position : relative;
+    width    : 100%;
+}
+
+.video-banner-thumb {
+    .m-transition(all 0.3s ease);
+    .m-transform-gpu(scale(1.09));
+
+    height              : 260px;
+    background-size     : cover;
+    background-position : 50% 50%;
+}
+
+.video-banner-details {
+    z-index  : 0;
+    position : absolute;
+    overflow : hidden;
+    bottom   : 0;
+    left     : 0;
+    width    : 100%;
+    height   : 90px;
+    color    : #ffffff;
+}
+
+.video-banner-overlay {
+    z-index          : 2;
+    position         : absolute;
+    bottom           : 0;
+    left             : 0;
+    width            : 100%;
+    height           : 100%;
+    background-color : rgba(0, 0, 0, .4);
+}
+
+.video-banner-icons {
+    z-index                     : 3;
+    position                    : absolute;
+    top                         : 10px;
+    right                       : 10px;
+    color                       : #eeeeee;
+    -webkit-backface-visibility : hidden;
+}
+
+.video-banner-icon {
+    .m-transition(width 0.3s ease);
+
+    position    : relative;
+    float       : right;
+    width       : 20px;
+    margin-left : 10px;
+
+    svg {
+        float  : right;
+        width  : 20px;
+        height : 20px;
+    }
+
+    &:hover {
+        width: 100px;
+
+        .video-banner-icon-label {
+            .m-transform-gpu(translateX(-29px));
+
+            opacity: 1;
+        }
+    }
+}
+
+.video-banner-icon-label {
+    .m-transition(all 0.3s ease);
+    .m-webkit-smooth-animation-font(0.5px, #ffffff);
+
+    position       : absolute;
+    top            : 5px;
+    right          : 0;
+    min-width      : 100px;
+    opacity        : 0;
+    font-family    : @main-font;
+    font-size      : 10px;
+    text-align     : right;
+    color          : #eeeeee;
+    letter-spacing : 0.7px;
+    text-transform : uppercase;
+}
+
+.video-banner-charts {
+    z-index       : 3;
+    position      : absolute;
+    overflow      : hidden;
+    bottom        : 20px;
+    left          : 30px;
+    height        : 48px;
+    margin-bottom : 4px;
+
+    .glass-gauge {
+        .m-transition(width 0.3s ease);
+
+        float         : left;
+        position      : relative;
+        width         : 60px;
+        padding-right : 20px;
+
+        &:hover {
+            width: 170px;
+
+            .gauge-sliding-label {
+                .m-transform-gpu(translateX(68px));
+
+                opacity: 1;
+            }
+        }
+
+        .pillow-gauge-caption .value,
+        .pillow-gauge-caption .unit {
+            .m-webkit-smooth-animation-font(0.5px, #ffffff);
+        }
+    }
+}
+
+// only add text-stroke to safari; elsewhere works well
+_::-webkit-full-page-media, _:future, :root .gauge-sliding-label {
+    .m-webkit-smooth-animation-font(0.5px, #ffffff);
+}
+
+@-moz-document url-prefix() {
+    .gauge-sliding-label {
+        .m-moz-smooth-animation-font;
+    }
+}
+
+.gauge-sliding-label {
+    .m-transition(all 0.3s ease);
+
+    position       : absolute;
+    top            : 0;
+    left           : 0;
+    max-width      : 110px;
+    height         : 49px;
+    color          : #eeeeee;
+    opacity        : 0;
+    font-family    : @main-font;
+    font-size      : 10px;
+    text-align     : left;
+    line-height    : 49px;
+    letter-spacing : 0.7px;
+    text-transform : uppercase;
+    pointer-events : none;
+
+    span {
+        /* Used to vertical align multiple lines to center */
+        display        : inline-block;
+        vertical-align : middle;
+        line-height    : normal;
+        white-space    : normal;
+    }
+}
+
+.video-banner-overlay-img {
+    .m-filter(blur(15px));
+    .m-transform-gpu(scale(1.2));
+    .m-transition(all 0.3s ease);
+
+    z-index             : 1;
+    position            : absolute;
+    bottom              : 0;
+    width               : 100%;
+    height              : 90px;
+    background-position : 50% bottom;
+    background-repeat   : no-repeat;
+    opacity             : 1;
+}
+
+.video-banner-button {
+    .m-transition(all 0.3s ease);
+    .m-transform-gpu(scale(0.9));
+    .m-webkit-smooth-animation-font(0.5px, #ffffff);
+
+    z-index          : 2;
+    display          : inline-block;
+    position         : absolute;
+    top              : 40%;
+    left             : 50%;
+    padding          : 10px 20px;
+    margin           : -20px 0 0 -61px;
+    border-radius    : 20px;
+    background-color : rgba(0, 0, 0, 0.7);
+    opacity          : 0;
+    font-family      : @main-font;
+    font-size        : 13px;
+    text-transform   : uppercase;
+    color            : #ffffff;
+}
+
+// Sizes
+.video-banner-w390-h260 {
+    width  : 390px;
+    height : 260px;
+}
+
+.video-banner-w600-h260 {
+    width  : 600px;
+    height : 260px;
+
+    .video-banner-overlay-img { background-position: 50% bottom; }
+}
+
+.video-banner-w1230-h160 {
+    width  : 1230px;
+    height : 160px;
+
+    .video-banner-thumb-wrap {
+        width    : 390px;
+        overflow : hidden;
+    }
+    .video-banner-thumb  { height: 160px; }
+    .video-banner-charts { left: 40px; }
+
+    .video-banner-details {
+        right  : 0;
+        left   : auto;
+        width  : 840px;
+        height : 160px;
+    }
+
+    .video-banner-overlay-img {
+        .m-transform-gpu(scale(1.7)) !important;
+        .m-filter(blur(20px));
+
+        top                 : 0;
+        height              : 170px;
+        background-position : 50% 50%;
+        background-size     : cover;
+        opacity             : 1;
+    }
+
+    .glass-gauge { width: 170px; }
+
+    .gauge-sliding-label {
+        .m-transform-gpu(translateX(68px)) !important;
+
+        opacity: 1 !important;
+    }
+
+    .video-banner-button { top: 50%; }
+}
+
+/* Video banner slider ---------------- */
+.video-slider {
+    position      : relative;
+    overflow      : hidden;
+    margin-bottom : 50px;
+
+    .video-banner {
+        .m-transition(opacity 0.4s ease);
+
+        margin-right : 30px;
+        opacity      : .2;
+
+        &.video-slider-item-available { opacity: 1; }
+    }
+}
+
+.video-slider-slides-wrap {
+    position    : relative;
+    width       : @content-width;
+    margin      : 0 auto;
+}
+
+.video-slider-button {
+    .m-user-select-none();
+    .m-transition(opacity 0.2s ease);
+
+    position         : absolute;
+    display          : none;
+    top              : 0;
+    left             : 0;
+    z-index          : 3;
+    width            : 80px;
+    height           : 260px;
+    border           : 0;
+    background-color : rgba(0, 0, 0, 0.5);
+    opacity          : 0.6;
+    line-height      : 280px;
+    text-align       : center;
+    cursor           : pointer;
+
+    &:after {
+        .m-border-box();
+        .m-transform-origin(22.5px 22.5px);
+
+        content       : '';
+        display       : block;
+        position      : absolute;
+        top           : 108px;
+        width         : 24px;
+        height        : 24px;
+        border-right  : 2px solid #eeeeee;
+        border-bottom : 2px solid #eeeeee;
+    }
+}
+
+.video-slider-next:after {
+    .m-transform-gpu(rotate(-45deg));
+
+    left: 27px;
+}
+
+.video-slider-prev:after {
+    .m-transform-gpu(rotate(135deg));
+
+    left: 8px;
+}
+
+.video-slider-next {
+    left  : auto;
+    right : 0;
+}
+
+.video-slider-slides {
+    .m-transition(all 0.4s ease);
+
+    padding     : 0;
+    font-size   : 0;
+    white-space : nowrap;
+}
+
+.video-slider-button:hover { opacity: 1; }

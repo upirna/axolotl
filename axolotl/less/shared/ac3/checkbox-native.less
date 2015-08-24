@@ -1,0 +1,75 @@
+.checkbox-native {
+    display             : inline-block;
+    -moz-user-select    : none;
+    -webkit-user-select : none;
+    -ms-user-select     : none;
+
+    span {
+        position         : relative;
+        display          : inline-block;
+        cursor           : pointer;  
+        width            : 10px;
+        height           : 10px;
+        padding          : 1px;
+        background-color : #ffffff;
+        border           : 1px solid #aaaaaa;
+
+        &:before {
+            content  : "";
+            position : absolute;
+            top      : 1px;
+            right    : 1px;
+            bottom   : 1px;
+            left     : 1px;
+            border   : 1px solid #cccccc;
+        }
+
+        &:after {
+            content : "";
+            position: absolute;
+            top     : 50%;
+            left    : 50%;
+            width   : 50%;
+            height  : 50%;
+            margin  : -25% 0 0 -25%;
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked + span:after {
+            width           : 10px;
+            height          : 10px;
+            margin          : -5px 0 0 -5px;
+            background      : url('img/check.svg') no-repeat -2px -2px;
+            background-size : 15px;
+        }
+
+        &:disabled + span {
+            .outline(#aaaaaa);
+            background-color: #dddddd;
+        }
+
+        &:disabled:checked + span:after {
+            .outline(#aaaaaa);
+            border: none;
+        }
+    }
+
+    &.big-checkbox {
+        span {
+            width  : 16px;
+            height : 16px;
+        }
+
+        input {
+            &:checked + span:after {
+                width           : 14px;
+                height          : 14px;
+                margin          : -7px 0 0 -8px;
+                background-size : 20px;
+            }
+        }
+    }
+}

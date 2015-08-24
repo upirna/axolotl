@@ -1,0 +1,919 @@
+@disabledDarkBlue  : rgba(90, 151, 189, 0.10);
+@disabledLightBlue : rgba(134, 204, 203, 0.10);
+@disabledOrange    : rgba(248, 206, 153, 0.10);
+
+@noDataColor : rgba(255, 255, 255, 0.1);
+
+.colorize(@property: background-color) {
+    &.dark-blue-color  { @{property}: @anl-series-1-color; }
+    &.light-blue-color { @{property}: @anl-series-2-color; }
+    &.orange-color     { @{property}: @anl-series-3-color; }
+}
+
+.dot-circle() {
+    .colorize();
+    float         : left;
+    width         : 12px;
+    height        : 12px;
+    border-radius : 50px;
+    position      : relative;
+    top           : 4px;
+}
+
+.no-data-pie(@size: 180px, @content: 'n/a', @topBefore: 71px, @topAfter: 88px, @widthBefore: 165px, @widthAfter: 220px, @bgColor: rgba(0, 0, 0, 0)) {
+    .m-border-box;
+    position     : relative;
+    width        : @size;
+    height       : @size;
+    border-color : @noDataColor;
+
+    .label {
+        position       : absolute;
+        top            : calc(~"50% - 40px");
+        left           : calc(~"50% - 40px");
+        height         : 20px;
+        width          : 80px;
+        z-index        : 3;
+        opacity        : 0.2;
+        font-size      : 10px; 
+        text-transform : uppercase;
+        text-align     : center;
+        
+        span {
+            position       : absolute;
+            bottom         : 0px;
+            left           : 0;
+            width          : 80px;
+            display        : inline-block;
+            text-align     : center;
+            vertical-align : baseline;        
+        }
+    }
+
+    &:before {
+        font-size        : 34px;
+        letter-spacing   : normal;
+        text-indent      : 7px;
+        
+        content          : @content;
+        background-color : @bgColor;
+        width            : @widthBefore;
+        top              : @topBefore;
+    }
+
+    &:after {
+        width            : @widthAfter;
+        background-color : @noDataColor;
+        top              : @topAfter;
+    }
+}
+
+.sessions {
+    .pillow-gauge-notch { background-color: #ffffff; }
+    .pillow-gauge:after {
+        border-color: transparent transparent #181818 transparent;
+        border-width: 25px;
+    }
+    .pillow-gauge { .pillow-gauge-gauge { .set-gauge-border-color(#96b06f); } }
+
+    @railColor: rgba(255, 255, 255, 0.1);
+
+    .title-flipped { color: #777777; }
+
+    .pillow-gauge-rail {
+        &.third { border-color : transparent @railColor transparent transparent; }
+        &.half  { border-color : transparent @railColor @railColor transparent; }
+        &.full  { border-color : transparent @railColor @railColor @railColor; }
+    }
+
+    .pillow-gauge-caption {
+        top: -20px;
+
+        .value { font-size: 34px; }
+        .label {
+            font-family : @main-font;
+            width       : 75px;
+            margin      : 0 auto;
+
+            .tooltip:after { left: 110px; }
+        }
+    }
+}
+
+.funnel-subpage.analytics-container { padding-bottom: 0; }
+
+.view-stack.divider { z-index: -1; }
+
+// Exceptions
+.analytics-subpaged-funnel-sections {
+    .analytics-subpaged-funnel-section {
+        &:not(:only-child):nth-child(even), &.grey-background { background: #f6f6f6; }
+
+        section.rate { padding: 30px 0; }
+
+        section.engagements {
+            .accumulation-line { height: 22px; }
+            .outline { margin-top: 18px; }
+            padding-bottom: 40px;
+        }
+
+        section.expanded {
+            .accumulation-line { height: 37px; }
+            .magnified {
+                &.left  { left: 65px; }
+                &.right { right: 5px; }
+            }
+        }
+
+        section.expansion {
+            .bar-charts-view { background-color: #ffffff; }
+        }
+
+        .bar-title-wrapper.bar-chart-num-0 { padding-top: 25px; }
+
+        .last .accumulation-line { height: 20px; }
+
+        .consolidated {
+            .scale-left, .scale-right {
+                height : -webkit-calc(~"100% - 60px");
+                height : -moz-calc(~"100% - 60px");
+                height : calc(~"100% - 60px");
+            }
+        }
+
+        .outline .toggle { margin-bottom: 16px; }
+    }
+
+    &.expandable-format .analytics-subpaged-funnel-section {
+        &:not(:only-child):nth-child(odd):not(:nth-child(1)) { background: #f6f6f6; }
+        &:not(:only-child):nth-child(even) { background: #ffffff; }
+
+        // cover up pillow-meter's graph reminder
+        .expansion-rate:before {
+            content          : "";
+            width            : 50px;
+            height           : 20px;
+            position         : absolute;
+            left             : 593px;
+            top              : 0;
+            background-color : #f6f6f6;
+        }
+    }
+}
+
+.core-iab-metric-switcher {
+    padding-left : 60px;
+    padding-top  : 26px;
+
+    .toggle {
+        .m-toggle-size(2, 380px, 34px, 26px, 11px, 5px);
+        .m-toggle-color(lighten(#000000, 22.5%), darken(#ffffff, 33.5%));
+    }
+}
+
+.part-pie-chart {
+    position   : relative;
+    display    : inline-block;
+    width      : 100%;
+    background : linear-gradient(to bottom,  #000000, #222222);
+    color      : #ffffff;
+
+    .white-divider {
+        position    : absolute;
+        bottom      : 0;
+        height      : 20px;
+        left        : -webkit-calc(~"50% + 30px");
+        left        : -moz-calc(~"50% + 30px");
+        left        : calc(~"50% + 30px");
+        border-left : 2px solid rgba(255, 255, 255, 0.25);
+
+        &.consolidated { height: 30px; }
+    }
+
+    .consolidated-charts-wrapper {
+        position : relative;
+        height   : 314px;
+        padding  : 66px 0 0 62px;
+
+        > div { float: left; }
+
+        .no-data-pie {
+            .no-data-pie();
+
+            &.big {
+                .no-data-pie(250px, 'no data', 105px, 120px, 220px, 290px);
+            
+                &:before {
+                    font-size: 42px;
+                }
+            }
+        }
+
+        .first-circle  { margin-right: 38px; }
+        .second-circle { margin-right: 61px; }
+
+        .circle-connection {
+            position      : absolute;
+            width         : 200px;
+            height        : 178px;
+            left          : 167px;
+            top           : 102px;
+            border-top    : 1px dashed @noDataColor;
+            border-bottom : 1px dashed @noDataColor;
+
+            &.disabled { border-color: @noDataColor !important; }
+        }
+
+        .no-data-funnel {
+            left  : 390px;
+            width : 220px;
+            .m-transform-origin(top right);
+
+            &.top {
+                top        : 71px;
+                border-top : 1px dashed @noDataColor;
+                .m-rotate(-8deg);
+            }
+
+            &.bottom {
+                bottom        : 68px;
+                border-bottom : 1px dashed @noDataColor;
+                .m-rotate(8deg);
+            }
+        }
+    }
+
+    .count {
+        top      : 36px;
+        position : relative;
+    }
+
+    .circle {
+        width            : 180px;
+        height           : 180px;
+        border-radius    : 50%;
+        background-color : @anl-consolidated-color;
+
+        .label, .value {
+            position   : relative;
+            top        : 34%;
+            text-align : center;
+            z-index    : 1;
+        }
+
+        .label {
+            font-family    : @main-font-ultra-light;
+            text-transform : uppercase;
+
+            &:after { left: 100px; }
+        }
+
+        .inner-circle {
+            position         : absolute;
+            border-radius    : 50%;
+            background-color : @anl-consolidated-color;
+
+            .funnel {
+                position : absolute;
+                .m-transform-origin(bottom left);
+
+                &.top { border-top: 1px dashed rgba(102, 102, 204, 0.3); }
+                &.bottom { border-bottom: 1px dashed rgba(102, 102, 204, 0.3); }
+            }
+        }
+
+        .label {
+            width     : 50%;
+            margin    : 0 auto;
+            font-size : 10px;
+        }
+
+        .value {
+            font-size: 25px;
+            .separator { font-size: 15px; }
+        }
+
+        &.sessions {
+            &:hover {
+                ~ .circle-connection { border-color: rgba(102, 102, 204, 0.8); }
+                ~ .served-rate { border-color: rgba(102, 102, 204, 0.8); }
+                ~ .served-rate.no-data { border-color: @noDataColor; }
+            }
+        }
+
+        &.loaded-sessions {
+            background-color: rgba(102, 102, 204, 0.2);
+
+            &:hover {
+                ~ .circle-connection { border-color: rgba(102, 102, 204, 0.8); }
+                ~ .served-rate { border-color: rgba(102, 102, 204, 0.8); }
+                ~ .served-rate.no-data { border-color: @noDataColor; }
+            }
+
+            .inner-circle {
+                .show-funnel { &.top, &.bottom { border-color: rgba(102, 102, 204, 0.8); } }
+            }
+        }
+    }
+
+    .served-rate {
+        position         : absolute;
+        top              : 254px;
+        left             : 232px; // 170 + 62 (62 is classic left padding for funnel; TODO: move into variable)
+        text-align       : center;
+        border           : 1px solid rgba(102, 102, 204, 0.3);
+        border-radius    : 50%;
+        width            : 55px;
+        height           : 55px;
+        background-color : #222222;
+        z-index          : 1;
+
+        &.disabled { border-color: @noDataColor !important; }
+        &.no-data { border-color: @noDataColor; }
+
+        .value {
+            position  : relative;
+            top       : 8px;
+            left      : 3px;
+            font-size : 25px;
+            .percentage-sign { font-size: 13px; }
+        }
+
+        .label {
+            position       : relative;
+            width          : 66px;
+            top            : 6px;
+            left           : -4px;
+
+            color          : #DDDDDD;
+            font-size      : 10px;
+            text-transform : uppercase;
+
+            &:after { left: 85px; }
+        }
+    }
+
+    .gauge-charts {
+        @width: 180px;
+        float    : right !important;
+        top      : 50px;
+        position : relative;
+
+        .measurable-rate-gauge, .viewable-rate-gauge {
+            float        : left;
+            width        : @width;
+            text-align   : center;
+            margin-right : 15px;
+
+            .tooltip { z-index: 4; }
+        }
+
+        .chart-desc {
+            font-size   : 14px;
+            font-family : @main-font-ultra-light;
+            color       : #ffffff;
+            margin-top  : -7px;
+        }
+
+        .pillow-gauge {
+            overflow: visible;
+            
+            .label { color: rgba(255, 255, 255, 0.8); }
+        }
+    }
+
+    .pie-chart-holder {
+        &.box-labels {
+            position : relative;
+            width    : 250px;
+        }
+
+        @size         : 250px; // size of a pie chart
+        @boxWidth     : 105px;
+        @boxHeight    : 35px;
+        @boxLineColor : rgba(255, 255, 255, 0.2);
+
+        .box {
+            border           : 1px solid @boxLineColor;
+            padding          : 2px 0;
+            width            : @boxWidth;
+            height           : @boxHeight;
+            z-index          : 1;
+            background-color : #222222;
+            border-radius    : 4px;
+
+            // 5px lower than specified in tooltips.less
+            .tooltip {
+                &:after  { bottom: 35px; }
+                &:before { bottom: 29px; }
+            }
+        }
+
+        .label, .value { text-align: center; }
+
+        .label {
+            .chart-title-font();
+
+            &:after { left: 110px; }
+        }
+
+        .value {
+            font-size   : 16px;
+            line-height : 18px;
+        }
+
+        .pillow-pie {
+            .first-line {
+                position   : absolute;
+                border-top : 1px solid @boxLineColor;
+            }
+
+            .second-line {
+                position     : absolute;
+                border-left  : 1px solid @boxLineColor;
+                width        : 1px;
+            }
+        }
+
+        @boxOffset  : @boxWidth * -1 - 1;
+        @lineOffset : @boxWidth * -1 - 1;
+
+        .undetermined {
+            &.up    { top   : @boxHeight / 2; }
+            &.down  { top   : 242px; }
+            &.left  { left  : @boxOffset; }
+            &.right { right : @boxOffset; }
+        }
+
+        .line {
+            border-top : 1px solid @boxLineColor;
+            position   : absolute;
+            width      : @boxWidth;
+            top        : 19px;
+        }
+
+        .pointing-line {
+            content    : "";
+            position   : absolute;
+            border-top : 1px solid @boxLineColor;
+            width      : 25px; // this is changing based on undetermined class of up or down
+            top        : -2px;
+            z-index    : 1;
+        }
+
+        .non-viewable, .viewable {
+            top: -34px;
+
+            &.left {
+                left: -106px;
+
+                .line {
+                    right: -113px;
+                    width: 112px;
+
+                    &:after {
+                        .pointing-line();
+                        right: 0;
+
+                        .m-transform-origin(bottom right);
+                        .m-rotate(250deg);
+                    }
+
+                    &.up:after {
+                        top: -2px;
+                        .m-rotate(100deg);
+                    }
+                }
+            }
+
+            &.right {
+                right: -105px;
+
+                .line {
+                    left: -111px;
+                    width: 110px;
+
+                    &:before {
+                        .pointing-line();
+
+                        .m-rotate(110deg);
+                        .m-transform-origin(bottom left);
+                    }
+
+                    &.up:before {
+                        top: -2px;
+                        .m-rotate(260deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .tooltip.tooltip-middle:after { pointer-events: none; }
+
+    .expanded-charts-wrapper {
+        padding : 30px 0 0 62px;
+
+        .row {
+            position: relative;
+
+            .left-side, .right-side {
+                float : left;
+                width : 38.5%;
+            }
+
+            .middle {
+                position    : relative;
+                float       : left;
+                width       : 22.3%; // 260px
+                margin-left : 4px;
+            }
+
+            .no-data-pie { .no-data-pie(); }
+        }
+
+        .total {
+            text-align : right;
+            margin-top : 56px;
+
+            .label {
+                color          : rgba(255, 255, 255, 0.7);
+                font-size      : 10px;
+                text-transform : uppercase;
+            }
+
+            .value {
+                font-size   : 36px;
+                font-family : @main-font-ultra-light;
+                .separator { font-size: 0.5em; }
+            }
+        }
+
+        .series-values {
+            font-size  : 16px;
+            margin-top : 26px;
+            display    : inline-block;
+
+            li {
+                padding : 4px 0;
+                width   : 125px;
+                height  : 25px;
+
+                .value {
+                    padding-left: 8px;
+
+                    :hover { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+                }
+
+                &.not-selected {
+                    color: #434343;
+
+                    .dot-circle:not(.other) { opacity: 0.1; }
+                }
+
+                &.other {
+                    position : relative;
+                    left     : -1px;
+                }
+
+                .dot-circle {
+                    .dot-circle();
+
+                    &.other {
+                        width  : 11px;
+                        height : 11px;
+                        border : 1px solid rgba(255,255,255, 0.2);
+                    }
+                }
+
+                .other.label {
+                    display  : block;
+                    position : absolute;
+                    width    : 95px; // enough to fit 'Other placements' which is longest possible breakdown dimension
+                    left     : 22px;
+                    .chart-title-font();
+                }
+            }
+        }
+
+        .served-rates {
+            text-align : center;
+            margin     : 18px 0 14px;
+            cursor     : default;
+
+            .values-wrapper {
+                position         : relative;
+                width            : 180px;
+                height           : 30px;
+                border           : 1px solid #333333;
+                border-radius    : 4px;
+                display          : inline-block;
+                padding          : 1px 10px;
+                background-color : #222222;
+
+                .center { display: inline-block; }
+            }
+
+            .value {
+                .colorize(color);
+
+                float     : left;
+                font-size : 25px; 
+
+                .percentage-sign { font-size: 0.5em; }
+            }
+
+            .label {
+                margin-top     : 4px;
+                font-size      : 10px;
+                color          : rgba(255, 255, 255, 0.7);
+                text-transform : uppercase;
+            }
+        }
+
+        .pie-chart-holder {
+            margin    : 0 auto;
+            max-width : 180px;
+            position  : relative;
+
+            &.sessions:before {
+                content      : "";
+                position     : absolute;
+                display      : block;
+                border-left  : 1px dashed rgba(238, 238, 238, 0.15);
+                border-right : 1px dashed rgba(238, 238, 238, 0.15);
+                height        : 240px;
+                width         : 175px;
+                top           : 120px;
+                left          : 2px;
+            }
+
+            &.pillow-pie {
+                &.not-selected .fill   { opacity: 0.1; }
+                .fill.not-selected     { opacity: 0.1; }
+                .series-3.not-selected { opacity: 0.5; }
+            }
+        }
+
+        .full-circle {
+            position         : relative;
+            margin           : 0 auto;
+            width            : 180px;
+            height           : 180px;
+            border-radius    : 50%;
+            background-color : #282E32;
+
+            .loaded-sessions { position: absolute; }
+
+            .pillow-pie {
+                background-color : #222222;
+                border-radius    : 50%;
+            }
+        }
+
+        .break-line {
+            text-align : center;
+            font-size  : 16px;
+            margin     : 25px 0;
+
+            .label {
+                position         : relative;
+                display          : inline-block;
+                padding          : 0 7px;
+                z-index          : 1;
+                background-color : #222222;
+                font-family      : @main-font-ultra-light;
+            }
+
+            &:after {
+                content       : "";
+                display       : block;
+                top           : -9px;
+                position      : relative;
+                border-bottom : 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .breakdown-view {
+            text-align: center;
+
+            .pillow-tooltip-big                     { z-index: 2; }
+            .pillow-pie.not-selected .fill.series-2 { opacity: 0.2; }
+        }
+
+        .breakdown-series {
+            display        : inline-block;
+            position       : relative;
+            float          : left;
+            margin-bottom  : 25px;
+
+            &:last-child {
+                float: right;
+                margin-right: 16px;
+            }
+
+            .pie-chart-holder {
+                display     : inline-block;
+                margin-left : 40px;
+            }
+
+            &.no-data {
+                .no-data-pie {
+                    .no-data-pie(120px, 'n/a');
+
+                    &:before {
+                        top       : 37px;
+                        width     : 104px;
+                        font-size : 34px;
+                    }
+
+                    &:after {
+                        width : 160px;
+                        top   : 60px;
+                    }
+                }
+            }
+
+            &.num-of-series-0,
+            &.num-of-series-3 {
+                width: 340px;
+
+                &:first-child  { margin-left: 132px; }
+            }
+
+            &.num-of-series-0 { margin-bottom: 65px; }
+
+            &.num-of-series-2 {
+                &:first-child {
+                    left: 175px;
+
+                    .rates { left: 28px; }
+
+                    .series-name {
+                        position : relative;
+                        left     : 146px;
+                    }
+                }
+                &:last-child  {
+                    right: 200px;
+
+                    .pie-chart-holder { margin-left: 35px; }
+                    .series-name      { margin-left: -10px; }
+                }
+            }
+
+            &.num-of-series-1 {
+                width       : 400px;
+                float       : none;
+                margin-left : 133px;
+
+                .series-name { margin-left: 37px; }
+            }
+
+            .rates {
+                position    : relative;
+                display     : inline-block;
+                margin-left : 10px;
+                bottom      : 16px;
+
+                .measurable-rate, .viewable-rate {
+                    float : left;
+                    width : 73px;
+                }
+
+                &.not-selected {
+                    color: #434343;
+                    .label { color: #434343; }
+                }
+
+                .value {
+                    margin        : 0 auto;
+                    width         : 60px;
+                    height        : 32px;
+                    border        : 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius : 4px;
+                    font-size     : 24px;
+                    line-height   : 32px;
+                    font-family   : @main-font-ultra-light;
+
+                    .percentage-sign {
+                        font-size   : 0.5em;
+                        margin-left : -5px;
+                    }
+                }
+
+                .label {
+                    font-size      : 10px;
+                    color          : rgba(255, 255, 255, 0.7);
+                    text-transform : uppercase;
+                    margin-top     : 7px;
+                }
+            }
+
+            .series-name {
+                .m-border-box;
+                clear      : both;
+                width      : 210px;
+                margin     : 5px 0 10px 8px;
+                padding    : 5px 10px;
+                border     : 1px solid transparent;
+                text-align : left;
+                cursor     : pointer;
+                .chart-title-font();
+
+                &:hover {
+                    border        : 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius : 4px;
+                }
+
+                &.selected {
+                    background-color : rgba(255, 255, 255, 0.07);
+                    border-radius    : 4px;
+
+                    &:hover { border: 1px solid transparent; }
+                }
+
+                .left-side {
+                    float        : left;
+                    height       : 100%;
+                    margin-right : 8px;
+                }
+
+                .right-side { margin-left: 20px; }
+            }
+
+            .dot-circle {
+                .dot-circle();
+
+                top: 2px;
+            }
+        }
+    }
+}
+
+.part-meter-chart {
+    .interactions {
+        text-align   : center;
+        padding-left : 60px;
+        width        : 420px;
+        height       : 100px;
+        margin       : 29px auto 0;
+    }
+
+    .not-available {
+        font-size        : 42px;
+        color            : #cccccc;
+        background-color : #ffffff;
+        padding-top      : 22px;
+    }
+
+    .interaction-rate, .gauge-wrapper, .interactions-count {
+        float: left;
+        width: 33.3333%;
+    }
+
+    .value {
+        font-size      : 42px;
+        letter-spacing : -2px;
+    }
+
+    .percentage { font-size: 19px; }
+
+    .title {
+        font-size      : 10px;
+        text-transform : uppercase;
+        letter-spacing : normal;
+    }
+
+    .gauge-wrapper {
+        overflow         : hidden;
+        padding-top      : 9px;
+        margin-top       : -9px;
+        background-color : #ffffff;
+
+        // clear divider line
+        &:before {
+            height           : 33px;
+            content          : "";
+            width            : 100px;
+            position         : absolute;
+            top              : -33px;
+            background-color : #ffffff;
+        }
+
+        .pillow-meter {
+            height: 80px;
+
+            &:before {
+                position         : absolute;
+                z-index          : 1;
+                width            : 40px;
+                height           : 40px;
+                bottom           : -20px;
+                right            : 0;
+                content          : "";
+                background-color : #ffffff;
+            }
+        }
+    }
+}

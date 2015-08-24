@@ -1,0 +1,149 @@
+<td class="bumper-cell">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper"></div>
+    </div>
+</td>
+
+<td class="check-record">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper">
+            <label class="checkbox small-checkbox">
+                <input type="checkbox">
+                <span></span>
+            </label>
+        </div>
+    </div>
+</td>
+
+<td class="campaign">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper">
+            <h2 class="{{stringSize name 24 38}}">
+                <a class="item-name" href="#campaigns/{{id}}">
+                    <span title="{{name}}">{{name}}</span>
+                </a>
+                {{#if canModifyPublicSettings}}
+                    {{#unless isMediaOceanCampaign}}
+                    <a class="edit-btn" data-action="toggleEditable" href="#">Edit</a>
+                    <textarea class="item-edit-name account-color" data-action="editName"></textarea>
+                    <div class="load-indicator"></div>
+                    <div class="update-indicator"></div>
+                    {{/unless}}
+                {{/if}}
+            </h2>
+
+            <div class="pieces">
+                {{#if isMediaOceanCampaign}}
+                <span class="piece">
+                    <img class="mediaocean-icon" src="img/icons/mediaocean_icon.png" alt="MediaOcean icon" width="12" height="12" />
+                    <p class="bubble-arrow-box arrow-left">
+                        This campaign was created through
+                        the Mediaocean Prisma interface and synchronized
+                        into AdCreator. Note that some editing
+                        capabilities such as editing campaign and
+                        placement names have been disabled.
+                    </p>
+                </span>
+                {{/if}}
+
+                {{#if isArchived}}
+                <span class="closable label piece">
+                    Archived {{#if canModifyPublicSettings}}<a class="label-close" data-action="close" href="#">X</a>{{/if}}
+                </span>
+                {{/if}}
+                
+                {{#if showCreateLink}}
+                    {{#if creativeCount}}
+                        <span class="piece">{{creativeCount}} creative{{#unlessEqual creativeCount 1}}s{{/unlessEqual}}</span>
+                    {{else}}
+                        <a class="action piece" data-action="new" href="#">Create the first creative</a>
+                    {{/if}}
+                {{else}}
+                    {{#if creativeCount}}
+                        <span class="piece">{{creativeCount}} creative{{#unlessEqual creativeCount 1}}s{{/unlessEqual}}</span>
+                    {{else}}    
+                        <span class="piece">No creatives.</span>
+                    {{/if}}
+                {{/if}}
+                
+                <span class="piece">ID: {{id}}</span>
+            </div>
+            {{#each customAttributes}}
+            <div class="pieces" data-custom-attribute-key="{{key}}">
+                <span>{{label}}: {{value}} {{#if ../canModifyPublicSettings}}<a class="edit-btn" href="#" data-action="editCustomAttribute">Edit</a>{{/if}}</span>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</td>
+
+<td class="industry">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper">
+            <p title="{{industryName}}">{{industryName}}</p>
+        </div>
+    </div>
+</td>
+
+<td class="last-change">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper">
+            {{formatDate effectiveLastModificationTimestamp true}}
+        </div>
+    </div>
+</td>
+
+{{#if effectiveStartDate}}
+    <td class="flight-date">
+        <div class="cell-wrapper">
+            <div class="cell-wrapper-wrapper">
+                {{formatDate effectiveStartDate true}} - {{formatDate effectiveEndDate true}}
+            </div>
+        </div>
+    </td>
+{{else}}
+    <td class="flight-date">
+        <div class="cell-wrapper">
+            <div class="cell-wrapper-wrapper">
+                Not set
+            </div>
+        </div>
+    </td>
+{{/if}}
+
+{{#if account.canAnalyzeSomeFolders}}
+    {{#if traffickingStatus}}
+        <td class="trafficking-status loading">
+            <div class="cell-wrapper">
+                <div class="cell-wrapper-wrapper">
+                    {{#if canAnalyze}}
+                        <a href="#analytics/{{id}}" class="{{traffickingStatus}}"></a>
+                        <a href="#analytics/{{id}}" class="graph-container">
+                            <svg class="icon-preloader light"><use xlink:href="#icon-preloader"></use></svg>
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        </td>    
+    {{else}}
+        <td class="trafficking-status">
+            <div class="cell-wrapper">
+                <div class="cell-wrapper-wrapper">
+                    {{#if canAnalyze}}<span title="Analytics database is currently unavailable.">Not available.</span>{{/if}}
+                </div>
+            </div>
+        </td> 
+    {{/if}}
+
+    <td class="space">
+        <div class="cell-wrapper">
+            <div class="cell-wrapper-wrapper"></div>
+        </div>
+    </td>
+{{/if}}
+
+<td class="bumper-cell">
+    <div class="cell-wrapper">
+        <div class="cell-wrapper-wrapper"></div>
+    </div>
+</td>

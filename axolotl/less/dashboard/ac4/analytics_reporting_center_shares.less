@@ -1,0 +1,205 @@
+.reporting-center {
+    .shares-table-body, .shares-table-head { width: 100%; }
+}
+
+.table-head, .table-body {
+    .table-cell {
+        .m-border-box;
+
+        display       : table-cell;
+        min-width     : 130px;
+        padding-right : 30px;
+
+        &:last-child { padding-right: 0; }
+    }
+
+    .table-row   { clear: both; }
+    .right-align { text-align: right; }
+}
+
+.table-head {
+    .table-row {
+        .m-border-box;
+
+        min-height : 21px;
+        padding    : 5px 0;
+    }
+
+    .table-cell {
+        font-family    : @main-font-regular;
+        font-size      : 10px;
+        text-transform : uppercase;
+        vertical-align : bottom;
+    }
+}
+
+.table-body {
+    .table-row {
+        min-height  : 25px;
+        line-height : 25px;
+    }
+
+    .table-cell { .m-ellipsis; }
+}
+
+.shares-filters {
+    display        : inline-block;
+    top            : 35px;
+    position       : relative;
+    letter-spacing : -2px;
+    margin-left    : -20px;
+
+    .reform.dark.borderless.reform-multilineselectbox-ui.reform-selectbox-fake {
+        padding          : 0;
+        border-right     : 0;
+        background-color : @rcBackgroundColor;
+
+        .selected-item p {
+            line-height   : 60px;
+            padding-right : 1px;
+            font-family   : @main-font-ultra-light;
+            font-size     : 42px;
+        }
+    }
+
+    h2 {
+        display   : inline-block;
+        font-size : 42px;
+        color     : #777777;
+    }
+
+    .aggregate-options, .breakdown-options {
+        display : inline-block;
+        padding : 0 23px 0 4px;
+    }
+
+    .breakdown-options {
+        display       : inline-block;
+        width         : auto;
+        padding-right : 0;
+    }
+
+    .reform.dark.borderless.reform-multilineselectbox-ui.reform-selectbox-fake {
+        min-width: initial;
+
+        &:after  { right: -20px; }
+        &.closed:after { right: -20px; }
+    }
+}
+
+.reporting-center {
+    .shares-table-head {
+        height     : 160px;
+        text-align : center;
+
+        .table-row {
+            position : absolute;
+            bottom   : 0;
+            width    : 1230px;
+        }
+    }
+}
+
+.shares-table-body, .shares-table-head {
+    .dimension        { width : 992px; text-align: left; }
+    .metric           { width : 168px; }
+    .total-percentage { width : 120px; }
+}
+
+.shares-table-head {
+    color            : @rcTextColor;
+    background-color : @rcBackgroundColor;
+}
+
+.shares-table-body {
+    background-color : @rcBackgroundColor;
+
+    .table-row {
+        border-bottom: 1px solid #000000;
+
+        &:nth-child(1)  { background-color: @art-industry-color    ; }
+        &:nth-child(2)  { background-color: @auto-industry-color   ; }
+        &:nth-child(3)  { background-color: @edu-industry-color    ; }
+        &:nth-child(4)  { background-color: @entr-industry-color   ; }
+        &:nth-child(5)  { background-color: @food-industry-color   ; }
+        &:nth-child(6)  { background-color: @heal-industry-color   ; }
+        &:nth-child(7)  { background-color: @phar-industry-color   ; }
+        &:nth-child(8)  { background-color: @qsr-industry-color    ; }
+        &:nth-child(9)  { background-color: @retail-industry-color ; }
+        &:nth-child(10) { background-color: @tech-industry-color   ; }
+        &:nth-child(11) {
+            background-color : #333333;
+            font-family      : @main-font-regular;
+
+            .dimension { 
+                font-size   : 10px;
+                line-height : 10px; 
+            } 
+            .metric, .total-percentage { font-size: 13px; }
+            .dimension { text-transform: uppercase; }
+        }
+
+        &.industry-art    { background-color: @art-industry-color   ; }
+        &.industry-auto   { background-color: @auto-industry-color  ; }
+        &.industry-edu    { background-color: @edu-industry-color   ; }
+        &.industry-ener   { background-color: @ener-industry-color  ; }
+        &.industry-entr   { background-color: @entr-industry-color  ; }
+        &.industry-cpg    { background-color: @cpg-industry-color   ; }
+        &.industry-fin    { background-color: @fin-industry-color   ; }
+        &.industry-food   { background-color: @food-industry-color  ; }
+        &.industry-gov    { background-color: @gov-industry-color   ; }
+        &.industry-heal   { background-color: @heal-industry-color  ; }
+        &.industry-phar   { background-color: @phar-industry-color  ; }
+        &.industry-qsr    { background-color: @qsr-industry-color   ; }
+        &.industry-retail { background-color: @retail-industry-color; }
+        &.industry-logist { background-color: @logist-industry-color; }
+        &.industry-tech   { background-color: @tech-industry-color  ; }
+        &.industry-tele   { background-color: @tele-industry-color  ; }
+        &.industry-trav   { background-color: @trav-industry-color  ; }
+        &.industry-othr   { background-color: @othr-industry-color  ; }
+
+        &.no-data {
+            height           : 200px;
+            line-height      : 200px;
+            background-color : #1c1c1c;
+            border-radius    : 0;
+            text-align       : center;
+            font-size        : 100px;
+            font-family      : @main-font-ultra-light;
+            color            : rgba(255, 255, 255, .1);
+
+            .total-percentage { height: 100px; }
+        }
+    }
+
+    .icon {
+        display        : inline-block;
+        margin-right   : 10px;
+        vertical-align : middle;
+
+        svg {
+            width  : 18px;
+            height : 10px;
+        }
+    }
+
+    .dimension {
+        font-family : @main-font;
+        font-size   : 15px;
+        color       : @rcLightTextColor;
+    }
+
+    .metric {
+        font-family : @main-font-regular;
+        font-size   : 15px;
+        color       : @rcTextColor;
+    }
+
+    .total-percentage {
+        font-family : @main-font-regular;
+        font-size   : 21px;
+        color       : #ffffff;
+    }
+
+    .percentage { font-size: 13px; }
+}

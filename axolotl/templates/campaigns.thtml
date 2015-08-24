@@ -1,0 +1,27 @@
+<h1 class="section-heading"><span>Campaigns</span></h1>
+
+{{#if showWelcomeScreen}}
+<div id="campaigns-empty-state" class="empty-state campaigns-empty-state">
+    <div class="narrow">
+        <h2 class="welcome-to-ad-creator">Welcome to Celtra AdCreator!</h2>
+    	
+	    <p class="introduction-text">AdCreator offers the best and the easiest way to create, traffic, and track quality mobile display ad.</p>
+	    <p class="introduction-text">Choose between various different ad products and standard or premium ad formats that best fit your marketing goals.</p>
+    	
+    	<p class="intro-option get-started">Get started:</p>
+    	
+    	<img data-action="createCampaign" class="create-your-first-campaign" src="img/buttons/create_your_first_campaign.gif" alt="Create your first campaign"  />
+    	
+    	<p class="intro-option you-can-also">You can also:</p>
+    	
+    	<ul class="list">
+            {{#if account.canModifyPublicSettings}}
+            <li><a href="#general">Edit your account settings &amp; manage users</a></li>
+            {{/if}}
+    		<li><a href="http://support.celtra.com/getting-started" target="_blank">Learn how to get started</a></li>
+		</ul>
+    </div>
+</div>
+{{else}}
+    <div id="campaigns-table" class="table-container"></div>
+{{/if}}

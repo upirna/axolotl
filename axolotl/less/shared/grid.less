@@ -1,0 +1,74 @@
+/**********
+
+    Grid:
+
+     --------------------------------
+    | body                           |
+    |   .row                         |
+    |       .row                     |
+    |           .box                 |
+    |               .row             |
+    |                   .box         |
+    |                   .box         |
+    |           .box                 |
+    |           .box                 |
+     --------------------------------
+
+    Position within box:
+
+     ------------------
+    |       .top       |
+    | .left     .right |
+    |     .bottom      |
+     ------------------
+
+**********/
+
+.row {
+    margin: 0 auto;
+    /* Decided against using overflow:hidden for auto-clearing, since
+       positioned content is then cut off. */
+    &:after {
+        content    : "\00a0";
+        display    : block;
+        clear      : both;
+        height     : 0;
+        visibility : hidden;
+        overflow   : hidden;
+    }
+}
+.narrow         { .row; width: 980px;                                    }
+.wide           { .row; width: 1060px;                                   }
+.wider          { .row; width: 1230px;                                   }
+.fluid          { .row; width: auto; padding: 0 20px; min-width: 1240px; }
+
+.box            { position: relative; float: left; min-height: 1px; }
+
+.whole          { float: none; }
+.entire         { width: 100%; }
+.three-quarters { width: 75%; }
+.half           { width: 50%; }
+.third          { width: 33%; &:nth-child(2) { width: 34%; } }
+.two-thirds     { width: 67%; }
+.quarter        { width: 25%; }
+.two-fifth      { width: 40%; }
+.three-fifth    { width: 60%; }
+
+.top, .right, .bottom, .left { position: absolute; }
+.top            { top: 0; }
+.right          { right: 0; }
+.bottom         { bottom: 0; }
+.left           { left: 0; }
+
+.stretch        { .top; .right; .bottom; .left; width: auto; height: auto; }
+
+
+/* Sometimes, other elements just need to stay the fuck away */
+
+.space.above                  { padding-top: 5px; }
+.personal.space.above         { padding-top: 10px; }
+.more.personal.space.above    { padding-top: 15px; }
+
+.space.below                  { padding-bottom: 5px; }
+.personal.space.below         { padding-bottom: 10px; }
+.more.personal.space.below    { padding-bottom: 15px; }

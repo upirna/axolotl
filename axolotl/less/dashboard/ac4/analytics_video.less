@@ -1,0 +1,1081 @@
+.video-cards { padding-bottom: 0; }
+
+.video-analytics {
+    &.overview-tab,
+    &.video-cards,
+    &.video-timeline {
+        background-color: #f6f6f6;
+    }
+
+    &.video-analytics {
+        .analytics-subpaged-head { background-color: #f6f6f6; }
+        .toggle-views            { background-color: #ffffff; }
+        .breakdown               { background-color: #ffffff; }
+    }
+
+    .title-highlights { padding: 30px 0; }
+    .cards { margin-bottom: 40px; }
+}
+
+@-moz-document url-prefix() {
+    // fixes first chart positioning in FireFox
+    .video-analytics .ac4-loading-screen + .timeline-chart-row svg {
+        margin-left: -368px;
+        margin-top: -34px;
+    }
+}
+
+.video-play-setting {
+    display : inline;
+    color   : #efefef;
+
+    svg {
+        width      : 32px;
+        height     : 32px;
+        margin-top : 12px;
+    }
+}
+
+.video-banners-section .video-banner-w600-h260:first-child { margin-right: 26px; }
+.video-slider .pillow-gauge-caption { margin-top: 11px; }
+
+.video-slider-pager {
+    width            : 150px;
+    height           : 33px;
+    margin           : 30px auto 0 auto;
+    background-color : #e9e9e9;
+    font-family      : @main-font-regular;
+    line-height      : 33px;
+    text-align       : center;
+    color            : #777777;
+
+    strong { color: #202020; }
+}
+
+.video-outlines {
+    .m-display-flex();
+    .m-flex-flow(row nowrap);
+    .m-justify-content(space-between);
+    .m-align-items(flex-end);
+}
+
+.outline-title {
+    width      : 480px;
+    margin     : 33px auto 15px auto;
+    text-align : center;
+
+    .title-metric {
+        line-height : 54px;
+        font-size   : 52px;
+        font-family : @main-font;
+    }
+}
+
+.outline-link {
+    position: relative;
+
+    &:after {
+        content     : "";
+        position    : absolute;
+        top         : 5px;
+        height      : 50px;
+        border-left : 2px solid #000000;
+    }
+}
+
+.video-cards-row { padding: 40px 0 30px 0; }
+
+.video-outlines .outline { z-index: 1; }
+
+/* Video Gauges ----------------------- */
+.gauges-row {
+    padding-top : 30px;
+    color       : #ffffff;
+}
+
+.video-gauges {
+    .m-display-flex;
+    .m-flex-flow(row nowrap);
+    .m-justify-content(space-between);
+    .m-align-items(center);
+
+    height     : 184px;
+    margin     : 26px 0;
+    text-align : center;
+}
+
+.video-gauges-item {
+    width: 222px;
+
+    .metrics-left {
+        float     : right;
+        min-width : 117px;
+    }
+
+    .metrics-right {
+        float     : left;
+        min-width : 117px;
+    }
+
+    .line-divide {
+        width         : 115px;
+        margin        : 15px auto;
+        border-bottom : 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .title-subscript { color: #dddddd }
+
+    .small-number-metric .title-metric {
+        font-size      : 25px;
+        letter-spacing : -2px;
+        line-height    : 28px;
+        color          : #777777;
+    }
+
+    .big-number-metric .title-metric {
+        font-size      : 42px;
+        letter-spacing : -2px;
+        line-height    : 42px;
+        color          : #ffffff;
+
+        .separator {
+            font-size   : .5em;
+            line-height : 0;
+        }
+    }
+
+    .label {
+        font-family    : @main-font-medium;
+        font-size      : 10px;
+        text-transform : uppercase;
+    }
+
+    .additional-messages {
+        .m-display-flex;
+        .m-justify-content(space-around);
+
+        position   : relative;
+        top        : -44px;
+        max-height : 37px;
+    }
+
+    .message {
+        position   : relative;
+        width      : 220px;
+        color      : #dddddd;
+        text-align : center;
+        cursor     : default;
+
+        &.message-left  { left  : 58px; }
+        &.message-right { right : 50px; }
+    }
+
+    .big-gauge-wrapper {
+        width  : 220px;
+        height : 220px;
+    }
+
+    .autoplay-message {
+        font-family : @main-font-regular;
+        color       : #777777;
+    }
+
+    .pillow-gauge {
+        overflow: visible;
+
+        // color that goes sufficiently well with background gradient from #000 to #222
+        &:after { border-color: transparent transparent #1c1c1c transparent; }
+
+        &.video-pct-trackable-gauge .pillow-gauge-caption { top: -17px; }
+        &.gauge-w220-h220 .pillow-gauge-caption           { top:   9px; }
+
+        .value { line-height: 34px; }
+        .label { color: #dddddd; }
+    }
+
+    @railColor: rgba(255, 255, 255, .1);
+    .pillow-gauge-rail {
+        &.third { border-color : transparent @railColor transparent transparent; }
+        &.half  { border-color : transparent @railColor @railColor transparent; }
+        &.full  { border-color : transparent @railColor @railColor @railColor; }
+    }
+
+    .pillow-gauge-max-label { color: #555555; }
+
+    // because this one is a bit higher and has different color on gradient
+    // no need; TODO: I need someone with more designer skilled eyes
+    // .video-pct-trackable-gauge.pillow-gauge:after { border-color: transparent transparent #191919 transparent; }
+
+    .pillow-gauge .tooltip {
+        z-index: 1;
+
+        &.tooltip-middle:after {
+            left        : inherit;
+            margin-left : -20px;
+        }
+    }
+}
+
+.video-gauges-autoplay {
+    height: 228px;
+
+    .small-number-metric .title-metric {
+        font-size   : 34px;
+        line-height : 34px;
+    }
+    .big-number-metric .title-metric {
+        font-size   : 52px;
+        line-height : 52px;
+    }
+
+    .left-metric-wrapper {
+        width        : 328px;
+        margin-right : 70px;
+    }
+
+    .small-gauge-wrapper {
+        position     : relative;
+        width        : 190px;
+        margin-right : 55px;
+
+        .pillow-gauge .pillow-gauge-caption { top: 16px }
+    }
+
+    .big-gauge-wrapper {
+        width        : 240px;
+        margin-right : 70px;
+
+        .pillow-gauge-caption { top: 34px }
+    }
+
+    .right-metric-wrapper {
+        width      : 277px;
+        margin-top : -40px;
+    }
+}
+
+.video-gauge-tooltip-handle {
+    position         : absolute;
+    top              : -8px;
+    left             : 0;
+    width            : 20px;
+    height           : 20px;
+    border-radius    : 50%;
+    background-color : #777777;
+
+    &:before { margin-left: -7.5px; }
+
+    &:after {
+        content  : "";
+        position : absolute;
+        top      : -15px;
+        left     : 0;
+        width    : 20px;
+        height   : 30px;
+
+    }
+
+    svg {
+        width  : 2px;
+        height : 10px;
+    }
+
+    .tooltip-content {
+        width       : 230px;
+        margin-left : -115px;
+    }
+}
+
+.video-gauge-tooltip-title {
+    margin         : 6px 0 7px;
+    font-family    : @secondary-font-bold;
+    font-size      : 10px;
+    line-height    : 10px;
+    color          : #212121;
+    text-transform : uppercase;
+}
+
+.video-gauge-tooltip-section {
+    font-family : @main-font-regular;
+    font-size   : 13px;
+    color       : #777777;
+}
+
+.video-gauge-tooltip-link {
+    display : inline-block;
+    margin  : 3px 0;
+}
+
+/* Time widget ------------------------ */
+.time-widget {
+    .m-display-flex();
+    .m-justify-content(center);
+    line-height : normal;
+
+    .time-part {
+        position : relative;
+        padding  : 0 5px;
+
+        &:not(:last-child):after {
+            content   : ":";
+            position  : absolute;
+            top       : 0;
+            right     : -3px;
+            font-size : 20px;
+            color     : #ffffff;
+        }
+    }
+
+    .title-metric { margin: 0 !important; }
+
+    .title-subscript {
+        width       : auto;
+        // fine tune; because letter-spacing: -2.8px on .title-metric will cut out some width and thus
+        // it looks like title-subscript isn't aligned to it
+        text-indent : 2px;
+    }
+}
+
+/* Card ------------------------------- */
+.card-animations {
+    .time-part:after {
+        // animation copied from card.less
+        .m-transition(opacity 0.25s cubic-bezier(.17, .07, 0, .9));
+        opacity: .2;
+    }
+
+    &:hover .time-part:after { opacity: 1; }
+
+    .tooltip:after {
+        // fix font in card secondary metric tooltips
+        -webkit-font-smoothing : subpixel-antialiased;
+        -webkit-text-stroke    : initial;
+    }
+}
+
+/* Video presentations ---------------- */
+.video-presentations-header { border-bottom: none; }
+
+.video-presentations-toggle {
+    cursor: pointer;
+
+    h1 { float: left; }
+}
+
+.video-presentations-cover {
+    .m-transition(height 0.6s);
+
+    position         : absolute;
+    overflow         : hidden;
+    top              : 100px;
+    left             : 0;
+    z-index          : 21; // must be in front of loading cover
+    width            : 100%;
+    height           : 0;
+    box-shadow       : 0 2px 5px rgba(170, 170, 170, .5);
+    background-color : #ffffff;
+}
+
+.video-presentations {
+    .m-display-flex();
+    .m-justify-content(flex-start);
+    .m-flex-wrap();
+
+    max-height: 270px;
+    overflow-x: none;
+    overflow-y: auto;
+}
+
+.video-presentation-thumb-wrapper {
+    position         : relative;
+    overflow         : hidden;
+    width            : 180px;
+    height           : 101px;
+    margin           : 0 10px 10px 0;
+    background-color : #f6f6f6;
+
+    .video-presentations-arrow {
+        .m-transition(all .25s ease);
+        .m-transform(rotate(-225deg));
+        opacity  : 0;
+        position : absolute;
+        top      : 28px;
+        left     : 10px;
+    }
+
+    &:hover {
+        background-color: #dddddd;
+
+        .video-presentations-arrow {
+            .m-transform-origin(22.5px 22.5px);
+
+            opacity    : 1;
+            left       : 17px;
+            box-shadow : 2px 2px 1px -1px #212121;
+        }
+
+        .video-presentation-caption { bottom: 0; }
+        .video-presentation-caption-title { opacity: .4; }
+        .video-presentation-caption-label { opacity:  1; }
+    }
+
+    .icon-play-setting,
+    .icon-intended-audibility {
+        position       : absolute;
+        top            : 10px;
+        color          : #ffffff;
+        pointer-events : none;
+
+        svg {
+            width  : 20px;
+            height : 20px;
+        }
+    }
+
+    .icon-play-setting       { right: 10px; }
+    .icon-intended-audibility { right: 40px; }
+}
+
+.video-presentation-thumb {
+    .m-transition(all 0.2s ease);
+    .m-transform(scale(1.1));
+
+    overflow        : hidden;
+    width           : 100%;
+    height          : 100%;
+    background-size : cover;
+    cursor          : pointer;
+
+    &:hover { .m-transform(scale(1)); }
+}
+
+.video-presentation-thumb-selected {
+    pointer-events: none;
+
+    .video-presentation-thumb:before {
+        content          : '';
+        position         : absolute;
+        top              : 4.5px;
+        right            : 0;
+        bottom           : 0;
+        left             : 8px;
+        width            : 156px;
+        height           : 84px;
+        border           : 4px solid #363FFB;
+        background-color : rgba(255, 255, 255, .5);
+    }
+}
+
+.video-presentations-arrow {
+    .m-transition(all 0.6s ease);
+    .m-transform(rotate(-135deg));
+    .m-transform-origin(19.5px 19.5px);
+
+    width      : 25px;
+    height     : 25px;
+    box-shadow : 2px 2px 1px -1px #dddddd;
+    cursor     : pointer;
+}
+
+.video-presentations-state-wrapper {
+    .m-transform(translateX(13px) translateY(6px));
+
+    display : inline-block;
+    width   : 50px;
+}
+
+.video-presentation-label {
+    font-family    : @main-font-regular;
+    font-size      : 13px;
+    line-height    : 101px;
+    letter-spacing : -0.3px;
+    text-transform : uppercase;
+    color          : #212121;
+    cursor         : pointer;
+
+    span {
+        .m-transition(all .25s ease);
+        display        : inline-block;
+        width          : 100%;
+        line-height    : normal;
+        text-align     : center;
+        vertical-align : middle;
+    }
+
+    &:hover span { .m-transform(translateX(8px)); }
+}
+
+.video-presentation-caption {
+    .m-transition(bottom 0.25s cubic-bezier(.17, .07, 0, .9));
+    .m-border-box;
+
+    position         : absolute;
+    bottom           : -50px;
+    width            : 100%;
+    height           : 50px;
+    padding          : 13px 11px;
+    background-color : #363FFB;
+    font-family      : @main-font-medium;
+    color            : #ffffff;
+    pointer-events   : none;
+}
+
+.video-presentation-caption-title {
+    .m-transition(all 0.25s cubic-bezier(.17, .07, 0, .9));
+
+    font-size      : 9px;
+    text-transform : uppercase;
+    line-height    : 10px;
+    opacity        : .1;
+}
+
+.video-presentation-caption-label {
+    .m-transition(all 0.25s cubic-bezier(.17, .07, 0, .9));
+
+    font-size   : 13px;
+    line-height : 18px;
+    opacity     : .1;
+}
+
+.video-presentations-closed .video-presentations-state-wrapper .video-presentations-arrow {
+    .m-transform(rotate(45deg));
+
+    box-shadow: 2px 2px 1px -1px #aaaaaa;
+}
+
+/* Tooltip ---------------------------- */
+.tooltip {
+    &.video-properties-tooltip {
+        &:before {
+            bottom : -15px;
+            left   : 94px;
+            height : 8px;
+            width  : 8px;
+        }
+    }
+
+    .properties-bubble {
+        top        : 45px;
+        bottom     : auto;
+        left       : 0;
+        width      : 323px;
+        padding    : 19px 12px 13px 22px;
+        text-align : left;
+    }
+
+    .icon-video-properties {
+        height : 21px;
+        width  : 20px;
+        top    : 7px;
+    }
+
+    .properties-bubble-highlights {
+        position      : relative;
+        margin-bottom : 20px;
+        line-height   : 26px;
+        font-family   : @main-font-regular;
+        font-size     : 16px;
+
+        .title {
+            font-size      : 10px;
+            color          : #aaaaaa;
+            text-transform : uppercase;
+        }
+
+        .number-of-creatives { color: #1f1f1f; }
+    }
+
+    .properties-bubble-property {
+        padding: 13px 0;
+        &:last-child { padding: 13px 0 0; }
+
+        &:before {
+            content       : '';
+            position      : absolute;
+            left          : -2px;
+            width         : 323px;
+            margin        : -13px 0;
+            border-bottom : 1px solid #dddddd;
+        }
+
+        .property-value {
+            margin      : 2px 0 2px 3px;
+            font-size   : 13px;
+            font-family : @main-font-regular;
+            color       : #777777;
+        }
+
+        .link {
+            .ellipsis;
+
+            margin-bottom : 7px;
+            margin-left   : 0;
+            font-family   : @main-font;
+            color         : #1f1f1f;
+        }
+
+        .video-property-icon-wrapper {
+            float : left;
+            width : 20px;
+        }
+
+        svg.video-property-icon {
+            top            : -1px;
+            left           : 0;
+            height         : 12px;
+            margin-right   : 3px;
+            vertical-align : middle;
+            fill           : #aaaaaa;
+
+            &.label { height: 10px; }
+        }
+
+        .icon-autoplay        { width: 12px; }
+        .icon-user-inititated { width: 12px; }
+        .icon-muted           { width: 14px; }
+        .icon-audible         { width: 11px; }
+        .icon-label           { width: 11px; }
+    }
+
+    &.video-properties-open {
+        &:before,
+        .properties-bubble {
+            line-height : 150%;
+            visibility  : visible;
+            opacity     : 1;
+        }
+
+        .properties-bubble { margin-left : -166px; }
+
+        .drop-down:after {
+            border-top    : initial;
+            border-bottom : 4px solid #777777;
+        }
+    }
+}
+
+.video-player-row {
+    margin-top : 40px !important; /* Need to override section's default margin */
+    text-align : left;
+
+    .video-player-wrapper { position: relative; }
+
+    .title-highlights {
+        position   : absolute;
+        top        : -115px;
+        width      : 100%;
+        text-align : center;
+    }
+
+    // This class is a hack to fix blur bleeding in safari
+    .video-player-blur-wrapper {
+        overflow : hidden;
+        height   : 250px;
+    }
+
+    .video-player-thumb-wrapper {
+        overflow         : hidden;
+        margin-top       : -15px;
+        background-color : rgba(0, 0, 0, 0.4);
+    }
+
+    .video-player-thumb {
+        .m-filter(blur(15px));
+        .m-transform-gpu(scale(1.3));
+
+        height              : 280px; // 280 = 250 + 2*15; Safari blur bleeding fix
+        background-size     : cover;
+        background-position : 50% 50%;
+
+        -webkit-backface-visibility: hidden;
+    }
+
+    .video-player {
+        z-index    : 2;
+        margin-top : -275px;
+    }
+
+    .video-playback-marker {
+        display     : block;
+        position    : absolute;
+        bottom      : 61px;
+        left        : 0;
+        width       : 3px;
+        height      : 130px;
+        margin-left : 0.5px;
+    }
+
+    .video-playback-marker-label {
+        position       : absolute;
+        bottom         : -23px;
+        width          : 40px;
+        margin-left    : -21px;
+        font-family    : @main-font-medium;
+        font-size      : 10px;
+        color          : #000000;
+        letter-spacing : -0.5px;
+        text-align     : center;
+    }
+
+    .column-chart,
+    .timeline-chart {
+        position : absolute;
+        width    : 100%;
+    }
+
+    .video-chart  {
+        position   : relative;
+        height     : 220px;
+        margin-top : 20px;
+    }
+
+    .video-chart-toggle {
+        .m-toggle-size(2, 230px, 32px, 24px, 11px, 5px);
+
+        position : absolute;
+        top      : -32px;
+        left     : 13px;
+        z-index  : 2;
+    }
+
+    .timeline-chart { bottom: 0; }
+
+    .column-chart {
+        bottom : 32px;
+        height : 132px;
+    }
+
+    .column-chart-bar             {
+        .m-transition(background-color 0.2s ease);
+
+        background-color: #4fe4e7;
+    }
+    .column-chart-bar-highlighted { background-color: #BBF4F5; }
+
+    .column-chart-axis-marker,
+    .column-chart-bar-label {
+        font-family: @secondary-font;
+    }
+
+    .column-chart-bubble {
+        font-family         : @main-font-regular;
+        color               : #202020;
+        border-image-source : url('img/tooltip_bubble_big.png');
+
+        .column-chart-bubble-side-right {
+            padding-top: 0;
+        }
+        .column-chart-bubble-side-left .column-chart-bubble-details { display: inline }
+    }
+
+    .column-chart-bubble-details         { font-size: 25px; }
+    .column-chart-bubble-percentage-sign { font-size: 13px; }
+    .column-chart-bubble-value           { font-size: 16px; }
+
+    .column-chart-bubble-label {
+        font-family    : @main-font-medium;
+        color          : #777777;
+        font-size      : 10px;
+        padding-bottom : 3px;
+        text-transform : uppercase;
+    }
+
+    .column-chart-no-data {
+        bottom         : 6.5px;
+        font-family    : @main-font-ultra-light;
+        letter-spacing : -2.8px;
+    }
+
+    // Video fade in animation
+    .video-player-fade-in {
+        .video-player-thumb-wrapper { .m-animation(fadeInFromBlackToAlpha40 1.5s ease); }
+        .video-player-thumb         { .m-animation(fadeIn                   1.5s ease); }
+        .video                      { .m-animation(scaleInFrom92             .4s ease); }
+        .video-poster               { .m-animation(scaleInFrom92             .4s ease); }
+    }
+
+    &.video-not-available {
+        .video-playback-marker,
+        .video-playback-time {
+            display: none;
+        }
+
+        .title-highlights           { top: -95px; }
+        .video-chart                { margin-top: 45px; }
+        .video-player-thumb-wrapper { background-color: #eeeeee; }
+        .video-progress-handle      { background-color: #aaaaaa; }
+        .video-progress             { background-color: #e5e5e5; }
+        .video-button               { color: #dddddd; }
+        .video-controls             { pointer-events: none; }
+
+        .video-player {
+            margin-top : -252px;
+            height     : 252px;
+
+            .video-playback {
+                background-color: rgba(255, 255, 255, .75);
+                color: #dddddd;
+            }
+        }
+
+        // disable animations
+        .video-player-fade-in {
+            .video-player-thumb-wrapper { .m-animation(none); }
+            .video-player-thumb         { .m-animation(none); }
+            .video                      { .m-animation(none); }
+            .video-poster               { .m-animation(none); }
+        }
+    }
+}
+
+/* Video player ----------------------- */
+.video-player {
+    .m-user-select-none;
+
+    position   : relative;
+    width      : 530px;
+    height     : 300px;
+    margin     : 0 auto;
+    text-align : center;
+
+    .video {
+        width  : 100%;
+        height : 100%;
+    }
+}
+
+.video-poster {
+    position            : absolute;
+    top                 : 0;
+    left                : 0;
+    width               : 100%;
+    height              : 100%;
+    background-color    : transparent;
+    background-repeat   : no-repeat;
+    background-position : center center;
+    background-size     : cover;
+
+    .video-playback {
+        opacity        : 0;
+        pointer-events : none;
+    }
+    .icon-play,
+    .icon-pause,
+    .icon-preloader {
+        display: none;
+    }
+}
+
+// Animations
+.video-player {
+    .video,
+    .video-poster,
+    .video-playback {
+        @duration : 0.2s;
+        @easing   : ease;
+
+        .m-transition(-webkit-transform @duration @easing);
+        .m-transition(   -moz-transform @duration @easing);
+        .m-transition(        transform @duration @easing);
+    }
+
+    &:hover {
+        .video          { .m-transform(scale(1.03)); }
+        .video-poster   { .m-transform(scale(1.03)); }
+        .video-playback { .m-transform(scale(1.1)); }
+    }
+
+    .video-started,
+    .video-paused {
+        .m-animation(videoZoomInAndFadeOut 0.3s ease);
+    }
+}
+
+.video-player {
+    &.loading {
+        .video-playback { opacity: 1; }
+        .icon-preloader { display: inline; }
+    }
+
+    &.stopped {
+        .video-playback { opacity: 1; }
+        .icon-play      { display: inline; }
+    }
+
+    &.playing .video-poster,
+    &.paused .video-poster {
+        background-image: none !important;
+    }
+
+    &.playing .icon-play,
+    &.paused .icon-pause {
+        display: inline;
+    }
+
+    &.video-not-available {
+        &:hover {
+            .video          { .m-transform(none); }
+            .video-poster   { .m-transform(none); }
+            .video-playback { .m-transform(none); }
+        }
+
+        .icon-play      { display: inline; }
+        .video-playback { margin-top: 68px; }
+
+        .video-poster-label {
+            display    : block;
+            margin-top : 162px;
+        }
+    }
+}
+
+.video-playback {
+    position      : absolute;
+    top           : 0;
+    right         : 0;
+    bottom        : 0;
+    left          : 0;
+    width         : 80px;
+    height        : 80px;
+    margin        : auto;
+    border-radius : 50%;
+    background    : rgba(0, 0, 0, .75);
+    text-align    : center;
+    color         : #ffffff;
+
+    .icon-status {
+        width      : 34px;
+        height     : 34px;
+        margin-top : 24px;
+    }
+
+    .icon-play { margin-left: 8px; }
+}
+
+.video-poster-label {
+    display        : none;
+    font-family    : @main-font-regular;
+    font-size      : 25px;
+    letter-spacing : -0.2px;
+    color          : #222222;
+    opacity        : .6;
+    text-align     : center;
+}
+
+.video-progress {
+    .m-user-select-none;
+
+    position         : relative;
+    height           : 4px;
+    margin           : 10px 0;
+    background-color : #47cdd0;
+}
+
+.video-progress-bar {
+    z-index          : 2;
+    width            : 0;
+    height           : 4px;
+    background-color : #000000;
+}
+
+.video-progress-handle {
+    display          : inline-block;
+    position         : absolute;
+    top              : -4.5px;
+    left             : 0;
+    z-index          : 3;
+    width            : 12px;
+    height           : 12px;
+    margin-left      : -6.5px;
+    margin-right     : -6.5px;
+    background-color : #000000;
+    border-radius    : 50%;
+    cursor           : pointer;
+
+    // jQuery sets position: relative on drag which cauese problems in Safari. Forcing
+    // it to absolute solves the issue.
+    &.ui-draggable { position: absolute !important; }
+}
+
+.video-buttons {
+    .m-border-box;
+
+    height  : 48px;
+    padding : 9px 0 0 10px;
+}
+
+.video-button {
+    .m-border-box;
+
+    position     : relative;
+    display      : inline-block;
+    width        : 30px;
+    height       : 30px;
+    padding-top  : 7px;
+    margin-right : 17px;
+    color        : #000000;
+    cursor       : pointer;
+
+    .icon-video-playback,
+    .icon-video-sound {
+        .m-transition(all 0.2s ease);
+
+        display : block;
+        margin  : 0 auto;
+    }
+
+    .icon-pause { opacity: 0; }
+    .icon-muted { opacity: 0; }
+
+    .icon-play,
+    .icon-pause {
+        width  : 13px;
+        height : 17px;
+    }
+
+    .icon-audible,
+    .icon-muted {
+        width  : 20px;
+        height : 18px;
+    }
+
+    .icon-pause,
+    .icon-muted {
+        margin-top: -18px;
+    }
+
+    &:hover {
+        .icon-video-playback,
+        .icon-video-sound {
+            .m-transform(scale(1.1));
+        }
+    }
+}
+
+.video-playback-time {
+    position       : absolute;
+    right          : 10px;
+    bottom         : 15px;
+    font-family    : @main-font-regular;
+    color          : #dddddd;
+    letter-spacing : -0.5px;
+
+    span:first-child { color: #1f1f1f; }
+    span:last-child  { color: #aaaaaa; }
+}
+
+.video-controls {
+    .m-user-select-none;
+
+    margin-top: -45px;
+
+    &.playing {
+        .icon-play  { opacity: 0; }
+        .icon-pause { opacity: 1; }
+    }
+
+    &.muted {
+        .icon-muted   { opacity: 1; }
+        .icon-audible { opacity: 0; }
+    }
+}

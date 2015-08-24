@@ -1,0 +1,206 @@
+.demo {
+    table {
+        th {
+            text-align    : left;
+            border-bottom : solid #ddd;
+
+            a { color: inherit; text-decoration: none; }
+        }
+    }
+
+    p.demo-url {
+        line-height : 20px;
+        color       : #888888;
+
+        a {
+            color           : #222222;
+            font-weight     : bold;
+            text-decoration : underline;
+        }
+
+        span {
+            position       : absolute;
+            display        : inline-block;
+            height         : 20px;
+            line-height    : 20px;
+            margin-left    : 10px;
+            padding-left   : 8px;
+            border-left    : 1px solid rgba(0, 0, 0, .15);
+            vertical-align : top;
+
+            &:before {
+                content  : "•";
+                position : absolute;
+                color    : #d4d4d4;
+                left     : -4px;
+            }
+        }
+    }
+
+    .hidden { display: none; }
+
+    .check-record { width: 28px;  }
+    .category     { width: 360px; }
+    .creatives    { width: 415px; }
+    .edit         { width: 105px; }
+    .visible      { width: 59px;  }
+
+    .creative-info { width: 720px; }
+    .creative-info-image {width: 80px; }
+    .preview, .preview-buttons { width: 64px; }
+
+    .folders {
+        li.added   { opacity: 1; }
+        li.removed { display: none; }
+
+        .category, .creatives, .edit, span.visible { position: relative; float: left; }
+
+        .preview:after, .edit:after {
+            position         : absolute;
+            width            : 1px;
+            height           : 24px;
+            right            : 11px;
+            content          : "";
+            background-color : rgba(0, 0, 0, .15);
+        }
+
+        .edit:after    { top: 10px; }
+        .preview:after { top: 9px; }
+
+        li { &:first-child .category-details { border-top: none; } }
+
+        .category-details, .category-creatives {
+            &.updating, &.updated {
+                .load-indicator, .update-indicator {
+                    position       : relative;
+                    left           : 4px;
+                    vertical-align : bottom;
+                }
+
+                // Hide up/down arrow while the
+                // category field is being updated
+                a:after, a.closed:after { border: none; }
+            }
+        }
+
+        .category-details {
+            width      : 980px;
+            margin     : 0 10px;
+            height     : 45px;
+            border-top : 1px solid #dddddd;
+
+            .creatives, .edit, span.visible {
+                height      : 45px;
+                line-height : 45px;
+            }
+
+            .button {
+                position : absolute;
+                top      : 10px;
+            }
+
+            .on-off-btn { position: relative; top: 8px; }
+
+            .creatives {
+                font-weight : bold;
+                color       : #000000;
+            }
+
+            .small-checkbox { float: left; display: block; position: relative; top: 16px; }
+        }
+
+        .category-creatives {
+            width        : 950px;
+            margin       : 0 10px;
+            padding-left : 30px;
+
+            h3 { line-height: 20px; }
+
+            h3 a, .item-edit-name {
+                margin-top      : 3px;
+                font            : bold 13px Arial, sans-serif;
+                text-decoration : none;
+            }
+
+            .products {
+                margin-top: 3px;
+
+                .creationTimestamp {
+                    margin-top  : 7px;
+                    display     : block;
+                    font-weight : bold;
+                    color       : #222222;
+                }
+            }
+
+            table {
+                tr {
+                    width            : 980px;
+                    height           : 80px;
+                    background-color : #ffffff;
+
+                    &.last-row td { border-bottom: none; }
+                }
+            }
+
+            tbody { display: block; } // Otherwise drag and drop sorting does not work
+        }
+
+        h2 {
+            .m-ellipsis;
+            top           : 13px;
+            margin-left   : 15px;
+            padding-right : 10px;
+            font          : 18px 'Trebuchet MS', Trebuchet, sans-serif;
+
+            .edit-btn { display: none; }
+
+            &:hover {
+                .edit-btn { display: inline-block; }
+
+                a:after, a.closed:after { border: none; }
+            }
+        }
+
+        .handle { top : -30px; }
+    }
+
+    .no-demo-content {
+        display    : block;
+        padding    : 25px 0;
+        color      : #222222;
+        font       : bold 18px 'Arial', sans-serif;
+        text-align : center;
+    }
+}
+
+.add-demo-folder-dialog {
+    height : auto;
+
+    input {
+        width : 210px;
+        float : right;
+    }
+
+    label { line-height: 22px; float: left; color: #a1a1a1; }
+
+    p.notice { width: 320px; }
+    
+    form {
+        position   : relative;
+        background : #fff;
+        margin     : 15px 13px 0 11px;
+
+        input {
+            .m-border(1px, #bbbbbb);
+            height: 20px;
+
+            &.invalid { border-color: #ff3333; }
+        }
+    }
+
+    fieldset.buttons {
+        text-align: right;
+        a, a:first-child { float: none; }
+    }
+}

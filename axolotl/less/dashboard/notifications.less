@@ -1,0 +1,165 @@
+// Overrides in case of .fluid layouts
+.fluid .notifications .notifications-body {
+    left : -410px;
+
+    &:after { margin-left: 403px; }
+}
+
+.notifications {
+    position       : relative;
+    display        : inline-block;
+    vertical-align : top;
+
+    .notifications-counter {
+        width               : 18px;
+        height              : 17px;
+        background          : url('./img/icons/notification-icon.png') no-repeat;
+        background-position : center 8px;
+        opacity             : 0.9;
+
+        &:hover {
+            background          : url('./img/icons/notification-icon.png') no-repeat;
+            background-position : center 8px;
+        }
+
+        &.notifications-empty {
+            opacity: 0.5;
+            &:hover { opacity: 0.75; }
+        }
+
+        span {
+            .m-round;
+            position         : absolute;
+            top              : -2px;
+            right            : -4px;
+            display          : block;
+            width            : 17px;
+            height           : 17px;
+            line-height      : 19px;
+            background-color : red;
+            border-width     : 2px;
+            border-style     : solid; // Border colour defined in account's styles.html
+            color            : #ffffff;
+            text-align       : center;
+
+            .above99 {
+                position : relative;
+                top      : -4px;
+                left     : -1px;
+            }
+        }
+    }
+    
+    .notifications-body {
+        position      : absolute;
+        top           : 40px;
+        left          : -10px;
+        z-index       : 1;
+        width         : 450px;
+        min-height    : 50px;
+        background    : #ffffff;
+        border-left   : 1px solid rgba(0, 0, 0, 0.2);
+        border-right  : 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom : 1px solid rgba(0, 0, 0, 0.2);
+        font-family   : @main-font-regular;
+        font-size     : 13px;
+        text-align    : left;
+
+        &:after {
+            .arrow-up(#ffffff, 6px, -6px);
+            left        : 19px;
+            margin-left : 3px;
+        }
+
+        h3 {
+            .m-hide-text;
+            display           : inline-block;
+            width             : 35px;
+            height            : 35px;
+            background-repeat : no-repeat;
+        }
+
+        ul {
+            max-height : 300px;
+            overflow-y : auto;
+
+            li {
+                padding       : 15px;
+                border-bottom : 1px solid rgba(0, 0, 0, 0.07);
+                color         : #222222;
+                line-height   : 16px;
+
+                &:hover { background-color: rgba(0, 0, 0, 0.05); }
+
+                p {
+                    display        : inline-block;
+                    padding        : 2px 0 0 0;
+                    width          : 365px;
+                    vertical-align : top;
+                }
+
+                a {
+                    color           : inherit;
+                    margin          : 0;
+                    padding         : 0;
+                    text-decoration : underline;
+
+                    &:hover { text-decoration: none; }
+                }
+
+                &.unread {
+                    background-color: rgba(0, 0, 0, 0.03);
+
+                    &:hover { background-color: rgba(0, 0, 0, 0.05); }
+
+                    &.ANNOUNCEMENT {
+                        background-color: rgba(102, 107, 204, 0.12);
+                        &:hover { background-color: rgba(102, 107, 204, 0.2); }
+                    }
+                }
+
+                time {
+                    display     : block;
+                    color       : #aaaaaa;
+                    font-family : @secondary-font;
+                    margin-top  : 2px;
+                    font-size   : 12px;
+                    line-height : 16px;
+                }
+            }
+        }
+    }
+
+    &.collapsed {
+        .notifications-body { display: none; }
+    }
+
+    .no-notifications {
+        color   : #888888;
+        padding : 15px 10px;
+    }
+
+    .loading-indicator {
+        position    : relative;
+        display     : none;
+        height      : 20px;
+        padding     : 15px 10px 15px 38px;
+        color       : #888888;
+        line-height : 20px;
+
+        .loader {
+            position   : absolute;
+            top        : 15px;
+            left       : 10px;
+            width      : 20px;
+            height     : 20px;
+            background : url('img/loader.png');
+        }
+    }
+
+    &.loading {
+        .loading-indicator { display: block; }
+
+        ul, p { display: none; }
+    }
+}

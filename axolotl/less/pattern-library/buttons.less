@@ -1,0 +1,108 @@
+// * flat button ------------------------ //
+.flat-button {
+    border         : none;
+    border-radius  : 5px;
+    font-family    : @main-font-regular;
+    text-transform : uppercase;
+    font-size      : 11px;
+    cursor         : pointer;
+
+    &:disabled { cursor: default; }
+}
+
+// Sizes
+.button-w180 { width: 180px; }
+.button-w50  { width: 50px; }
+
+.button-h32 {
+    height      : 32px;
+    line-height : 32px;
+    font-size   : 10px;
+}
+
+.button-h35 {
+    height      : 35px;
+    line-height : 36px;
+}
+
+// Colors
+.flat-button-dark {
+    background : #373737;
+    color      : #C3C3C3;
+
+    &:hover {
+        background : #ffffff;
+        color      : #232323;
+    }
+
+    &:disabled {
+        background : #3A3A3A;
+        color      : #111111;
+    }
+}
+
+// * toggle button ---------------------- //
+.toggle {
+    .m-toggle-size(2, 360px, 34px, 26px, 11px, 5px);
+    .m-toggle-color(darken(#ffffff, 6.5%), #777777);
+    .m-border-box;
+
+    margin     : 0 auto;
+    list-style : none;
+
+    li { float: left; }
+}
+
+.toggle-option {
+    .m-border-box;
+
+    padding        : 0;
+    border         : none;
+    text-transform : uppercase;
+    fill           : #000000;
+
+    &.active {
+        background-color : #ffffff;
+        color            : lighten(#000000, 13.5%);
+    }
+}
+
+.toggle-dark {
+    background-color: #393939;
+
+    .toggle-option {
+        color            : #aaaaaa;
+        background-color : #393939;
+    }
+}
+
+// Mixins
+.m-toggle-size (@toggle-states-count, @width, @height, @toggle-option-height, @font-size, @border-radius) {
+    @toggle-option-margin: (@height - @toggle-option-height) / 2;
+
+    width         : @width;
+    height        : @height;
+    border-radius : @border-radius;
+
+    .toggle-option {
+        width         : (@width / @toggle-states-count) - (@toggle-option-margin * @toggle-states-count );
+        height        : @toggle-option-height;
+        margin        : @toggle-option-margin;
+        border-radius : @border-radius;
+        font-size     : @font-size;
+    }
+}
+
+.m-toggle-color (@background-color, @font-color) {
+    background-color : @background-color;
+
+    .toggle-option {
+        background-color : @background-color;
+        color            : @font-color;
+
+        &.active {
+            background-color : #ffffff;
+            color            : lighten(#000000, 13.5%);
+        }
+    }
+}

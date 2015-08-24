@@ -1,0 +1,10 @@
+.no-rounded-corners { border-radius: 0; }
+
+.shadow-outline {
+    outline: solid 1px rgba(0,0,0,0.2);
+}
+
+.outline (@color: @borderColor) {
+    box-shadow: none;
+    border: solid 1px @color;
+}

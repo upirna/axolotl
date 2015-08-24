@@ -1,0 +1,88 @@
+<div id="campaigns-table-head" class="campaigns-table-head">
+    <div class="narrow">
+        <div id="campaigns-options-top" class="table-options campaigns-options-top">
+            <menu>
+                {{#if account.canCreateCampaigns}}
+                <button class="button green wider" data-action="createCampaign"><span class="plus-sign">New Campaign</span></button>
+                {{/if}}
+                <button class="button grey wider" data-action="archiveCampaigns" disabled><span>Archive Campaigns</span></button>
+                
+                <div class="filtering">
+                    <span>Show:</span>
+                    <select data-action="changeCampaignType" class="reform-selectbox naked-selectbox">
+                        <option value="all">All campaigns</option>
+                        <option value="active" selected>Active campaigns</option>
+                        <option value="archived">Archived campaigns</option>
+                    </select>
+                </div>
+            </menu>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="bumper-cell"></td>
+                    <td class="check-record">
+                        <div class="cell-wrapper">
+                            <div class="cell-wrapper-wrapper">
+                                <label class="checkbox small-checkbox">
+                                    <input type="checkbox">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                                
+                    <td class="campaign" data-action="sort" data-column-id="name">
+                        <div class="cell-wrapper">
+                            <div class="cell-wrapper-wrapper">Campaign</div>
+                        </div>
+                    </td>
+                    <td class="industry sort-arrow-on-left-side" data-action="sort" data-column-id="industry">
+                        <div class="cell-wrapper">
+                            <div class="cell-wrapper-wrapper">Industry</div>
+                        </div>    
+                    </td>
+                    <td class="last-change sort-arrow-on-left-side" data-action="sort" data-column-id="effectiveLastModificationTimestamp">
+                        <div class="cell-wrapper">
+                            <div class="cell-wrapper-wrapper">Last Change</div>
+                        </div>
+                    </td>
+                    <td class="flight-date sort-arrow-on-left-side" data-action="sort" data-column-id="effectiveStartDate">
+                        <div class="cell-wrapper">
+                            <div class="cell-wrapper-wrapper">Flight Date</div>
+                        </div>
+                    </td>
+                    {{#if account.canAnalyzeSomeFolders}}
+                        <td class="trafficking-status right sort-arrow-on-left-side" data-action="sort" data-column-id="traffickingStatus">
+                            <div class="cell-wrapper">
+                                <div class="cell-wrapper-wrapper">Status</div>
+                            </div>
+                        </td>
+                        <td class="space"></td>
+                        <td class="total-impressions">
+                            <div class="cell-wrapper">
+                                <div class="cell-wrapper-wrapper">
+                                    <span class="summary"><span>Total Req. Impressions</span></span>  
+                                    <span class="served" data-action="sort" data-column-id="servedSessions">Actual</span>
+                                    <span class="planned" data-action="sort" data-column-id="effectivePlannedUnits">Planned</span>
+                                </div>
+                            </div>
+                        </td>
+                    {{/if}}
+                    <td class="bumper-cell"></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="table-body campaigns-table-body">
+    <div class="narrow">
+		<table class="table">
+		    <tbody>
+		        <!-- campaign-record -->
+		    </tbody>
+		</table>
+		<div class="empty">No campaigns. Create the first one.</div>
+		<div class="not-visible">No campaigns match the current filtering criteria.</div>
+    </div>
+</div>

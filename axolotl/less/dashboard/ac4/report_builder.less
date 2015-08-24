@@ -1,0 +1,284 @@
+.report-builder:not(h1) { background-color : #f4f4f4; }
+
+.report-templates-panel {
+    height           : 100px;
+    background-color : #000000;
+
+    .select-template {
+        display        : block;
+        padding        : 12px 0 8px 2px;
+        font-size      : 10px;
+        text-transform : uppercase;
+        color          : rgba(255, 255, 255, .5);
+    }
+
+    menu { float: right; }
+
+    form { display: inline-block; }
+
+    .flat-button {
+        margin-left: 8px;
+
+        .loading {
+            width  : 40px;
+            height : 20px;
+            fill   : rgba(255, 255, 255, .7);
+        }
+
+        &:disabled > :not(.loading) { display: none; }
+    }
+}
+
+// reform on dark background
+.reform.dark.round.reform-multilineselectbox-ui.reform-selectbox-fake {
+    width            : 445px;
+    height           : 45px;
+    color            : #ffffff;
+    background-color : #000000;
+    box-shadow       : inset 0 0 0 1px rgba(255, 255, 255, .2);
+
+    &:hover, &.opened { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4); }
+
+    &.closed:after { border-top: 6px solid #797979; }
+    &:hover.closed:after { border-top: 6px solid #ffffff; }
+
+    .selected-item p {
+        margin-top  : -2px;
+        line-height : normal;
+        font-size   : 21px;
+        font-family : @main-font-thin;
+    }
+}
+
+.reform.dark.round.reform-floater {
+    background : none;
+    box-shadow : 0px 1px 5px #474747;
+}
+
+.reform-group strong { color: #000000; }
+
+.reform.dark.round.reform-floater .reform-floater-list {
+    max-height: 600px;
+
+    .reform-floater-item {
+        p {
+            font-family : @main-font;
+            line-height : 120%;
+        }
+
+        color            : #cccccc;
+        background-color : #282828;
+
+        &.selected {
+            p { font-family: @main-font-medium; }
+
+            color            : #ffffff;
+            background-color : #282828;
+
+            &:hover, &.hover {
+                color            : #ffffff;
+                background-color : #303030;
+            }
+        }
+
+        &:hover, &.hover {
+            color            : #cccccc;
+            background-color : #303030;
+        }
+    }
+}
+// end of reform
+
+.customisation {
+    position   : relative;
+    padding    : 30px 0;
+    font-size  : 21px;
+    color      : #777777;
+    text-align : center;
+
+    &:after {
+        .m-transform(scaleX(2.2));
+        content     : "▼";
+        position    : absolute;
+        left        : 50%;
+        bottom      : -20px;
+        margin-left : -15px;
+        font-family : 'Arial', sans-serif;
+        color       : #f4f4f4;
+    }
+}
+
+.report-builder-items {
+    background : #ffffff;
+
+    .report-items {
+        display        : inline-block;
+        padding        : 30px 0;
+        width          : 185px;
+        font-size      : 21px;
+        line-height    : 32px;
+        color          : #777777;
+        vertical-align : top;
+    }
+
+    .report-items-separator {
+        margin-top       : 18px;
+        height           : 1px;
+        border           : none;
+        background-color : #dfdfdf;
+    }
+}
+
+.report-items-counter {
+    .m-border-box();
+    position         : relative;
+    display          : inline-block;
+    padding-left     : 5px;
+    min-width        : 60px;
+    height           : 32px;
+    line-height      : 32px;
+    vertical-align   : top;
+    border-radius    : 14px;
+    background-color : #eeeeee;
+    font-family      : @main-font-regular;
+    color            : #1f1f1f;
+
+    .count {
+        display    : inline-block;
+        min-width  : 35px;
+        text-align : center;
+    }
+}
+
+.draggable-items {
+    display         : inline-block;
+    width           : 1040px;
+    min-height      : 39px;
+    margin          : 30px 0;
+    padding         : 0;
+    text-transform  : uppercase;
+    list-style-type : none;
+    font-family     : @main-font-medium;
+    font-size       : 11px;
+    color           : #404040;
+
+    &.last-list { margin-bottom: 350px; }
+
+    li {
+        position       : relative;
+        display        : inline-block;
+        vertical-align : top;
+        width          : auto;
+        height         : 32px;
+        margin         : 0 4px 10px 4px;
+        padding        : 0 3em;
+        line-height    : 32px;
+        border-radius  : 14px;
+        text-align     : center;
+        text-indent    : 0;
+        cursor         : move;
+
+        .btn-remove-item { display: none; }
+        &:hover .btn-remove-item { display: block; }
+
+        &.add-item-container { padding: 0; }
+
+        &.no-wrap { white-space: nowrap; } // FF issue when dragging items
+    }
+
+    // animate-added-item in animations.less
+    .animate-added-item   { .m-animation(animation-added-item 800ms linear forwards);     }
+    .animate-removed-item { .m-animation(animation-removed-item 350ms ease-out forwards); }
+
+    .metric                                   { background-color: #b2b2e5; }
+    .metric:not(.animate-added-item):hover    { background-color: #8c8cd9; }
+    .dimension                                { background-color: #accbde; }
+    .dimension:not(.animate-added-item):hover { background-color: #699abf; }
+
+    @-webkit-keyframes animation-removed-item {
+        0% {
+            .m-transform(scale(1));
+            opacity: 1;
+        }
+        70%, 100% {
+            .m-transform(scale(0.8));
+            opacity: 0;
+        }
+    }
+
+    @keyframes animation-removed-item {
+        0% {
+            .m-transform(scale(1));
+            opacity: 1;
+        }
+        70%, 100% {
+            .m-transform(scale(0.8));
+            opacity: 0;
+        }
+    }
+}
+
+.add-item .reform-floater-item {
+    position : relative;
+    color    : #444444;
+
+    &:hover:not(.disabled), &.hover:not(.disabled) {
+        color      : #000000 !important;
+        background : none !important;
+    }
+
+    &.disabled strong { pointer-events: none; }
+    &.disabled:after {
+        position            : absolute;
+        content             : "";
+        width               : 9px;
+        height              : 9px;
+        right               : 3px !important;
+        background-image    : url("img/disabled-tooltip-icon.png");
+        background-repeat   : no-repeat;
+        background-position : bottom;
+        cursor              : help;
+    }
+
+    &:hover.disabled:after { background-position: top; }
+}
+
+.add-item {
+    .reform-autocomplete-filter {
+        .m-border-box;
+        width          : 300px;
+        color          : #303030;
+        font-size      : 11px !important;
+        text-align     : center;
+    }
+
+    &.reform-autocomplete-fake {
+        margin        : 0;
+        display       : inline-block;
+        height        : 32px;
+        border        : 1px dashed #cccccc;
+        line-height   : 32px;
+        border-radius : 15px !important;
+        box-shadow    : none !important;
+        text-align    : center;
+
+        &.opened {
+            border              : 1px solid #cccccc;
+            background-image    : url('img/icons/magnifier13.png');
+            background-repeat   : no-repeat;
+            background-position : 265px;
+
+            .reform-autocomplete-filter {
+                font-size  : 12px !important;
+                text-align : left;
+            }
+        }
+    }
+}
+.add-item.empty .reform-autocomplete-filter {
+    &::-webkit-input-placeholder { color: #000000; }
+    &:-moz-placeholder           { color: #000000; }
+    &::-moz-placeholder          { color: #000000; }
+
+    background-color : #ffffcf;
+}

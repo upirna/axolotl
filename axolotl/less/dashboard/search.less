@@ -1,0 +1,131 @@
+.search-results {
+    position         : absolute;
+    top              : @tall;
+    z-index          : 10;
+    width            : 545px;
+    min-height       : 80px;
+    background-color : #ffffff;
+    border-left      : 1px solid rgba(0, 0, 0, 0.5);
+    border-right     : 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom    : 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.result-set { position: relative; }
+
+.search-results-list {
+    overflow    : hidden;
+    max-height  : 450px;
+    line-height : 16px;
+    overflow-x  : hidden;
+    overflow-y  : auto;
+
+    h2 {
+        .m-hide-text;
+        position            : absolute;
+        left                : 0;
+        width               : 50px;
+        height              : 50px;
+        background-repeat   : no-repeat;
+        background-position : 18px 13px;
+    }
+
+    ul { border-bottom : 1px solid #dddddd; }
+
+    li {
+        .m-border-box;
+        display       : block;
+        width         : 100%;
+        min-height    : 50px;
+        padding       : 10px 10px 14px 50px;
+        overflow      : hidden;
+        color         : #888;
+        cursor        : pointer;
+        border-bottom : 1px solid rgba(0, 0, 0, 0.1);
+
+        &:hover { background-color: rgba(0, 0, 0, 0.05); }
+
+        &:last-child, &.not-found { border-bottom: none; }
+
+        &.not-found {
+            font-size   : 16px;
+            line-height : 26px;
+        }
+
+        a.result-title {
+            text-decoration : none;
+
+            strong {
+                font-family      : @main-font-medium;
+                background-color : rgba(0,0,0,0.07);
+            }
+
+            .title {
+                display     : block;
+                font-family : @main-font-regular;
+                font-size   : 16px;
+                line-height : 22px;
+                color       : #222;
+            }
+
+            .id { display: inline-block; }
+        }
+
+        span {
+            display     : block;
+            font-family : @secondary-font;
+            font-size   : 12px;
+            line-height : 12px;
+            color       : #777777;
+        }
+
+        .show-campaign-link {
+            display : none;
+            color   : #cccccc;
+
+            a {
+                color           : #222222;
+                text-decoration : underline;
+
+                &:hover { text-decoration: none; }
+            }
+        }
+
+        &:hover .show-campaign-link { display: inline-block; }
+
+        .account-name { display: block; }
+    }
+
+    .loading-indicator {
+        position    : absolute;
+        top         : 5px;
+        left        : 0;
+        display     : none;
+        height      : 31px;
+        padding     : 27px 10px 15px 47px;
+        color       : #222222;
+        line-height : 20px;
+        font-size   : 16px;
+        font-family : "Avenir Next LT Pro Light";
+
+        .loader {
+            .m-animation(LOADER 1s linear infinite);
+
+            position          : absolute;
+            top               : 26px;
+            left              : 15px;
+            width             : 20px;
+            height            : 20px;
+            background        : url('img/loader.png');
+        }
+    }
+}
+
+&.loading {
+    .search-results-list {
+        h2 { float: none; }
+        
+        ul { display: none; }
+    }
+
+    .loading-indicator { display: block; }
+}

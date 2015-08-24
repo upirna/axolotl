@@ -1,0 +1,36 @@
+.campaigns-options-top {
+    margin-bottom : 38px;
+    
+    ul {
+        margin-left: 6px;
+    }
+}
+
+.campaigns-table-head, .campaigns-table-body {
+    table {
+        .check-record       { width: 28px;  }
+        .campaign           { width: auto;  }
+        .industry           { width: 120px; text-align: right; padding-right: 5px; }
+        .last-change        { width: 95px;  text-align: right; padding-right: 5px; }
+        .flight-date        { width: 122px; text-align: right; padding-right: 5px; }
+        .trafficking-status { width: 164px; text-align: right; padding-right: 4px; }
+        .space              { width: 40px;  }
+        .total-impressions  { width: 181px; }
+        
+        tr td:nth-child(4):nth-last-child(4),
+        tr td:nth-child(5):nth-last-child(3),
+        tr td:nth-child(6):nth-last-child(2) {
+            width: 150px;
+        }
+        
+        tbody {
+            .industry {
+                font-weight : bold;
+                color       : #000;
+                right       : right;
+            }
+        }
+    }
+}
+
+.campaigns-empty-state { margin-top: 7px; }

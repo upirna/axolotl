@@ -1,0 +1,36 @@
+/* ac3 tabs compatibility for campaign details */
+.tabs-ac3 {
+    .box; .whole;
+    height  : 100%;
+    z-index : 1;
+
+    menu {
+        .left; .bottom;
+        height: 50px;
+
+        a {
+            float               : left;
+            width               : 118px;
+            height              : 48px;
+            margin-right        : -1px;
+            border              : solid 1px #d6d6d6;
+            border-bottom-color : transparent;
+            font                : bold 13px Arial;
+            text-align          : center;
+            line-height         : 48px;
+            text-transform      : uppercase;
+            text-decoration     : none;
+
+            &.selected {
+                margin-right : 0;
+                border-color : #ffffff;
+                background   : #ffffff;
+                box-shadow   : 0 0 10px #999999;
+            }
+
+            &:not(.selected) {
+                color: #333;
+            }
+        }
+    }
+}

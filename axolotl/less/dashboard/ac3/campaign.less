@@ -1,0 +1,1129 @@
+.empty-state {
+    background: #ffffff;
+    box-shadow: 0 0 7px #999999;
+    
+    .welcome-to-ad-creator {
+        font-size     : 34px;
+        font-family   : "DIN-R", Arial, Helvetica;
+        margin-top    : 35px;
+        padding-top   : 30px;
+        margin-bottom : 25px;
+    }
+    
+    .introduction-text {
+        font-size : 13px;
+        color     : #999999;
+    }
+    
+    .get-started {
+        margin-top    : 33px;
+        margin-bottom : 10px;
+    }
+    
+    .you-can-also {
+        margin-bottom :20px;
+        margin-top    :30px;
+    }
+    
+    .intro-option {
+        font-weight : bold;
+        font-size   : 13px;
+    }
+    
+    .create-your-first-campaign { cursor: pointer; }
+    
+    li {
+        background   : url('img/list_item.png') no-repeat 0 2px;
+        padding-left : 30px;
+        height       : 18px;
+        
+        a { font-size: 13px; }
+        
+    }  
+    
+    .list { margin-bottom: 35px; }
+}
+
+.campaign-meta-data {
+    height : 11px;
+    margin : auto auto 21px auto;
+    color  : #888;
+    
+    ul li { line-height: 11px; }
+}
+
+.label-value-stack {
+    margin-bottom: 77px;
+
+    .col {
+        &:nth-child(1) { width : 348px; }
+        &:nth-child(2) { width : 327px; }
+        &:nth-child(3) { width : 305px; }
+    }
+}
+
+.campaign-stats {
+    .m-border(1px 1px 1px 1px, #8c8c8c #8c8c8c #8c8c8c #848484);
+
+    position      : absolute;
+    top           : 0;
+    right         : 0;
+    width         : 268px;
+    height        : 94px;
+    padding       : 10px 13px;
+    border-radius : 4px;
+    box-shadow    : inset 0 1px 1px #ffffff;
+    text-align    : center;
+
+    .trafficking-status, .totals {
+        .box;
+        
+        position       : relative;
+        height         : 47px;
+        text-align     : left;
+        border-bottom  : 1px solid #fff;
+        
+        &:after {
+            display          : block;
+            position         : absolute;
+            bottom           : 0;
+            width            : 100%;
+            height           : 1px;
+            background-color : #cccccc;
+            content          : "";      
+        }
+    }
+    
+    .trafficking-status {
+        .third;
+        
+        &:before, 
+        &:before, 
+        &:before {
+            background          : url('img/status_lights_big.png') no-repeat;
+            font-size           : 11px;
+            text-transform      : uppercase;
+            display             : block;
+            padding-left        : 30px;
+            height              : 25px;
+            line-height         : 29px;
+            margin-top          : 7px;
+        }
+
+        &.live:before       { background-position: 0 0;     content: "Live"; }
+        &.idle:before       { background-position: 0 -25px; content: "Idle"; }
+        &.trafficked:before { background-position: 0 -50px; content: "Trafficked"; }
+    }
+    
+    &.not-available {
+        .trafficking-status:before { background-position: 0 -25px; content: "N/A"; }
+    }
+    
+    .totals {
+        .two-thirds;
+        
+        text-align: right;
+        
+        .count, .label { display: block; }
+        
+        .label { font-size: 11px; }
+        
+        .count {
+            font-weight : bold;
+            font-size   : 24px;
+        } 
+    }
+    
+    .button { margin-top: 13px; }
+    
+    .loading {
+        .m-animation(LOADER 1s linear infinite);
+
+        display     : block;
+        width       : 30px;
+        height      : 30px;
+        margin-left : 150px;
+        background  : url(img/loader.png) center no-repeat transparent;
+    }
+}
+
+.campaign-tabs menu { bottom: -8px; }
+
+.creatives-options-top, .data-tables-options-top, .placements-options-top {
+    .actions-btn {
+        border       : 0;
+        padding      : 0;
+        color        : transparent;
+        margin-right : 3px;
+        &:after { display: none; }
+    }
+}
+
+.creatives-table-head, .creatives-table-body {
+    table {
+        .check-record        { width: 30px;                      }
+        .table-item-image    { width: 80px; vertical-align: top; }
+        .table-item-name     { width: 295px;                     }
+        .size                { width: 85px;                      }
+        .last-change         { width: 85px;                      }
+        .distribution        { width: 84px;                      }
+        .trafficking-status  { width: 161px; text-align: right;  }
+        .trafficking-preview { width: 158px; text-align: right;  }
+    }
+
+    .creative-workflow-status { color: #000; font-weight: bold; }
+}
+
+.creatives-table-head table .table-item-name { width: 360px; }
+
+.creatives-table-body {
+    table {
+        .size {
+            color       : #000;
+            font-weight : bold; 
+        }
+        
+        .table-item-name {
+            .pieces .piece:nth-child(2) {
+                // TODO: Solution with inline block cannot know
+                // how many space is avaiable and because of that
+                // max-width of second piece (format) is for worst case scenario,
+                // that is combination of "Premium DR Banner" and "Standard Expandable Banner"
+                .m-ellipsis;
+                max-width: 93px;
+            }
+        }
+    }
+}
+
+.placements-table-head, .placements-table-body {
+    a, a:visited { color: #003278; }
+
+    .empty {
+        padding : 0;
+
+        .no-placements { margin-top: 35px; }
+
+        .import-multiple-placements {
+            position      : relative;
+            display       : inline-block;
+            border        : 2px dashed #dddddd;
+            border-radius : 10px;
+            width         : 100%;
+
+            .title {
+                position         : absolute;
+                font-size        : 16px;
+                left             : -webkit-calc(~"50% - 95px");
+                left             : -moz-calc(~"50% - 95px");
+                left             : -ms-calc(~"50% - 95px");
+                left             : calc(~"50% - 95px");
+                top              : -10px;
+                background-color : #ffffff;
+                padding          : 0 10px;
+            }
+
+            .steps-wrapper {
+                height  : 190px;
+                padding : 15px 40px;
+
+                .step {
+                    float      : left;
+                    width      : 300px;
+                    height     : 100%;
+                    text-align : center;
+
+                    &:before {
+                        content             : "";
+                        display             : block;
+                        height              : 54px;
+                        width               : 48px;
+                        margin              : 39px auto 20px auto;
+                        background-image    : url('img/import_trafficking_steps.png');
+                        background-position : 999px 999px;
+                        background-repeat   : no-repeat;
+                    }
+
+                    &.step-template:before    { background-position: 0 0; }
+                    &.step-information:before { background-position: 0 -100px; }
+                    &.step-import:before      { background-position: 0 -200px; }
+
+                    &:hover { background-color: #ffffee; }
+
+                    .step-text {
+                        font-size  : 14px;
+                        width      : 180px;
+                        text-align : center;
+                        margin     : 0 auto;
+                        display    : block;
+                        margin-top : 6px;
+                    }
+
+                    p.step-text { width: 100px; }
+                }
+            }
+        }
+    }
+
+    table {
+        .check-record        { width: 30px                                                       }
+        .table-item-name     { width: auto;                                                      }
+        .supplier            { width: 90px;  text-align: right;                                  }
+        .flight-dates        { width: 150px; text-align: right;                                  }
+        .trafficking-status  { width: 90px;  text-align: right;                                  }
+        .space               { width: 40px;                                                      }
+        .total-impressions   { width: 181px;                                                     }
+        .publish             { width: 142px; text-align: right;                                  }
+    }
+    
+    .supplier, .flight-dates, .planned {
+        .edit-btn {
+            position : absolute;
+            left     : auto;
+            top      : auto;
+            bottom   : auto;  
+            right    : -15px;
+            z-index  : 1; 
+            cursor   : pointer;
+        }
+    }
+    
+    .assigned-creative {
+        .edit-btn {
+            position : relative;
+            right    : -5px;
+            cursor   : pointer;
+            
+            &:active {
+                left : auto;
+                top  : auto;
+            }
+        }
+    }
+
+    tbody tr:hover .total-impressions .edit-btn { bottom: 3px }
+    
+    tbody tr.added   { .row-added(SLIDE-DOWN); }
+    tbody tr.removed { .row-removed(SLIDE-UP); }
+}
+
+.data-tables-table-head, .data-tables-table-body {
+    table {
+        .check-record        { width: 30px                        }
+        .table-item-image    { width: 80px; vertical-align: top;  }
+        .table-item-name     { width: 230px;                      }
+        .creatives-using     { width: 85px;                       }
+        .last-change         { width: 90px;                       }
+        .details             { width: 295px;                      }
+        .operations          { width: 170px;                      }
+    }
+}
+
+.data-tables-table-head table .table-item-name { width: 310px; }
+
+.new-placement-dialog, .assign-creative-dialog, .media-pricing-dialog, .change-planning-dialog, .edit-placements-dialog {   
+    width : 360px;
+    
+    .option-with-addition .addition .dialog-autocompletebox {
+        width : 297px; 
+        .selected-item { max-width: 300px; }
+    }
+    
+    .rate .col:nth-child(1) {              width : 80px; }
+    .rate .col:nth-child(2) {              width : 45px; }
+    .rate .col:nth-child(3) { .m-ellipsis; width : 85px; line-height: 18px; }
+
+    .rate .dialog-selectbox  { width : 55px; }
+    .rate input[name=amount] { width : 34px; }
+    
+    .units .col:nth-child(1) { width : 80px;  }
+    .units .col:nth-child(2) { width : 130px; }
+    
+    .units .dialog-selectbox        { width : 105px; }
+    .units input[name=plannedUnits] { width  : 72px; }
+}
+
+.import-placements-dialog {
+    .download-template, .import-excel {
+        margin     : 0 15px;
+        text-align : center;
+    }
+
+    .download-template {
+        margin-top : 25px;
+
+        p {
+            color  : #B4B9BF;
+            margin : 10px 0 28px;
+        }
+
+        &.errors { margin: 10px 0; }
+    }
+
+    .import-excel {
+        .m-border-box;
+
+        height           : 198px;
+        margin-bottom    : 10px;
+        padding          : 50px 0;
+        background-color : #e7e7e7;
+        border           : 2px dashed #cccccc;
+        border-radius    : 10px;
+
+        p { color: #000000; }
+
+        .dnd, .or { font-size: 14px; }
+
+        .or {
+            padding : 0;
+            margin  : 0;
+        }
+
+        .button { margin: 15px 0 11px; }
+
+        .has-errors.msg {
+            font-size : 13px;
+            color     : #000;
+            margin    : 0;
+        }
+
+        .upload-area {
+            opacity  : 0;
+            width    : 100%;
+            height   : 100%;
+            top      : 0;
+            left     : 0;
+
+            &.drag-over { position: absolute; }
+        }
+
+        .formats { color: #B4B9BF; }
+
+        &.has-errors {
+            margin-top : 10px;
+            padding    : 27px 0;
+            height     : 110px;
+        }
+    }
+
+    .upload-wrapper { display: inline-block; }
+
+    // important so we can drag and drop anywhere
+    // this lets the input type=file to fill up all the space in dialog window
+    fieldset {
+        position : inherit;
+        margin   : 0;
+        padding  : 0;
+    }
+
+    &.hover, .upload-wrapper.uploading {
+        .download-template, .error-msg { opacity: 0.2; }
+        .import-excel { border-color: #97b94e; }
+    }
+
+    .loading-indicator {
+        width  : 100%;
+        height : 40px;
+    }
+}
+
+.new-creative-dialog {
+    z-index    : 7;
+    width      : 740px;
+    min-height : 570px;
+}
+
+.new-creative-dialog div[data-step=create] {
+    .field.overview .size-wrapper {
+        margin-bottom: 4px;
+
+        .dimension, .value {
+            vertical-align : top;
+            display        : inline-block;
+        }
+
+        .dimension        { width: 55px;  }
+        .value            { width: 175px; }
+        .value .dimension { width: 100px; }
+        .value .value     { width: 70px;  }
+    }
+}
+
+.new-creative-dialog-process {
+    width      : 418px;
+    min-height : 570px;
+
+    .creative-formats { height: 190px; }
+    
+    menu {
+        &.video-steps {
+            a {
+                padding: 0 12px 0 8px;
+                
+                &:last-child { padding-right: 6px; }
+            }
+        }
+
+        &.three-steps a { padding: 0 55px 0 45px; }
+        &.four-steps a  { padding: 0 40px 0 30px; }
+        &.five-steps a  { padding: 0 30px 0 25px; }
+    }
+
+    fieldset .sizing-options .icon {
+        &.responsive {
+            background-position: 0 0;
+            &.active { background-position: -26px 0; }
+        }
+        &.fixed {
+            background-position: 0 -25px;
+            &.active { background-position: -26px -25px; }
+        }
+        &.portrait-landscape {
+            background-position: 0 -50px;
+            &.active { background-position: -26px -50px; }
+        }
+        &.portrait {
+            background-position: 0 -75px;
+            &.active { background-position: -26px -75px; }
+        }
+        &.landscape {
+            background-position: 0 -100px;
+            &.active { background-position: -26px -100px; }
+        }
+        &.independent {
+            background-position: 0 -125px;
+            &.active { background-position: -26px -125px; }
+        }
+    }
+    
+    fieldset {
+        .field {
+            position : relative;
+            width    : 238px;
+
+            p { margin: 3px 0 5px 0; }
+
+            .dialog-selectbox { width: 215px; }
+        }
+
+        .single-options { width: 100%; }
+
+        input    { width: 232px; }
+        textarea { width: 232px; height: 48px; }
+
+        #fakeUploadInput {
+            width : 232px;
+            color : #999999;
+        }
+
+        label.video-creative-name {
+            width      : 100%;
+            text-align : center;
+        }
+    }
+
+    .video-poster {
+        margin-top: 20px;
+
+        label {
+            float        : left;
+            margin-right : 4px;
+
+            &.black { color: #000; }
+        }
+    }
+
+    .video-content {
+        .invalid {
+            color: #ff3333; // When char-length exceeded
+            
+            +p { color: #ff3333; }
+        }
+    }
+
+    .upload-image {
+        position            : relative;
+        overflow            : hidden;
+        height              : 75px;
+        border              : 1px solid #999;
+        text-align          : center;
+        background-position : center center;
+        background-repeat   : no-repeat;
+        
+        -webkit-background-size: cover;
+           -moz-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+
+        &.hover { border: 1px dashed #0c0; }
+
+        label {
+            width      : 100% !important;
+            margin-top : 30px;
+        }
+
+        // hidden input to preserve file upload funcionallity
+        input {
+            top        : 0;
+            left       : 0;
+            position   : absolute;
+            width      : 100%;
+            min-height : 75px;
+            opacity    : 0;
+        }
+
+        &.taller {
+            height: 138px;
+            label { margin-top: 60px; }
+            input { min-height: 138px; }
+        }
+    }
+
+    .format-img {
+        position : absolute;
+        bottom   : 0;
+        height   : 215px;
+        padding  : 0;
+
+        img {
+            display : block;
+            margin  : 0 auto;
+
+            &[src] { display: none; }
+        }
+    }
+
+    [data-step=distribution] .disabled, [data-step=size] .optional-field, .dialog-content { display: none; }
+}
+
+.video-preview {
+    .m-animation-duration(0.357s);
+    .m-animation-fill-mode(forwards);
+
+    top              : 55px;
+    right            : -5px;
+    width            : 320px;
+    min-height       : 525px;
+    border           : 1px solid #010101;
+    background-color : #303030;
+}
+
+.video-format-preview {
+    margin : 105px auto 20px auto;
+    width  : 245px;
+
+    .content { min-height: 60px; }
+
+    &.lighter {
+        color: #000000;
+        
+        .content { background-color: rgba(0, 0, 0, 0.2); }
+        
+        .share a {
+            color        : #000000;
+            border-color : #000000;
+        }
+    }
+
+    &.darker {
+        color: #ffffff;
+        .content { background-color: rgba(255, 255, 255, 0.2); }
+
+        .share a {
+            color        : #ffffff;
+            border-color : #ffffff;
+        }
+    }
+
+    h2 { font-weight: bold; }
+    
+    h2, p {
+        overflow    : hidden;
+        margin      : 0 10px;
+        padding-top : 7px;
+        font-size   : 11px;
+    }
+
+    h2 + p { padding-bottom: 8px; }
+
+    .logo-wrapper {
+        width       : 245px;
+        height      : 50px;
+        line-height : 50px;
+    }
+    
+    .logo-image {
+        margin         : 10px;
+        max-width      : 100px;
+        max-height     : 30px;
+        vertical-align : middle;
+    }
+
+    .poster-image {
+        background-color : #000000;
+        border-bottom    : 5px solid #686868;
+    }
+
+    .fake-video-progress {
+        width      : 20px;
+        height     : 5px;
+        margin-top : -5px;
+        position   : relative;
+        left       : 0;
+        top        : 0;
+    }
+
+    .share {
+        display        : inline-block;
+        width          : 80px;
+        margin         : 15px 0 15px 10px;
+        pointer-events : none;
+
+        a {
+            display         : inline-block;
+            width           : 30px;
+            height          : 30px;
+            margin-right    : 3px;
+            border          : 1px solid;
+            border-radius   : 2px;
+            line-height     : 30px;
+            font-size       : 14px;
+            text-align      : center;
+            text-decoration : none;
+        }
+    }
+
+    .call-to-action-btn {
+        display          : inline-block;
+        width            : 140px;
+        height           : 32px;
+        margin           : 15px auto;
+        border-radius    : 2px;
+        background-color : #4589ce;
+        line-height      : 32px;
+        text-align       : center;
+        vertical-align   : top;
+        color            : #ffffff;
+        pointer-events   : none;
+    }
+}
+
+.video-poster-image-wrapper {
+    width    : 245px;
+    height   : 135px;
+    position : relative;
+
+    .icon-play {
+        position         : absolute;
+        top              : 40%;
+        left             : 44%;
+        width            : 30px;
+        height           : 30px;
+        background-color : rgba(0, 0, 0, 0.66);
+        border-top       : 1px solid grey;
+        border-radius    : 5px;
+        font-size        : 14px;
+        color            : #ffffff;
+    }
+}
+
+.qr-code-dialog {
+    top   : 500px;
+    left  : 100px;
+    width : 300px;
+}
+
+.external-tracking-dialog {
+    min-height: 330px;
+
+    .scroll.other-events {
+        width      : 338px;
+        max-height : 150px;
+
+        .row {
+            display : -webkit-flex;
+            display : flex;
+
+            .field {
+                -webkit-flex : 1;
+                flex         : 1;
+            }
+
+            &:after { display: none; }
+
+            label {
+                width         : 115px;
+                padding-right : 13px;
+            }
+
+            input[type=url] { width: 97%; }
+        }
+    }
+
+    fieldset .row .unreferenced { border-color : #f33000; }
+    fieldset .row label.unreferenced { color : #f33000; }
+    fieldset .row label.standard-events { width: 115px; }
+}
+
+.exposable-external-tracking-dialog {
+    width          : 540px;
+    padding-bottom : 38px;
+
+    .bubble-arrow-box {
+        width      : 170px;
+        height     : 28px;
+        margin     : -30px 0 0 70px;
+        font-size  : 11px;
+        text-align : left;
+
+        &:after {
+            width      : 8px;
+            height     : 8px;
+            left       : -6px;
+            margin-top : -6px;
+        }
+    }
+
+    .external-tracking-table {
+        h2 {
+            font    : inherit;
+            padding : 10px 0;
+        }
+
+        .field                { float: none; }
+        .unreferenced         { border-color : #f33000; }
+        .label                { width: 180px; }
+        .third-party-tracking { width: 230px; }
+        .expose               { width: 100px; text-align: center; }
+        .small-checkbox       { margin: 0 0 4px 0; }
+        .supplier             {
+            width         : 100px;
+            white-space   : nowrap;
+            overflow      : hidden;
+            text-overflow : ellipsis;
+        }
+
+        &.table-head td.third-party-tracking {
+            padding-right : 24px;
+            text-align    : center;
+        }
+
+        &.table-body {
+            max-height: 550px;
+
+            td {
+                border         : 0;
+                vertical-align : top;
+
+                &.expose           { background: #EDEDED; }
+                &.label label      { width: 170px; }
+                label.unreferenced { color : #f33000; }
+            }
+        }
+
+        .end-section {
+            border-bottom : 1px solid #dddddd;
+            height        : 5px;
+        }
+    }
+}
+
+.add-demo-creative-dialog { height: 112px; }
+.replace-dialog           { min-height: 125px; }
+
+.select-partner-dialog-autocompletebox .reform-autocomplete-item { max-width: 190px; }
+
+.copy-dialog {
+    min-height: 90px;
+    
+    .reform-autocompletecombobox-ui.reform-autocomplete-fake .placeholder { color: #000000; }
+    fieldset .with-checkbox label.disabled:not(.reform-checkbox-fake),
+    fieldset .with-checkbox label.field-description:not(.reform-checkbox-fake) { color: #999999; }
+}
+
+.data-tables-records {
+    .failed { color: red; }
+    
+    .icon-preloader {
+        display : inline-block;
+        width   : 120px;
+        height  : 20px;
+    }
+
+    .fake-upload {
+        z-index  : 2;
+        position : absolute;
+        display  : block;
+        top      : 10px;
+        left     : 5px;
+        width    : 82px;
+        height   : 26px;
+        opacity  : 0;
+        cursor   : pointer;
+
+        // To make cursor: pointer appear on input file
+        &:before {
+            position: absolute;
+            content : "";
+            width   : 82px;
+            height  : 26px;
+        }
+    }
+}
+
+.publish-placement-dialog {
+    width   : 690px;
+    z-index : 7;
+
+    &-autocompletecombobox .reform-autocomplete-item { max-width: 320px; }
+}
+
+.publish-placements-dialog {
+    max-height : 370px;
+    width      : 660px;
+    
+    .scroll { 
+        max-height: 230px; 
+        
+        .table {
+            .copy-box { width  : 230px; }
+            
+            thead td > .cell-wrapper > .cell-wrapper-wrapper { padding: 0;     }
+            td > .cell-wrapper > .cell-wrapper-wrapper       { padding: 8px 0; }
+            
+            td.name, td.link, td.open { 
+                vertical-align: middle;
+            }
+            
+            td.name > .cell-wrapper > .cell-wrapper-wrapper {
+                color     : #000;
+                word-wrap : break-word;
+                max-width : 275px; 
+            }
+            
+            .name { width: auto;  padding-left: 5px; }
+            .link { width: 260px;                    }
+            .open { width: 90px;                     }
+        }
+    }
+    
+    .updated .update-indicator {
+        display : block;
+        float   : left;
+    }
+}
+
+.edit-placements-dialog {
+
+    fieldset .field input {
+        width: 204px; 
+
+        &[disabled] { 
+            background-color : #dddddd;
+            color            : #000000;
+        }
+    }
+
+    &.edit-placements-with-locks {
+        .rate .col:nth-child(1) {              width : 75px; }
+        .rate .col:nth-child(2) {              width : 45px; }
+        .rate .col:nth-child(3) { .m-ellipsis; width : 78px; line-height: 18px; }
+
+        .rate .dialog-selectbox  { width : 50px; }
+        .rate input[name=amount] { width : 34px; }
+
+        .flight-dates .col:nth-child(1) { width : 100px; }
+        .flight-dates .col:nth-child(2) { width : 96px; }
+        
+        .units .col:nth-child(1) { width : 75px;  }
+        .units .col:nth-child(2) { width : 123px; }
+
+        .units .dialog-selectbox        { width : 97px; }
+        .units input[name=plannedUnits] { width : 67px; }
+
+        .planning-dates {
+            margin-top  : 21px;
+            margin-left : 2px;
+        }
+
+        .field {
+            input { width: 188px; }
+            .dialog-autocompletebox { width: 171px; }
+        }
+
+        input[type='text'].date {
+            float : left;
+            width : 67px;
+        }
+
+        .addition .dialog-autocompletebox { width: 295px; }
+    }
+
+    .custom-attributes-fieldset {
+        .field input { width: 204px; }
+        &.with-locks .field input { width: 188px; }
+    }
+
+    .lock-icon   { top : 3px; }
+    .unlock-icon { top : 4px; }
+
+    .unlock-icon, .lock-icon { 
+        display  : inline-block;
+        position : relative;
+        left     : 1px;
+    }
+    
+    .assignCreative {
+        .lock-icon   { top : 0;   }
+        .unlock-icon { top : 1px; }
+    }
+
+    h2 {
+        margin-right : 5px;
+        display      : inline-block;
+    }
+
+    strong {
+        font-weight : bold;
+        color       : #000000;
+    }
+
+    .piece {
+        display: inline-block;
+    }
+
+    .bubble-arrow-box {
+        width     : 180px;
+        height    : 40px;
+        font-size : 11px;
+
+        &:after {
+            width  : 9px;
+            height : 9px;
+        }
+
+        &.arrow-left {
+            margin : -29px 0 0 22px;
+
+            &:after {
+                left       : -6px;
+                margin-top : -6px;
+            }
+
+            &.small-tooltip {
+                height     : 15px;
+                margin-top : -17px;
+            }
+        }
+
+        &.arrow-bottom {
+            margin : -77px 0 0 -101px;
+
+            &:after { left: 50%; }
+
+            &.small-tooltip {
+                height     : 15px;
+                margin-top : -52px;
+            }
+        }
+    }
+}
+
+.format-layout-title, .format-layout-notice {
+    display    : block;
+    width      : 100%;
+    height     : 35px;
+    text-align : center;
+    background : #232323;
+}
+
+.format-layout-title {
+    .top;
+    color         : #999999;
+    font          : 14px/35px Tahoma, Arial;
+    font-weight   : bold;
+    border-bottom : 1px solid #010101;
+}
+
+.format-layout-notice {
+    .bottom;
+    color      : #666666;
+    font       : 11px/35px Tahoma;
+    border-top : 1px solid #010101;
+
+    span { color: #fff; }
+}
+
+.publish-placement-dialog-process {
+    min-height     : 310px; 
+    padding-bottom : 44px;
+    
+    .initialize-steps {
+        a[data-target=select-creative] { width: 295px; }
+        a[data-target=null]            { width: auto;  }
+    }
+    
+    .scroll { max-height: 180px; }
+
+    textarea { width: 207px; height: 70px; resize: none; border: 1px solid #bbbbbb; }
+
+     // .dialog override
+    fieldset {
+        .field {
+            position: relative;
+            p { margin-top: 0; }
+            input.long { height: 20px; line-height: 20px; }
+        }
+        label:not(.reform-checkbox-fake) { width: 120px; }
+        textarea, input {
+            padding-left: 5px;
+            .m-border-box;
+        }
+    }
+
+    .reform-autocompletecombobox-ui.reform-autocomplete-fake {
+        width    : auto;
+        display  : block;
+        position : absolute;
+        left     : 0;
+        right    : 0;
+
+        &.invalid { border-color: @error-color; }
+    }
+}
+
+.edit-distribution-settings-dialog, .new-creative-dialog div[data-step=distribution] {
+    fieldset .field {
+        &.single-options {
+            &.separated .option {
+                border-top : none;
+                padding    : 1px 0 3px;
+            }
+        }
+    }
+    
+    .option.deprecated span { color: #FF3333; }
+
+    fieldset .field .dialog-selectbox {
+        top   : -2px;
+        width : 65px;
+    }
+    
+    fieldset label:not(.reform-checkbox-fake) {
+        width         : auto;
+        padding-right : 10px;
+    }
+}
+
+.click-event-definition-dialog {
+    max-height: 470px;
+    
+    .scroll { height: 150px; }
+    .untracked { color: #f33000; }
+}
+
+// tooltip
+.mediaocean-campaign img { position: relative; top: 1px; }
+.mediaocean-icon { cursor: pointer; }
+.piece p.bubble-arrow-box { visibility: hidden; }
+.piece:hover p.bubble-arrow-box { visibility: visible; }

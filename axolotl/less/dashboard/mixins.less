@@ -1,0 +1,17 @@
+.filter-arrow (@color: #222, @height: 4px, @width: 8px, @marginLeft: -22px) {
+    position     : absolute;
+    top          : 50%;
+    content      : "";
+    width        : 0;
+    height       : 0;
+    margin       : -(@height/2) 0 0 @marginLeft;
+    border-left  : (@width/2) solid transparent;
+    border-right : (@width/2) solid transparent;
+    border-top   : 4px solid @color;
+}
+
+.box-shadow (@offset-x, @offset-y, @blur-radius, @spread-radius, @color) {
+    -webkit-box-shadow : @offset-x @offset-y @blur-radius @spread-radius @color;
+    -moz-box-shadow    : @offset-x @offset-y @blur-radius @spread-radius @color;
+    box-shadow         : @offset-x @offset-y @blur-radius @spread-radius @color;
+}

@@ -1,0 +1,7 @@
+{{> svg-icons}}
+<div id="view-stack">
+    <div class="loading-screen">
+        <svg class="icon-preloader light"><use xlink:href="#icon-preloader"></use></svg>
+        <p class="loading-message">Please wait...</p>
+    </div>
+</div>

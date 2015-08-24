@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git checkout gh-pages
+git merge master --no-commit
+npm run build
+git commit -am "new build"
+git push origin gh-pages
+git checkout master

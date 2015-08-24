@@ -1,0 +1,308 @@
+/** Pillow Gauge **/
+
+.set-gauge-border-color(@color) {
+    &.third { border-color : transparent @color transparent transparent; }
+    &.half  { border-color : @color @color transparent transparent; }
+    &.full  { border-color : @color @color transparent @color ; }
+}
+
+.pillow-gauge {
+    .pillow-gauge-caption {
+        z-index     : auto;
+        font-family : @main-font;
+
+        .value { letter-spacing : -2px; }
+        .label {
+            width       : 105px;
+            margin      : 0 auto;
+            font-family : @main-font-medium;
+            font-size   : 10px;
+            cursor      : default;
+
+            span {
+                display : block;
+                height  : 20px;
+            }
+        }
+    }
+
+    &.small-size { .pillow-gauge-notch { height: 20px; } }
+
+    &.normal-size .pillow-gauge-caption .value  { font-size: 38px; }
+    &.smaller-size .pillow-gauge-caption .value { letter-spacing: -1px; }
+
+    &.red    { .pillow-gauge-gauge { .set-gauge-border-color(#e94853); } }
+    &.purple { .pillow-gauge-gauge { .set-gauge-border-color(#6666cc); } }
+}
+
+.pillow-gauge-gauge { .set-gauge-border-color(#B0D87C); }
+
+/** Pillow Stopwatch **/
+
+.pillow-stopwatch-caption-container {
+    .pillow-stopwatch-text {
+        font-family : @main-font-medium;
+        cursor      : default;
+
+        span { height: 20px; }
+    }
+    .pillow-stopwatch-time-text { letter-spacing : -2px; }
+    .pillow-stopwatch-title-text {
+        width : 72px;
+        left  : -webkit-calc(~"50% - 36px");
+        left  : -moz-calc(~"50% - 36px");
+        left  : calc(~"50% - 36px");
+    }
+}
+
+.pillow-stopwatch {
+    &.size-big .pillow-stopwatch-time-text { font-size: 38px; }
+
+    @backgroundColor               : #FFFFFF;
+
+    @aboveAverageCircleColor       : #b0da7a;
+    @aboveAverageInnerCircleColor1 : #bddf92;
+    @aboveAverageInnerCircleColor2 : #cbe5ab;
+    @aboveAverageInnerCircleColor3 : #daebc5;
+    @aboveAverageInnerCircleColor4 : #e8f1dd;
+    @aboveAverageInnerCircleColor5 : #e8f1dd;
+
+    @belowAverageCircleColor       : #e94853;
+    @belowAverageInnerCircleColor1 : #eb6a73;
+    @belowAverageInnerCircleColor2 : #ee8d93;
+    @belowAverageInnerCircleColor3 : #f1b0b5;
+    @belowAverageInnerCircleColor4 : #f4d3d5;
+    @belowAverageInnerCircleColor5 : #f4d3d5;
+
+    @aboveAveragePieColor          : #f3f9ec;
+    @aboveAverageInnerPieColor1    : #f3f8ed;
+    @aboveAverageInnerPieColor2    : #f4f7ef;
+    @aboveAverageInnerPieColor3    : #f5f8f2;
+    @aboveAverageInnerPieColor4    : #f6f7f4;
+    @aboveAverageInnerPieColor5    : #f6f7f4;
+
+    @belowAveragePieColor          : #fce4e5;
+    @belowAverageInnerPieColor1    : #fae7e8;
+    @belowAverageInnerPieColor2    : #f9ebeb;
+    @belowAverageInnerPieColor3    : #f9eff0;
+    @belowAverageInnerPieColor4    : #f8f3f3;
+    @belowAverageInnerPieColor5    : #f8f3f3;
+
+    @customCircleColorOrange       : #F8CD9C;
+    @customPieColorOrange          : #FEF5EB;
+
+    @customCircleColorPurple       : @anl-consolidated-color;
+    @customPieColorPurple          : #F9F9FF;
+
+    @customCircleColorLightBlue    : #86CBCA;
+    @customPieColorLightBlue       : #EDF7F7;
+
+    @customCircleColorDarkBlue     : #5898BD;
+    @customPieColorDarkBlue        : #E6F0F5;
+
+    @customCircleColorGrey         : #CCCCCC;
+    @customPieColorGrey            : #F7F7F7;
+
+    @offset                        : 15px;
+
+    .pillow-stopwatch-pie.pillow-stopwatch-pie-colored {
+        .pillow-stopwatch.set-border-color-based-on-average(@aboveAveragePieColor, @belowAveragePieColor);
+    }
+
+    .pillow-stopwatch-circle-colored {
+        .pillow-stopwatch.set-border-color-based-on-average(@aboveAverageCircleColor, @belowAverageCircleColor);
+    }
+
+    .pillow-stopwatch-clock-for-minute-1 {
+        .pillow-stopwatch.set-inner-clocks-styles(@offset, 1, @aboveAverageInnerCircleColor1, @belowAverageInnerCircleColor1, @aboveAverageInnerPieColor1, @belowAverageInnerPieColor1);
+    }
+
+    .pillow-stopwatch-clock-for-minute-2 {
+        .pillow-stopwatch.set-inner-clocks-styles(@offset, 2, @aboveAverageInnerCircleColor2, @belowAverageInnerCircleColor2, @aboveAverageInnerPieColor2, @belowAverageInnerPieColor2);
+    }
+
+    .pillow-stopwatch-clock-for-minute-3 {
+        .pillow-stopwatch.set-inner-clocks-styles(@offset, 3, @aboveAverageInnerCircleColor3, @belowAverageInnerCircleColor3, @aboveAverageInnerPieColor3, @belowAverageInnerPieColor3);
+    }
+
+    .pillow-stopwatch-clock-for-minute-4 {
+        .pillow-stopwatch.set-inner-clocks-styles(@offset, 4, @aboveAverageInnerCircleColor4, @belowAverageInnerCircleColor4, @aboveAverageInnerPieColor4, @belowAverageInnerPieColor4);
+    }
+
+    .pillow-stopwatch-clock-for-minute-5 {
+        .pillow-stopwatch.set-inner-clocks-styles(@offset, 5, @aboveAverageInnerCircleColor5, @belowAverageInnerCircleColor5, @aboveAverageInnerPieColor5, @belowAverageInnerPieColor5);
+    }
+
+    &.orange     { .pillow-stopwatch.custom-color(@customCircleColorOrange, @customPieColorOrange); }
+    &.light-blue { .pillow-stopwatch.custom-color(@customCircleColorLightBlue, @customPieColorLightBlue); }
+    &.dark-blue  { .pillow-stopwatch.custom-color(@customCircleColorDarkBlue, @customPieColorDarkBlue); }
+    &.grey       { .pillow-stopwatch.custom-color(@customCircleColorGrey, @customPieColorGrey); }
+    &.purple     { .pillow-stopwatch.custom-color(@customCircleColorPurple, @customPieColorPurple); }
+}
+
+/** Pillow Pie **/
+
+.pillow-tooltip {
+    color: #1f1f1f;
+
+    border-image         : url('img/pie_tooltip_bubble.png') 4 6 12 5 stretch;
+    -webkit-border-image : url('img/pie_tooltip_bubble.png') 4 6 12 5 stretch;
+       -moz-border-image : url('img/pie_tooltip_bubble.png') 4 6 12 5 stretch;
+}
+
+.pillow-tooltip-big {
+    width        : 158px;
+    height       : 56px;
+    margin       : -49px 0 0 -79px;
+    padding-left : 7px;
+
+    border-image         : url('img/pie_tooltip_bubble_big.png') 4 6 12 5 stretch;
+    -webkit-border-image : url('img/pie_tooltip_bubble_big.png') 4 6 12 5 stretch;
+       -moz-border-image : url('img/pie_tooltip_bubble_big.png') 4 6 12 5 stretch;
+
+    .percentage {
+        width        : 44px;
+        float        : left;
+        padding      : 2px 6px 1px 0;
+        margin       : 4px 0;
+        box-sizing   : border-box;
+        border-right : 1px solid #dddddd;
+    }
+
+    .metric {
+        padding: 2px 0;
+
+        .title {
+            display     : block;
+            padding-top : 3px;
+            line-height : 12px;
+            font-size   : 12px;
+            color       : #777777;
+        }
+
+        .number {
+            display     : block;
+            margin-top  : -4px;
+            font-family : @main-font-regular;
+            text-align  : center;
+        }
+    }
+}
+
+.pillow-pie {
+    @blackColor: #222222;
+
+    .fill { border-width: 0; }
+
+    &.dark-blue-color,
+    &.light-blue-color,
+    &.orange-color,
+    &.purple-color,
+    &.black-background {
+        .smooth-edge { border-color: @blackColor; }
+        .series-3    { background-color: @blackColor; border-color: rgba(221,221,221, 0.2); border-width: 2px; }
+    }
+
+    &.dark-blue-color {
+        .series-0  { background-color: @anl-series-1-color; }
+        .series-1  { background-color: #406781; }
+        .series-2  { background-color: @blackColor; border-color: #406781; border-width: 2px; border-style: dashed; }
+    }
+
+    &.light-blue-color {
+        .series-0  { background-color: @anl-series-2-color; }
+        .series-1  { background-color: #5a8887; }
+        .series-2  { background-color: @blackColor; border-color: #5a8887; border-width: 2px; border-style: dashed; }
+    }
+
+    &.orange-color {
+        .series-0  { background-color: @anl-series-3-color; }
+        .series-1  { background-color: #a38a66; }
+        .series-2  { background-color: @blackColor; border-color: #a38a66; border-width: 2px; border-style: dashed; }
+    }
+
+    &.purple-color {
+        .series-0  { background-color: @anl-consolidated-color; }
+        .series-1  { background-color: #3d3b68; }
+        .series-2  { background-color: @blackColor; border-color: #3d3b68; border-width: 2px; border-style: dashed; }
+    }
+
+    &.conversions-pie {
+        .series-0 { background-color: @anl-consolidated-color; }
+        .series-1 { background-color: #b2b2e5; }
+        .series-2 { background-color: #e0e0f5; }
+        .series-3 { background-color: #ffffff; }
+
+        &.greyscale {
+            .series-0 { background-color: #dddddd; }
+            .series-1 { background-color: #eeeeee; }
+            .series-2 { background-color: #f8f8f8; }
+            .series-3 { background-color: #ffffff; }
+        }
+
+        &.no-data-pie {
+            width            : 150px;
+            height           : 150px;
+            border-width     : 2px;
+            background-color : #ffffff;
+
+            &:after {
+                top   : 80px;
+                left  : -18px;
+                width : 185px;
+            }
+
+            &.no-data-text:before {
+                top       : 58px;
+                left      : 29px;
+                width     : 100px;
+                height    : 38px;
+                font-size : 32px;
+            }
+        }
+    }
+
+    .setSizes() {
+        width  : @size;
+        height : @size;
+
+        .fill, .slice {
+            width  : @size;
+            height : @size;
+        }
+
+        .slice {
+            clip: rect(0, @size, @size, @size/2);
+            .fill { clip: rect(0, @size/2, @size, 0); }
+        }
+
+        .smooth-edge {
+            width  : @size + 2;
+            height : @size + 2;
+        }
+    }
+
+    &.big-size {
+        @size: 250px;
+
+        .setSizes();
+    }
+
+    &.medium-size {
+        @size: 180px;
+
+        .setSizes();
+    }
+
+    &.conversions-pie {
+        @size: 150px;
+
+        .setSizes();
+    }
+
+    &.small-size {
+        @size: 120px;
+
+        .setSizes();
+    }
+}

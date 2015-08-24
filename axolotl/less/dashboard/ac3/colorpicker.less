@@ -1,0 +1,120 @@
+.color-picker {
+    position     : relative;
+    float        : left;
+    width        : 27px;
+    height       : 30px;
+    margin-right : 4px;
+    border       : 0;
+    cursor       : pointer;
+
+    &:before {
+        .m-image(url('img/color_picker.gif'));
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        z-index  : 1;
+        width    : 100%;
+        height   : 100%;
+        content  : "";
+    }
+
+    .color-picker-container {
+        position : absolute;
+        top      : 3px;
+        left     : 0;
+        z-index  : 0;
+        width    : 24px;
+        height   : 24px;
+    }
+
+    &.smaller {
+        width  : 25px;
+        height : 22px;
+
+        &:before { background-size: 20px 22px; }
+
+        .color-picker-container {
+            left   : 4px;
+            width  : 16px;
+            height : 16px;
+        }
+    }
+}
+
+.color-picker-input {
+    float : left;
+
+    // Dialog specific
+    &.account-color-picker-input { width: 306px !important; }
+    &.video-format-design        { width: 60px !important; margin-top: 2px; }
+}
+
+.color-palette {
+    width    : auto;
+    overflow : hidden;
+    
+    &.lighter { padding: 5px; }
+
+    a {
+        float  : left;
+        width  : 15px;
+        height : 15px;
+    }
+
+    .swatch {
+        display : block;
+        width   : 14px;
+        height  : 14px;
+        border  : 1px solid #000000;
+    }
+
+    a:hover .swatch {
+        border   : 1px solid #ffffff;
+        position : absolute;
+        cursor   : pointer;
+    }
+
+    // Specific for darker palette
+    .palette {
+        &:after {
+            content    : "\00a0";
+            clear      : both;
+            display    : block;
+            height     : 0;
+            visibility : hidden;
+        }
+
+        margin     : 5px;
+        padding    : 1px 0 0 1px;
+        background : black;
+        width      : 300px;
+
+        li {
+            float       : left;
+            width       : 14px;
+            height      : 14px;
+            margin      : 0 1px 1px 0;
+            text-indent : -100px;
+
+            a { display : block; width: 100%; height: 100%; overflow: hidden; text-indent: -100px; }
+            a:hover { border: 1px solid white; margin: -1px 0 0 -1px; }
+        }
+    }
+}
+
+.common-colors {
+    float : left;
+    width : 15px;
+}
+
+.other-colors {
+    float : left;
+    width : 270px;
+}
+
+.colors-separator {
+    float            : left;
+    width            : 15px;
+    height           : 181px;
+    background-color : #000000;
+}

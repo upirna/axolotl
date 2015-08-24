@@ -1,0 +1,28 @@
+<div class="cell-wrapper">
+    <div class="cell-wrapper-wrapper">
+        {{#if isProgressLoaded}}
+            <div class="current">
+                {{#if servedUnits}}
+                    {{formatInt servedUnits}}
+                {{else}}
+                    0
+                {{/if}}
+            </div>
+            <div class="planned">
+                {{#if plannedUnits}}
+                    {{formatInt plannedUnits}}
+                {{else}}
+                    n/a
+                {{/if}}
+                {{#if canModifyPlannedUnits}}
+                    <a class="edit-btn" href="#" data-action="changePlannedUnits">Edit</a>
+                {{/if}}
+            </div>
+            <div class="progress-bar">
+                <div {{#ifGt progress 100}}class="under-planned"{{/ifGt}} style="width:{{#if progress}}{{progress}}{{else}}0{{/if}}%"></div>
+            </div>
+        {{else}}
+            <svg class="loading icon-preloader light"><use xlink:href="#icon-preloader"></use></svg>
+        {{/if}}
+    </div>
+</div>

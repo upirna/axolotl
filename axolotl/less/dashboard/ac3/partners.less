@@ -1,0 +1,73 @@
+.partners-table {
+    table {
+        tbody td {
+            &.name .cell-wrapper { width: 485px }
+
+            &.cookies { line-height : 26px; }
+
+            .cell-wrapper {
+                .cell-wrapper-wrapper {
+                    max-height : 28px;
+                    padding    : 7px 0 6px 0;
+                }
+            }
+
+            h2 { margin-bottom: 0; }
+        }
+
+        .name { width: 490px; }
+
+        .type {
+            width         : 235px;
+            text-align    : right;
+            padding-right : 5px;
+
+            span { line-height: 26px; }
+        }
+
+        .cookies {
+            width      : 150px;
+            text-align : right;
+        }
+
+        .delete {
+            width      : 100px;
+            text-align : right;
+
+            .delete-btn { top: -4px; }
+        }
+    }
+}
+
+.partner-dialog {
+    min-height: 170px;
+    
+    fieldset {
+        &.buttons { position: relative; }
+
+        .row {
+            &:first-child { margin-bottom: 10px; }
+
+            .single-options { width: 210px; }
+        }
+    }
+
+    .notice { display: block; }
+    
+    .success {
+        .button { margin: 40px auto 0 auto; }
+    }
+}
+
+.delete-partner-dialog {
+    fieldset.buttons { position: relative; }
+
+    .partner {
+        color       : #000000;
+        font-weight : bold;
+    }
+
+    .detail-description { margin: 10px 0 5px 0; }
+
+    .select-partner-input { width: 250px; }
+}
