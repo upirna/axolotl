@@ -2,15 +2,12 @@
   "name": "dashboarder",
   "author": "<developers@celtra.com>",
   "scripts": {
-    "start": "http-server & npm run watch-ab-less & npm run watch-ab-coffee",
-    "start-pg": "http-server & npm run watch-pg-less & npm run watch-pg-coffee",
-    "build": "npm run build-ab-less && npm run build-ab-coffee && npm run build-pg",
-    "build-pg": "npm run build-pg-less && npm run build-pg-coffee",
-    "watch-ab-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
-    "build-ab-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
-    "watch-ab-less": "nodemon -e less --exec 'npm run build-ab-less'",
+    "start": "http-server & npm run watch-pg-less & npm run watch-pg-coffee",
+    "build": "npm run build-pg-less && npm run build-pg-coffee",
+    "watch-pg-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
+    "build-pg-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
     "watch-pg-less": "nodemon -e less --exec 'npm run build-pg-less'",
-    "build-ab-less": "lessc axolotl/less/index.less public/assets/axolotl.css"
+    "build-pg-less": "lessc axolotl/less/index.less public/assets/axolotl.css"
   },
   "devDependencies": {
     "backbone": "1.1.2",
