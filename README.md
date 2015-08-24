@@ -1,9 +1,15 @@
-# Dashboarder breaths fast
+# Axolotl
 
-- Less Backbone on Coffee
-- No backend communication
-- [Dashboard backbone conventions](doc/backbone_conventions.md)
-- [Dashboard testing conventions](doc/testing_conventions.md)
+Axolotl is demo application with various client-side performance issues.
+In new branches are demonstrated possible solutions.
+
+Performance improvements:
+- Optimization 1
+- Optimization 2
+- Optimization 3
+- Optimization 4
+
+You can try project locally:
 
 ```sh
 npm install
@@ -13,13 +19,6 @@ open http://localhost:8080/
 
 For details look into `package.json` `scripts`.
 
-## Why?
-
-- we can play with new stuff faster
-- try leaner; less Backbone inheritance
-- change / simplify build process
-
-Now edit newly created `index.html` and `package.json` scripts.
 
 ## Deploy to Github pages
 
@@ -27,10 +26,4 @@ Now edit newly created `index.html` and `package.json` scripts.
 ./deploy-to-gh-pages
 ```
 
-Open on [Gihtub](http://celtra.github.io/dashboarder/public/audience_builder/)
-
-## Deploy to `mab` (assumption that you have `mab` in same directory as `dashboarder`)
-
-```sh
-./deploy-to-mab
-```
+Open on [Gihtub](http://upirna.github.io/axolotl/public/axolotl/)
