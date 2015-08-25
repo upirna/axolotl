@@ -30,8 +30,8 @@ class CoverflowView extends BaseView
     getTemplateData: ->
         data = super
         data.collection = @collection.map (model, i) ->
-            item              = model.toJSON()
-            item.thumbnailUrl = "../assets/coverflow/#{i+1}.png"
+            item          = model.toJSON()
+            item.cssClazz = "s-#{i+1}"
             item
         data
 
