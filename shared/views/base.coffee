@@ -18,6 +18,7 @@ templates = {
     'campaigns'         : require '../../axolotl/templates/campaigns.thtml'
     'progress'          : require '../../axolotl/templates/progress.thtml'
     'coverflow'         : require '../../axolotl/templates/coverflow.thtml'
+    'default'           : require '../../axolotl/templates/default.thtml'
 
     'default-layout'    : require '../templates/default-layout.thtml'
 }

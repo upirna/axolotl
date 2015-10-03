@@ -13,6 +13,7 @@ Client   = require '../../shared/api_client.coffee'
 Backbone            = require 'backbone'
 DefaultLayoutView   = require '../../shared/views/default_layout.coffee'
 CampaignsPageView   = require './views/campaigns_page.coffee'
+DefaultView         = require './views/default.coffee'
 CampaignsPage       = require './models/campaigns_page.coffee'
 
 platform    = new Platform require('./fixtures/platform.json')
@@ -23,22 +24,38 @@ api         = new Client
 api      = new Client
 api.url  = platform.get('apiUrl')
 
-page = new CampaignsPage
-    account     : account
-    currentUser : currentUser
-    platform    : platform
-    api         : api
 
-page.fetch
-    success: ->
-        layout = new DefaultLayoutView
-        view   = new CampaignsPageView
-            model  : page
-            api    : api
+layout = new DefaultLayoutView
+layout.render()
 
-        layout.render()
+Router = Backbone.Router.extend({
 
+    routes: {
+        "campaigns" : "campaigns",
+        "*path"     : "default"
+    },
+
+    campaigns: ->
+        layout.hidePage()
+        page = new CampaignsPage
+            account     : account
+            currentUser : currentUser
+            platform    : platform
+            api         : api
+
+        page.fetch().then( =>
+            view   = new CampaignsPageView
+                model  : page
+                api    : api       
+
+            layout.showPage view
+        )
+
+    default: ->
+        layout.hidePage()
+        view = new DefaultView
         layout.showPage view
+})
 
-    error: ->
-        console.log 'Error'
+router = new Router
+Backbone.history.start()
