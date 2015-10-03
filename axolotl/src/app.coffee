@@ -1,3 +1,4 @@
+console.time('init')
 do require './server.coffee'
 do require '../../shared/init.coffee'
 do require '../../shared/util/number_extensions.coffee'
@@ -36,6 +37,7 @@ Router = Backbone.Router.extend({
     },
 
     campaigns: ->
+        console.time 'campaigns'
         layout.hidePage()
         page = new CampaignsPage
             account     : account
@@ -49,12 +51,15 @@ Router = Backbone.Router.extend({
                 api    : api       
 
             layout.showPage view
+
+            console.timeEnd 'campaigns'
         )
 
     default: ->
         layout.hidePage()
         view = new DefaultView
         layout.showPage view
+        console.timeEnd('init')
 })
 
 router = new Router
