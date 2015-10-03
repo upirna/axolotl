@@ -1,51 +1,41 @@
 module.exports =
     
-    enableStickyHeader: (stickyHeaderTable) ->
-        scroll                = null
-        initialStickyOffset   = null
-        initialWindowHeight   = null
-        initialDocumentHeight = null
-        stickyApplied         = no
+    enableStickyHeader: (head, body) ->
 
-        render = ->
-            initialStickyOffset   = stickyHeaderTable.offset().top unless initialStickyOffset?
-            initialWindowHeight   = $(window).height()+500         unless initialWindowHeight?
-            initialDocumentHeight = $(document).height()           unless initialDocumentHeight?
+        limit        = null
+        enabled      = no
+        rafRequestId = null
 
-            if initialStickyOffset?
-                # if the list is only slightly longer, we do not stick header
-                if initialWindowHeight > initialDocumentHeight
-                    handleStickyDestroy()
-                    return
+        cb = =>
+            headerBox = head[0].getBoundingClientRect()
+            bodyBox   = body[0].getBoundingClientRect()
 
-                shouldStick = window.scrollY > initialStickyOffset
-                
-                if shouldStick and not stickyApplied
-                    stickyHeaderTable.addClass 'sticky-header'
-                    stickyHeaderTable.trigger  'stickyHeaderOn'
-                    stickyApplied = yes
+            if not enabled
+                if headerBox.top <= 0
+                    body.css      'margin-top', headerBox.height
+                    head.addClass 'sticky-header'
+                        .trigger  'stickyHeaderOn'
+                    enabled = yes
+                    limit   = bodyBox.top - headerBox.top
 
-                else if not shouldStick and stickyApplied
-                    stickyHeaderTable.removeClass 'sticky-header'
-                    stickyHeaderTable.trigger     'stickyHeaderOff'
-                    stickyApplied = no
+                head.css 'margin-left', ''
+            else
+                if bodyBox.top > limit
+                    body.css         'margin-top', 0
+                    head.removeClass 'sticky-header'
+                        .trigger     'stickyHeaderOff'
+                    enabled = no
+                    limit   = null
 
-        debounce = (func, threshold) ->
-            timeout = undefined
+                head.css 'margin-left', -body[0].offsetLeft + bodyBox.left
             
-            debounced = ->
-                delayed = ->
-                    timeout = null
-                
-                func.apply this
-                
-                timeout = setTimeout(delayed, threshold)
+            rafRequestId = window.requestAnimationFrame cb
 
-        handleStickyScroll = ->
-            debounce render(), 40
+        rafRequestId = window.requestAnimationFrame cb
 
         handleStickyDestroy = ->
-            $(window).unbind 'scroll', handleStickyScroll
+            window.cancelAnimationFrame rafRequestId
+            limit   = null
+            enabled = no
 
-        $(window).on 'scroll', handleStickyScroll
         @bind 'destroy', handleStickyDestroy, @
