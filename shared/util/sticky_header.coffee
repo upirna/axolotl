@@ -30,19 +30,22 @@ module.exports =
                     stickyHeaderTable.trigger     'stickyHeaderOff'
                     stickyApplied = no
 
-        debounce = (func, threshold) ->
-            timeout = undefined
-            
-            debounced = ->
-                delayed = ->
-                    timeout = null
-                
-                func.apply this
-                
-                timeout = setTimeout(delayed, threshold)
+
 
         handleStickyScroll = ->
-            debounce render(), 40
+            console.log 'test'
+            s = 0
+            i = 0
+            while (i < 10000)
+                i++
+                y = 0
+                while (y < 2000)
+                    y++
+                    s += y+1
+                    
+
+
+            render()
 
         handleStickyDestroy = ->
             $(window).unbind 'scroll', handleStickyScroll
