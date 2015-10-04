@@ -1,3 +1,5 @@
+$ = require 'jquery'
+
 module.exports =
     
     enableStickyHeader: (head, body) ->
@@ -6,6 +8,11 @@ module.exports =
         initialWindowHeight   = null
         initialDocumentHeight = null
         stickyApplied         = no
+        
+        headerClone = $(head.clone())
+        headerClone.attr("id", "campaigns-table-head-clone")
+        headerClone.addClass('sticky-header')
+        head.parent().append headerClone
 
         render = ->
             headerBox = head[0].getBoundingClientRect()
@@ -24,19 +31,19 @@ module.exports =
                 shouldStick = window.scrollY > initialStickyOffset
                 
                 if shouldStick and not stickyApplied
-                    head.addClass 'sticky-header'
+                    headerClone.addClass 'show-sticky-header'
                     head.trigger  'stickyHeaderOn'
                     stickyApplied = yes
 
                 else if not shouldStick and stickyApplied
-                    head.removeClass 'sticky-header'
+                    headerClone.removeClass 'show-sticky-header'
                     head.trigger     'stickyHeaderOff'
                     stickyApplied = no
 
             if stickyApplied
-                head.css 'margin-left', -body[0].offsetLeft + bodyBox.left
+                headerClone.css 'margin-left', -body[0].offsetLeft + bodyBox.left
             else
-                head.css 'margin-left', 'auto'
+                headerClone.css 'margin-left', 'auto'
 
 
         debounce = (func, threshold) ->
