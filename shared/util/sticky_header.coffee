@@ -35,6 +35,9 @@ module.exports =
 
             if stickyApplied
                 head.css 'margin-left', -body[0].offsetLeft + bodyBox.left
+            else
+                head.css 'margin-left', 'auto'
+
 
         debounce = (func, threshold) ->
             timeout = undefined
