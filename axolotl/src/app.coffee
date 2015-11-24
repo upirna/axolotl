@@ -29,19 +29,22 @@ page = new CampaignsPage
     platform    : platform
     api         : api
 
-page.fetch
-    success: ->
-        layout = new DefaultLayoutView
-        view   = new CampaignsPageView
-            model  : page
-            api    : api
+layout = new DefaultLayoutView
+layout.render()
 
-        layout.render()
+setTimeout =>
+    page.fetch
+        success: ->
+            
+            view   = new CampaignsPageView
+                model  : page
+                api    : api
 
-        layout.showPage view
+            layout.showPage view
 
-    error: ->
-        console.log 'Error'
+        error: ->
+            console.log 'Error'
+, 1000
 
 
 # Scrolling test:

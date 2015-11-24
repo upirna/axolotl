@@ -3,6 +3,10 @@ BaseView       = require './base.coffee'
 RecordView     = require './record.coffee'
 { stfu, gtfo } = require '../util/events.coffee'
 
+VNode         = require 'virtual-dom/vnode/vnode'
+VText         = require 'virtual-dom/vnode/vtext'
+createElement = require 'virtual-dom/create-element'
+
 class RecordsView extends BaseView
     
     containerSelector : 'tbody'
@@ -77,20 +81,19 @@ class RecordsView extends BaseView
     
     refresh: (ev) ->
         @preRefresh(ev).then( =>
-            toBeRemoved = []
-            @_childViews.each (entry) ->
-                toBeRemoved.push(entry) if entry.get('view') instanceof RecordView
-            
-            toBeRemoved.forEach (m) -> m.get('view').destroy()
-            
-            fragment = document.createDocumentFragment()
+            records = []
             @getViewModel().getSubCollection().each (model) =>
                 childView = @createView @_childViewConstructor, @getChildViewOptions model
-                childView.render()
-                fragment.appendChild childView.el
+                x = childView.render()
+                records.push(x)
             
-            @addChildToDOM { el : fragment }
-            
+
+            tree = new VNode('tbody', {}, records)
+
+            el = createElement(tree)
+
+            @addChildToDOM { el : $(el).children() }
+
             @updateEmptyMessage()
             
         ).fin =>
