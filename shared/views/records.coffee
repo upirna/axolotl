@@ -100,7 +100,7 @@ class RecordsView extends BaseView
                 else
                     setTimeout =>
                         childView.render()
-                    , z * 100
+                    , z * 150
 
                 fragment.appendChild childView.el
             
