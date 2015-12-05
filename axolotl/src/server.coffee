@@ -3,6 +3,7 @@ sinon = require 'sinon'
 module.exports = ->
     server             = sinon.fakeServer.create()
     server.autoRespond = yes
+    server.respondImmediately = yes
     server.autoRespondAfter = 0
 
     # Default response as an empty array

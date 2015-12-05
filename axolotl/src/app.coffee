@@ -11,6 +11,7 @@ Me       = require '../../shared/models/me.coffee'
 Client   = require '../../shared/api_client.coffee'
 
 Backbone            = require 'backbone'
+Q                   = require 'q'
 DefaultLayoutView   = require '../../shared/views/default_layout.coffee'
 CampaignsPageView   = require './views/campaigns_page.coffee'
 CampaignsPage       = require './models/campaigns_page.coffee'
@@ -29,19 +30,21 @@ page = new CampaignsPage
     platform    : platform
     api         : api
 
-page.fetch
-    success: ->
-        layout = new DefaultLayoutView
-        view   = new CampaignsPageView
-            model  : page
-            api    : api
+layout = new DefaultLayoutView
+layout.render()
 
-        layout.render()
+Q.all([page.fetch(), Q.delay(0)]).then ->
+    
+    view   = new CampaignsPageView
+        model  : page
+        api    : api
 
-        layout.showPage view
+    
 
-    error: ->
-        console.log 'Error'
+    layout.showPage view
+
+, ->
+    console.log 'Error'
 
 
 # Scrolling test:

@@ -38,7 +38,7 @@ class DefaultLayoutView extends BaseView
             if not @pageView?
                 @pageView = view
                 @pageView.render()
-                @disablePageLoader()
+                # @disablePageLoader()
                 @pageView.$el.one('webkitTransitionEnd transitionend', cb)
                         .appendTo(@viewStack)
                         .addClass effect

@@ -108,19 +108,22 @@ class CampaignsView extends BaseView
         super
         
         unless @showWelcomeScreen
+            
             @coverflow.render()
             $(@coverflow.el).prependTo @el
             
             @coverflow.$el.hide() unless @model.get('recentCreatives').length > 0
-            
-            @recordsView.render()
-            $(@recordsView.el).appendTo @$ '#campaigns-table'
-                
+
             @$el.one 'DOMNodeInserted', (event) =>
                 setTimeout( =>
                     @coverflow.goToItem 0
                     , 0
                 )
+            
+            setTimeout =>
+                @recordsView.render()
+                $(@recordsView.el).appendTo @$ '#campaigns-table'
+            , 300
 
             @enableStickyHeader @$('#campaigns-table-head'), @$('#campaigns-table-body')
 
