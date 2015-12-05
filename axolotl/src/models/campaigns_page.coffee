@@ -108,7 +108,15 @@ class CampaignsPage extends RecordsPage
                 console.error error
                 options?.error?(error)
         )
-        
+
+        Q.all([fetchSessionsCube.promise, fetchStatusCube.promise]).then (cubes) ->
+            for z in [0...1]
+                for y in [0...300]
+                    cubes[0].slice('campaignId')
+                    cubes[1].slice('utcDate')
+
+            console.log 'finished'
+
         fetchSessionsCube.promise.then (sessionsCube) =>
             @set
                 sessionsCube : sessionsCube
