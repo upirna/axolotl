@@ -84,9 +84,24 @@ class RecordsView extends BaseView
             toBeRemoved.forEach (m) -> m.get('view').destroy()
             
             fragment = document.createDocumentFragment()
+            i = 0
+            z = 0
             @getViewModel().getSubCollection().each (model) =>
+                i++
+
+                if i is 10
+                    i = 0 
+                    z++
+
                 childView = @createView @_childViewConstructor, @getChildViewOptions model
-                childView.render()
+
+                if z is 0
+                    childView.render()
+                else
+                    setTimeout =>
+                        childView.render()
+                    , z * 150
+
                 fragment.appendChild childView.el
             
             @addChildToDOM { el : fragment }
