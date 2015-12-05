@@ -42,3 +42,11 @@ page.fetch
 
     error: ->
         console.log 'Error'
+
+
+# Scrolling test:
+# before = 0
+# setInterval =>
+#     before = before + 5
+#     window.scrollTo 0, before
+# , 1

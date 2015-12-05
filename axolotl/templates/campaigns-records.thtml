@@ -75,7 +75,7 @@
         </table>
     </div>
 </div>
-<div class="table-body campaigns-table-body">
+<div class="table-body campaigns-table-body" id="campaigns-table-body">
     <div class="narrow">
 		<table class="table">
 		    <tbody>

@@ -1,6 +1,6 @@
 module.exports =
     
-    enableStickyHeader: (stickyHeaderTable) ->
+    enableStickyHeader: (head, body) ->
         scroll                = null
         initialStickyOffset   = null
         initialWindowHeight   = null
@@ -8,7 +8,10 @@ module.exports =
         stickyApplied         = no
 
         render = ->
-            initialStickyOffset   = stickyHeaderTable.offset().top unless initialStickyOffset?
+            headerBox = head[0].getBoundingClientRect()
+            bodyBox   = body[0].getBoundingClientRect()
+
+            initialStickyOffset   = head.offset().top unless initialStickyOffset?
             initialWindowHeight   = $(window).height()+500         unless initialWindowHeight?
             initialDocumentHeight = $(document).height()           unless initialDocumentHeight?
 
@@ -21,14 +24,20 @@ module.exports =
                 shouldStick = window.scrollY > initialStickyOffset
                 
                 if shouldStick and not stickyApplied
-                    stickyHeaderTable.addClass 'sticky-header'
-                    stickyHeaderTable.trigger  'stickyHeaderOn'
+                    head.addClass 'sticky-header'
+                    head.trigger  'stickyHeaderOn'
                     stickyApplied = yes
 
                 else if not shouldStick and stickyApplied
-                    stickyHeaderTable.removeClass 'sticky-header'
-                    stickyHeaderTable.trigger     'stickyHeaderOff'
+                    head.removeClass 'sticky-header'
+                    head.trigger     'stickyHeaderOff'
                     stickyApplied = no
+
+            if stickyApplied
+                head.css 'margin-left', -body[0].offsetLeft + bodyBox.left
+            else
+                head.css 'margin-left', 'auto'
+
 
         debounce = (func, threshold) ->
             timeout = undefined
