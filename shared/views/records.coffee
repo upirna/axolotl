@@ -85,7 +85,7 @@ class RecordsView extends BaseView
             
             fragment = document.createDocumentFragment()
             i = 0
-            z = 0
+            z = 1
             @getViewModel().getSubCollection().each (model) =>
                 i++
 
@@ -100,7 +100,7 @@ class RecordsView extends BaseView
                 else
                     setTimeout =>
                         childView.render()
-                    , z * 150
+                    , z * 150 * z
 
                 fragment.appendChild childView.el
             
