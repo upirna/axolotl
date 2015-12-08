@@ -112,7 +112,7 @@ class CampaignsPage extends RecordsPage
         setInterval =>
             Q.all([fetchSessionsCube.promise, fetchStatusCube.promise]).then (cubes) ->
                 for z in [0...1]
-                    for y in [0...30]
+                    for y in [0...100]
                         cubes[0].slice('campaignId')
                         cubes[1].slice('utcDate')
 
