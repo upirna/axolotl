@@ -1,13 +1,85 @@
+<link rel="prerender" href="../assets/creative/index.html?5af79c6a">
+<link rel="prefetch" href="../assets/img/test.jpg">
 <h1 class="section-heading"><span>Recent Creatives</span></h1>
 
 <div>
     <div class="slide-container">
         <ul>
-            {{#each collection}}
-                <li>
-                    <a style="background-image: url({{thumbnailUrl}})" href="builder/#path=creatives/{{id}}" title="Open {{name}}" data-action="goToItem"></a>
-                </li>
-            {{/each}}
+            <li>
+                <a style="background-image: url(../assets/coverflow/1.png)" href="../assets/creative/index.html?5af79c6a" title="Open Interstitial 320x480" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/2.png)" href="../assets/img/test.jpg" title="Open test" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/3.png)" href="../assets/creative/index.html?6a037448" title="Open pppp" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/4.png)" href="../assets/creative/index.html?350d2287" title="Open Test creative" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/5.png)" href="../assets/creative/index.html?ef7c5c20" title="Open conditions" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/6.png)" href="../assets/creative/index.html?e5a6260b" title="Open abc123" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/7.png)" href="../assets/creative/index.html?006d581b" title="Open moasisi" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/8.png)" href="../assets/creative/index.html?11220696" title="Open test" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/9.png)" href="../assets/creative/index.html?cc33fe2b" title="Open abc1" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/10.png)" href="../assets/creative/index.html?77d14ac3" title="Open share" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/11.png)" href="../assets/creative/index.html?abd970ce" title="Open Responsive InMobi Test" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/12.png)" href="../assets/creative/index.html?7e76f2c0" title="Open abc" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/13.png)" href="../assets/creative/index.html?5540cfd1" title="Open dewdewdew" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/14.png)" href="../assets/creative/index.html?ade6c802" title="Open smetim poloni" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/15.png)" href="../assets/creative/index.html?4509634d" title="Open 01 exercises" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/16.png)" href="../assets/creative/index.html?2f2192e1" title="Open test direction" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/17.png)" href="../assets/creative/index.html?103baa08" title="Open Animatey" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/18.png)" href="../assets/creative/index.html?f62b36e8" title="Open Swipey - 1" data-action="goToItem"></a>
+            </li>
+        
+            <li>
+                <a style="background-image: url(../assets/coverflow/19.png)" href="../assets/creative/index.html?afc41e52" title="Open uros test" data-action="goToItem"></a>
+            </li>
         </ul>
     </div>
     <div class="info"></div>
