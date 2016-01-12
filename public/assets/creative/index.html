@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html class="gwd-html">
+
+<head data-gwd-animation-mode="proMode">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link href="gwdgallerynavigation_style.css" data-version="4" data-exports-type="gwd-gallerynavigation" rel="stylesheet">
+  <link href="gwddoubleclick_style.css" data-version="9" data-exports-type="gwd-doubleclick" rel="stylesheet">
+  <link href="gwdswipegallery_style.css" data-version="6" data-exports-type="gwd-swipegallery" rel="stylesheet">
+  <link href="gwdgesture_style.css" data-version="3" data-exports-type="gwd-gesture" rel="stylesheet">
+  <link href="gwdpage_style.css" data-version="8" data-exports-type="gwd-page" rel="stylesheet">
+  <link href="gwdimage_style.css" data-version="6" data-exports-type="gwd-image" rel="stylesheet">
+  <link href="gwdtaparea_style.css" data-="" version="3" data-exports-type="gwd-taparea" rel="stylesheet" data-version="3">
+  <link href="gwdpagedeck_style.css" data-version="8" data-exports-type="gwd-pagedeck" rel="stylesheet">
+  <script data-source="googbase_min.js" data-version="3" data-exports-type="googbase" type="text/javascript" src="googbase_min.js"></script>
+  <script data-source="gwd_webcomponents_min.js" data-version="4" data-exports-type="gwd_webcomponents" type="text/javascript" src="gwd_webcomponents_min.js"></script>
+  <script src="TweenMax.min.js"></script>
+  <script src="signals.min.js"></script>
+  <link rel="stylesheet" href="main.css" type="text/css">
+  <meta name="generator" content="Google Web Designer 1.4.2.0915">
+  <meta name="template" content="Expandable 2.1.2">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script data-source="https://s0.2mdn.net/ads/studio/Enabler.js" data-exports-type="gwd-doubleclick" type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+  <script data-source="gwdpage_min.js" data-version="8" data-exports-type="gwd-page" type="text/javascript" src="gwdpage_min.js"></script>
+  <script data-source="gwdpagedeck_min.js" data-version="8" data-exports-type="gwd-pagedeck" type="text/javascript" src="gwdpagedeck_min.js"></script>
+  <script data-source="gwdtaparea_min.js" data-version="3" data-exports-type="gwd-taparea" type="text/javascript" src="gwdtaparea_min.js"></script>
+  <script data-source="gwddoubleclick_min.js" data-version="9" data-exports-type="gwd-doubleclick" type="text/javascript" src="gwddoubleclick_min.js"></script>
+  <script data-source="gwdimage_min.js" data-version="6" data-exports-type="gwd-image" type="text/javascript" src="gwdimage_min.js"></script>
+  <script type="text/javascript" src="groups_runtime.min.1.0.js" gwd-groups-version="1.0"></script>
+  <script type="text/javascript" src="gwdid.min.1.0.js" gwd-gwdid-version="1.0"></script>
+  <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
+  <style type="text/css" id="gwd-lightbox-style">
+    .gwd-lightbox {
+      overflow: hidden;
+    }
+  </style>
+  <style type="text/css">
+    .wrapper {
+      height: 550px;
+      width: 1000px;
+      position: absolute;
+      overflow: hidden;
+      left: 0px;
+      top: 0px;
+      box-sizing: border-box;
+      border: 0px solid rgb(255, 255, 255);
+      border-image-source: none;
+      -webkit-transform-origin: 0% 0%;
+      transform-origin: 0% 0% 0px;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    .fact {
+      top: 20px;
+      position: absolute;
+      width: 250px;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      color: rgb(0, 0, 0);
+      overflow-y: scroll;
+      font-family: Roboto, sans-serif;
+      margin: 20px;
+      padding: 20px 20px 20px 10px;
+      border: 20px solid rgba(255, 255, 255, 0.901961);
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.901961);
+      background-clip: padding-box;
+    }
+    .fact::-webkit-scrollbar {
+      position: absolute;
+      width: 6px !important;
+    }
+    .fact::-webkit-scrollbar * {
+      background: transparent !important;
+    }
+    .fact::-webkit-scrollbar-thumb {
+      border-radius: 8px !important;
+      opacity: 0.8 !important;
+      margin-top: 20px !important;
+      margin-bottom: 20px !important;
+      background: rgb(172, 26, 34) !important;
+    }
+    .fact span {
+      line-height: 24px;
+    }
+    .fact::-webkit-scrollbar-thumb:hover {
+      background: rgb(172, 26, 34) !important;
+    }
+    #engaged {
+      top: 75px;
+      width: 1000px;
+      height: 400px;
+      position: absolute;
+      overflow: hidden;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+    }
+    .cardWrapper {
+      width: 250px;
+      height: 200px;
+      display: inline;
+      cursor: pointer;
+      -webkit-font-smoothing: antialiased;
+      border: 0px;
+      margin: 0px;
+      float: left;
+    }
+    .cardFace {
+      position: absolute;
+      width: 250px;
+      height: 200px;
+      overflow: hidden;
+      border: 0px;
+      margin: 0px;
+      background-size: cover;
+    }
+    .solid {
+      top: 0px;
+      left: 0px;
+      position: absolute;
+      width: 250px;
+      height: 200px;
+      overflow: hidden;
+      border: 0px;
+      margin: 0px;
+      opacity: 0;
+      display: block;
+      z-index: -1000;
+      background-color: rgb(0, 0, 0);
+    }
+    .front {}.back {
+      box-sizing: border-box;
+      border-top-width: 4px;
+      border-top-color: rgb(255, 44, 26);
+      border-style: inset;
+      background-color: rgb(255, 170, 0);
+    }
+    .card {}h1 {
+      font-family: Roboto, sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      margin-top: 130px;
+      padding-left: 20px;
+      color: rgb(253, 176, 0);
+      text-shadow: rgb(0, 0, 0) 1px 1px 4px;
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background-color: rgba(0, 0, 0, 0.498039);
+    }
+    h2 {
+      font-family: Roboto, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      margin: 40px 20px;
+      color: rgb(51, 51, 51);
+    }
+    h3 {
+      font-family: Roboto, sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: rgb(253, 176, 0);
+      width: 100%;
+    }
+    p {
+      font-family: Roboto, sans-serif;
+      margin: 20px;
+      font-size: 14px;
+      color: rgb(255, 255, 255);
+      text-shadow: rgb(0, 0, 0) 0px 0px 2px;
+    }
+    .read {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transform-origin: 65.5px 17px 0px;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      right: 10px;
+      bottom: 10px;
+      color: rgb(255, 255, 255);
+      font-family: Roboto, sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 10px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100px;
+      background-color: rgb(187, 45, 45);
+    }
+    .read:hover {
+      color: rgb(187, 45, 45);
+      transition: 0.2s;
+      -webkit-transition: 0.2s;
+      background-color: rgb(255, 255, 255);
+    }
+    .banner {
+      width: 300px;
+      height: 250px;
+    }
+    .expanded {
+      width: 1000px;
+      height: 550px;
+    }
+    #expand-button {
+      position: absolute;
+      width: 300px;
+      height: 250px;
+      border-style: solid;
+      border-width: 0px;
+      left: 0px;
+      top: 0px;
+    }
+    .invitationImage {
+      width: 300px;
+      height: 250px;
+      left: 0px;
+      top: 0px;
+    }
+    .ctaButton {
+      position: absolute;
+      width: 200px;
+      height: 140px;
+      border-width: 1px;
+      border-style: solid;
+      left: 239px;
+      top: 496px;
+    }
+    #myContent {}#Group1 {
+      background: url("assets/e1.jpg");
+    }
+    #Group2 {
+      background: url("assets/e2.jpg");
+    }
+    #Group3 {
+      background: url("assets/e3.jpg");
+    }
+    #Group4 {
+      background: url("assets/e4.jpg");
+    }
+    #Group5 {
+      background: url("assets/e5.jpg");
+    }
+    #Group6 {
+      background: url("assets/e6.jpg");
+    }
+    #Group7 {
+      background: url("assets/e7.jpg");
+    }
+    #Group8 {
+      background: url("assets/e8.jpg");
+    }
+    .gwd-page-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .gwd-page-content {
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      -webkit-perspective: 1400px;
+      perspective: 1400px;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      position: absolute;
+      background-color: transparent;
+    }
+    .gwd-page-wrapper {
+      position: absolute;
+      -webkit-transform: translateZ(0px);
+      transform: translateZ(0px);
+      background-color: rgb(255, 255, 255);
+    }
+    .gwd-swipegallery-myGallery {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+      left: 0px;
+      top: 75px;
+      width: 1000px;
+      height: 400px;
+      -webkit-transform-origin: 500px 200px 0px;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+    [data-gwd-group="Group1"] .gwd-grp-174a {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group1"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds1 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group2"] .gwd-grp-jyqu {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group2"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds2 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group3"] .gwd-grp-1ti7 {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group3"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds3 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group4"] .gwd-grp-16ms {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group4"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds4 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group5"] .gwd-grp-ig7j {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group5"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds5 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group6"] .gwd-grp-16a3 {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group6"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds6 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group7"] .gwd-grp-15zn {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group7"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds7 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    [data-gwd-group="Group8"] .gwd-grp-1seh {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Group8"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-backgrounds8 {
+      position: absolute;
+      top: -532px;
+      left: -386px;
+    }
+    .gwd-taparea-menuBTN {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+      width: 131px;
+      height: 34px;
+      -webkit-transform-origin: 65.5px 17px 0px;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      left: 857px;
+      top: 20px;
+      color: rgb(255, 255, 255);
+      font-family: Roboto, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      display: none;
+      z-index: 10000;
+      background-color: rgb(187, 45, 45);
+    }
+    .gwd-taparea-visitBTN {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+      width: auto;
+      height: 34px;
+      -webkit-transform-origin: 65.5px 17px 0px;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      left: 20px;
+      bottom: 20px;
+      color: rgb(255, 255, 255);
+      font-family: Roboto, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: rgb(187, 45, 45);
+    }
+    .gwd-img-headerImage {
+      position: absolute;
+      width: 1000px;
+      height: 75px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-img-footerImage {
+      position: absolute;
+      width: 1000px;
+      height: 75px;
+      left: 0px;
+      top: 475px;
+    }
+    .gwd-swipegallery-myContent {
+      left: 0px;
+      top: 75px;
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="content1"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="content2"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="content3"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content1"] {
+      width: 1000px;
+      height: 0px;
+    }
+    [data-gwd-group="Content2"] {
+      width: 0px;
+      height: 0px;
+    }
+    [data-gwd-group="Content3"] .gwd-grp-vmrl {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content3"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content4"] .gwd-grp-1x1k {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content4"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content5"] .gwd-grp-1x4u {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content5"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content6"] .gwd-grp-48vb {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content6"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content7"] .gwd-grp-19gj {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content7"] {
+      width: 1000px;
+      height: 400px;
+    }
+    [data-gwd-group="Content8"] .gwd-grp-15nz {
+      position: absolute;
+      width: 1000px;
+      height: 400px;
+      left: 0px;
+      top: 0px;
+    }
+    [data-gwd-group="Content8"] {
+      width: 1000px;
+      height: 400px;
+    }
+    .gwd-div-contentPlacement {
+      position: absolute;
+      left: -1789px;
+      top: -452px;
+    }
+    .gwd-div-card1 {
+      background: url("assets/e1.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card2 {
+      background: url("assets/e2.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card3 {
+      background: url("assets/e3.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card4 {
+      background: url("assets/e4.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card5 {
+      background: url("assets/e5.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card6 {
+      background: url("assets/e6.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card7 {
+      background: url("assets/e7.jpg") 50% 50% no-repeat;
+    }
+    .gwd-div-card8 {
+      background: url("assets/e8.jpg") 50% 50% no-repeat;
+    }
+    .gwd-taparea-gevz {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+      width: 297px;
+      height: 51px;
+      -webkit-transform-origin: 148.5px 25.5px 0px;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      left: 12px;
+      top: 488px;
+    }
+  </style>
+  <script data-source="gwdgesture_min.js" data-version="3" data-exports-type="gwd-gesture" type="text/javascript" src="gwdgesture_min.js"></script>
+  <script data-source="gwdswipegallery_min.js" data-version="6" data-exports-type="gwd-swipegallery" type="text/javascript" src="gwdswipegallery_min.js"></script>
+  <script data-source="gwdgallerynavigation_min.js" data-version="4" data-exports-type="gwd-gallerynavigation" type="text/javascript" src="gwdgallerynavigation_min.js"></script>
+</head>
+
+<body class="document-body gwd-body">
+  <template id="gwd-group-definitions">
+    <div data-gwd-group-def="Group1" data-gwd-group-class="gwd-grp-174a" style="display:none">
+      <div id="Group1"></div>
+      <!-- img is="gwd-image" source="assets/e1.jpg" class="gwd-img-oarl gwd-grp-174a" data-gwd-grp-id="gwd-image_1" -->
+    </div>
+    <div data-gwd-group-def="Group2" data-gwd-group-class="gwd-grp-jyqu" style="display:none">
+      <img is="gwd-image" source="assets/e2.jpg" class="gwd-img-17fo gwd-grp-jyqu" data-gwd-grp-id="gwd-image_2">
+    </div>
+    <div data-gwd-group-def="Group3" data-gwd-group-class="gwd-grp-1ti7" style="display:none">
+      <img is="gwd-image" source="assets/e3.jpg" class="gwd-img-tl8y gwd-grp-1ti7" data-gwd-grp-id="gwd-image_3">
+    </div>
+    <div data-gwd-group-def="Group4" data-gwd-group-class="gwd-grp-16ms" style="display: none;">
+      <img is="gwd-image" source="assets/e4.jpg" class="gwd-img-ufts gwd-grp-16ms" data-gwd-grp-id="gwd-image_4">
+    </div>
+    <div data-gwd-group-def="Group5" data-gwd-group-class="gwd-grp-ig7j" style="display:none">
+      <img is="gwd-image" source="assets/e5.jpg" class="gwd-img-1jzw gwd-grp-ig7j" data-gwd-grp-id="gwd-image_5">
+    </div>
+    <div data-gwd-group-def="Group6" data-gwd-group-class="gwd-grp-16a3" style="display:none">
+      <img is="gwd-image" source="assets/e6.jpg" class="gwd-img-1k9z gwd-grp-16a3" data-gwd-grp-id="gwd-image_6">
+    </div>
+    <div data-gwd-group-def="Group7" data-gwd-group-class="gwd-grp-15zn" style="display:none">
+      <img is="gwd-image" source="assets/e7.jpg" class="gwd-img-17hh gwd-grp-15zn" data-gwd-grp-id="gwd-image_7">
+    </div>
+    <div data-gwd-group-def="Group8" data-gwd-group-class="gwd-grp-1seh" style="display:none">
+      <img is="gwd-image" source="assets/e8.jpg" class="gwd-img-189x gwd-grp-1seh" data-gwd-grp-id="gwd-image_8">
+    </div>
+    <div data-gwd-group-def="Content1" data-gwd-group-class="gwd-grp-1voq" style="display:none">
+      <div class="fact">
+        <h3>The Gateway of India</h3>  <span>The Gateway of India is a monument built during the British Rule in Mumbai City of Maharashtra state in Western India . It is located on the waterfront in the Apollo Bunder area in South Mumbai and overlooks the Arabian Sea. The structure is a basalt arch, 26 metres high. It lies at the end of Chhatrapati Shivaji Marg at the water's edge in Mumbai Harbour. It was a crude jetty used by the fishing community which was later renovated and used as a landing place for British governors and other prominent people. In earlier times, it would have been the first structure that visitors arriving by boat in Mumbai would have seen. The Gateway has also been referred to as the Taj Mahal of Mumbai, and is the city's top tourist attraction. The India Gate in New Delhi is similar to the Gateway of India in Mumbai. The structure was erected to commemorate the landing of their Majesties King George V and Queen Mary at Apollo Bunder, when they visited India in 1911. Built in Indo-Saracenic style, the foundation stone for the Gateway of India was laid on 31 March 1911. The final design of George Wittet was sanctioned in 1914 and the construction of the monument was completed in 1924.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content2" data-gwd-group-class="gwd-grp-1m2x" style="display:none">
+      <div class="fact">
+        <h3>Mount Mitoku</h3>  <span>Mt. Mitoku is a sacred mountain, standing 899.7m high in eastern Misasa Town, Tohaku-gun. It is located near the border of Shikano-cho, Tottori City. In 1934, it was designated as a Scenic Beauty and Historic Site. In 2014, it achieved its third designation as a national park for its preservation of successively grown unique native forests (from evergreen to broad-leaved deciduous forests) that were sacred sites to nature-worshipping Shugendo Buddhists. In April 2015, Mt. Mitoku and Misasa Onsen were designated as Tottori Prefecture's first Japan Heritage. Sanbutsuji, Rinkouin, Shozenin, and Kaijyouin temples are clustered in the north of Mt. Mitoku. Various small and large halls dot the hillside of Mt. Mitoku. Nageiredo Hall was built as an inner sanctuary of Sanbutsuji Temple. The towering large rock to the south is referred to as "Kanmuri Iwa (Crown Rock)" - named after the crown of Zao Gongen, Nageiredo Hall's principal object of worship. Half way up the trail from Sanbutsu-ji Temple (base of Mt. Mitoku) to Nageiredo Hall, climbers face steep sections where they hold onto tree roots and chains to reach the top. Many worshipers and tourists come and climb this trail. According to Sanbutsu-ji's temple legend, in 706, Enno Gyoja (founder of Shugendo Buddhism) prayed and threw down three lotus petals. One of the petals drifted here (the others to Mt. Ishizuchi, Iyo, and Yoshino) which determined the establishment of a worship center, temple buildings and ascetic practices for Shugendo Buddhism. To this day, it remains a mystery as to how Mt. Mitoku's inner sanctuary, "Nageiredo Hall", was built. Its name, however, was derived from the legend where Enno Gyoja used magical powers to throw (nagé iré) the hall into the cliff. The name Sanbutsu-ji (3 buddha temple) originated in 849 when three buddhas (Shaka Nyorai, Amida Nyorai and Dainichi Nyorai) were enshrined by Jikaku Daishi Ennin.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content3" data-gwd-group-class="gwd-grp-vmrl" style="display:none">
+      <div class="fact">
+        <h3>Kalasan</h3>  <span>Kalasan, also known as Candi Kalibening, is an 8th-century Buddhist temple in Java, Indonesia. It is located 13 km east of Yogyakarta on the way to Prambanan temple, on the south side of the main road 'Jalan Solo' between Yogyakarta and Surakarta. Administratively, it is located in the Kalasan District of Sleman Regency.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content4" data-gwd-group-class="gwd-grp-1x1k" style="display:none">
+      <div class="fact">
+        <h3>Mont-Saint-Michel</h3>  <span>Le Mont-Saint-Michel is an island commune in Normandy, France. It is located approximately one kilometre off the country's northwestern coast, at the mouth of the Couesnon River near Avranches. 100 hectares in size, the island has a population of 44. The island has held strategic fortifications since ancient times and since the 8th century AD has been the seat of the monastery from which it draws its name. The structural composition of the town exemplifies the feudal society that constructed it: on top, God, the abbey and monastery; below, the great halls; then stores and housing; and at the bottom, outside the walls, fishermen's and farmers' housing. Its unique position of being an island only 600 metres from land made it readily accessible at low tide to the many pilgrims to its abbey. Equally, this position made it readily defensible as an incoming tide stranded, or drowned, would-be assailants. By capitalizing on this natural defence the Mont remained unconquered during the Hundred Years' War with a small garrison successfully defending it against a full attack by the English in 1433.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content5" data-gwd-group-class="gwd-grp-1x4u" style="display:none">
+      <div class="fact">
+        <h3>Hazur Sahib Nanded</h3>  <span>Hazūr Sāhib, also spelled Hazoor Sahib, also known as Takht Sachkhand Shri Hazur Abchalnagar Sahib and Abchal Nagar, is one of the five takhts in Sikhism. It is located on the banks of the River Godavari at the city of Nanded in the state of Maharashtra, Western India. The gurudwara within the complex is known as Sach-Khand. The structure is built at the place of death of Guru Gobind Singh. The inner room of the gurdwara is called the Angitha Sahib and is built over the place where Guru Gobind Singh was cremated in 1708. The gurdwara was built between 1832 and 1837 by order of Maharaja Ranjit Singh.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content6" data-gwd-group-class="gwd-grp-48vb" style="display:none">
+      <div class="fact">
+        <h3>Borobudur</h3>  <span>Located in Magelang, Central Java, Indonesia, the Borobudur Temple is world's biggest Buddhist temple. After its rediscovery in the first half of the 19th century, it is now known as one of the most unique cultural heritage sites globally. Known to the locals as "Candi Borobudur," the temple was built in the 9th century.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content7" data-gwd-group-class="gwd-grp-19gj" style="display:none">
+      <div class="fact">
+        <h3>Taj Mahal</h3>  <span>The Taj Mahal is a white marble mausoleum located on the southern bank of Yamuna River in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favorite wife of three, Mumtaz Mahal. Construction of the mausoleum was essentially completed in 1643 but work continued on other phases of the project for an additional ten years. The Taj Mahal complex is believed to have been completed in its entirety in 1653 at a cost estimated at the time to be around 32 million Indian rupees which in 2015 would be valued at around 52.8 billion Indian rupees. The construction project employed around 20,000 artisans under the guidance of a board of architects led by Ustad Ahmad Lahauri. The domed marble tomb is part of an integrated complex consisting of gardens and two red-sandstone buildings surrounded by a crenellated wall on three sides. The Taj Mahal is regarded by many as the best example of Mughal architecture and is widely recognized as "the jewel of Muslim art in India". It is one of the world’s most celebrated structures and a symbol of India’s rich history.</span>
+      </div>
+    </div>
+    <div data-gwd-group-def="Content8" data-gwd-group-class="gwd-grp-15nz" style="display:none">
+      <div class="fact">
+        <h3>Tenryū-ji Temple</h3><span>Kyoto was the main centre for the evolution of religious and secular architecture and of garden design between the 8th and 17th centuries, and as such it played a decisive role in the creation of Japanese cultural traditions which, in the case of gardens in particular, had a profound effect on the rest of the world from the 19th century onwards. Buddhism had already been introduced from China and Chinese culture was having a profound influence on Japan when the capital was moved from Heijo-ko (Nara), after 10 years at Nagaoka, to Kyoto, under the name of Heian-ko, in AD 794. The city plan was modelled on Chinese cities such as Changshan, capital of Tang China. It was the heart of the aristocratic society that clustered around the imperial court for the four centuries of the Heian period (794-1192). For most of this period there was a prohibition on the building of Buddhist temples inside the city, apart from the two imperial temples (To-ji and Sai-ji).</span>
+      </div>
+    </div>
+  </template>
+  <gwd-doubleclick id="gwd-ad" polite-load="" fullscreen="">
+    <gwd-metric-configuration>
+      <gwd-metric-event source="myGallery" event="frametap" metric=""></gwd-metric-event>
+      <gwd-metric-event source="myGallery" event="frameswipe" metric=""></gwd-metric-event>
+      <gwd-metric-event source="myGallery" event="allframesviewed" metric="myGallery: All Frames Viewed"></gwd-metric-event>
+      <gwd-metric-event source="myGallery" event="firstinteraction" metric="myGallery: Gallery Swiped"></gwd-metric-event>
+      <gwd-metric-event source="myGallery" event="frameexit" metric="" exit="Gallery Frame Exited"></gwd-metric-event>
+      <gwd-metric-event source="myContent" event="frametap" metric=""></gwd-metric-event>
+      <gwd-metric-event source="myContent" event="frameswipe" metric=""></gwd-metric-event>
+      <gwd-metric-event source="myContent" event="allframesviewed" metric="myContent: All Frames Viewed"></gwd-metric-event>
+      <gwd-metric-event source="myContent" event="firstinteraction" metric="myContent: Gallery Swiped"></gwd-metric-event>
+      <gwd-metric-event source="myContent" event="frameexit" metric="" exit="Gallery Frame Exited"></gwd-metric-event>
+    </gwd-metric-configuration>
+    <div is="gwd-pagedeck" class="gwd-page-container" id="pagedeck" default-page="banner-page">
+      <div is="gwd-page" id="banner-page" data-gwd-name="Banner page" class="gwd-page-wrapper banner gwd-lightbox">
+        <div class="gwd-page-content banner ">
+          <img class="invitationImage" is="gwd-image" source="assets/hoverToExpand.jpg" id="invitationImage">
+          <gwd-taparea id="expand-button"></gwd-taparea>
+        </div>
+      </div>
+      <div is="gwd-page" id="expanded-page" expanded="" data-gwd-name="Expanded page" class="gwd-page-wrapper expanded gwd-lightbox" data-gwd-width="1000px" data-gwd-height="550px" style="">
+        <div class="gwd-page-content expanded">
+          <div class="wrapper">
+            <input type="button" id="gwd-taparea_menu" class="gwd-taparea-menuBTN read" value="MENU">
+            <gwd-swipegallery id="myGallery" disable-gesture="" scaling="contain" class="gwd-swipegallery-myGallery" style="background-image: none;" groups="Group1,Group2,Group3,Group4,Group5,Group6,Group7,Group8" start-frame="8" offset="0" transition-duration="3500">
+              <div data-gwd-group="Group1" id="Group1" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group2" id="Group2" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group3" id="Group3" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group4" id="Group4" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group5" id="Group5" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group6" id="Group6" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group7" id="Group7" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Group8" id="Group8" style="height: 100%; width: 100%;"></div>
+            </gwd-swipegallery>
+            <gwd-swipegallery id="myContent" scaling="contain" class="gwd-swipegallery-myContent" style="background-image: none;" offset="0" autoplay-duration="1500" disable-gesture="" transition-duration="0" groups="Content1,Content2,Content3,Content4,Content5,Content6,Content7,Content8">
+              <div data-gwd-group="Content1" id="Content1" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content2" id="Content2" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content3" id="Content3" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content4" id="Content4" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content5" id="Content5" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content6" id="Content6" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content7" id="Content7" style="height: 100%; width: 100%;"></div>
+              <div data-gwd-group="Content8" id="Content8" style="height: 100%; width: 100%;"></div>
+            </gwd-swipegallery>
+            <div id="engaged">
+              <div class="cardWrapper" data="1">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card1">
+                    <h1>Gateway of India</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>The Gateway of India is a monument built during the British Rule in Mumbai City of Maharashtra state in Western India.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="2">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card2">
+                    <h1>Mount Mitoku</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>Mount Mitoku was known from ancient times as a place of both religious significance and scenic beauty. </h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="3">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card3">
+                    <h1>Kalasan</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>Kalasan, also known as Candi Kalibening, is an 8th-century Buddhist temple in Java, Indonesia. </h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="4">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card4">
+                    <h1>Mont Saint-Michel</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>100 hectares in size, the island has a population of 44.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="5">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card5">
+                    <h1>Hazur Sahib Nanded</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>One of the five takhts in Sikhism.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="6">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card6">
+                    <h1>Borobudur</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>The world’s largest Buddhist temple, as well as one of the greatest Buddhist monuments in the world.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="7">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card7">
+                    <h1>Taj Mahal</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>One of the world’s most celebrated structures and a symbol of India’s rich history.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+              <div class="cardWrapper" data="8">
+                <div class="card">
+                  <div class="cardFace front gwd-div-card8">
+                    <h1>Tenryū-ji Temple</h1>
+                    <div class="solid"></div>
+                  </div>
+                  <div class="cardFace back">
+                    <h2>The city plan was modelled on Chinese cities such as Changshan, capital of Tang China.</h2>
+                    <input type="button" class="read" value="visit">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gwd-div-backgrounds1" data-gwd-group="Group1"></div>
+            <div class="gwd-div-backgrounds2" data-gwd-group="Group2"></div>
+            <div class="gwd-div-backgrounds3" data-gwd-group="Group3"></div>
+            <div class="gwd-div-backgrounds4" data-gwd-group="Group4"></div>
+            <div class="gwd-div-backgrounds5" data-gwd-group="Group5"></div>
+            <div class="gwd-div-backgrounds6" data-gwd-group="Group6"></div>
+            <div class="gwd-div-backgrounds7" data-gwd-group="Group7"></div>
+            <div class="gwd-div-backgrounds8" data-gwd-group="Group8"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content1"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content2"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content3"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content4"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content5"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content6"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content7"></div>
+            <div class="gwd-div-contentPlacement" data-gwd-group="Content8"></div>
+            <img is="gwd-image" source="assets/header.png" id="gwd-image_9" class="gwd-img-headerImage">
+            <img is="gwd-image" source="assets/footer.png" id="gwd-image_10" class="gwd-img-footerImage">
+            <input type="button" id="gwd-taparea_visit" class="gwd-taparea-visitBTN read" value="VISIT THE GOOGLE CULTURAL INSTITUTE">
+            <gwd-taparea id="gwd-taparea_1" class="gwd-taparea-gevz"></gwd-taparea>
+          </div>
+          <!-- end .wrapper -->
+        </div>
+      </div>
+      <script type="text/javascript" gwd-events="registration">
+        // Support code for event handling in Google Web Designer
+         // This script block is auto-generated. Please do not edit!
+        gwd.actions.events.registerEventHandlers = function(event) {
+          gwd.actions.events.addHandler('document.body', 'adinitialized', gwd.manageBehavior, false);
+          gwd.actions.events.addHandler('expand-button', 'mouseover', gwd.expandControl, false);
+          gwd.actions.events.addHandler('gwd-taparea_menu', 'action', gwd.handleSignal, false);
+          gwd.actions.events.addHandler('gwd-taparea_visit', 'action', gwd.handleSignal, false);
+          gwd.actions.events.addHandler('expanded-page', 'pagepresenting', gwd.getScale, false);
+          gwd.actions.events.addHandler('gwd-taparea_1', 'action', gwd.auto_Gwd_taparea_1Action, false);
+        };
+        gwd.actions.events.deregisterEventHandlers = function(event) {
+          gwd.actions.events.removeHandler('document.body', 'adinitialized', gwd.manageBehavior, false);
+          gwd.actions.events.removeHandler('expand-button', 'mouseover', gwd.expandControl, false);
+          gwd.actions.events.removeHandler('gwd-taparea_menu', 'action', gwd.handleSignal, false);
+          gwd.actions.events.removeHandler('gwd-taparea_visit', 'action', gwd.handleSignal, false);
+          gwd.actions.events.removeHandler('expanded-page', 'pagepresenting', gwd.getScale, false);
+          gwd.actions.events.removeHandler('gwd-taparea_1', 'action', gwd.auto_Gwd_taparea_1Action, false);
+        };
+        document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+        document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+      </script>
+      <script type="text/javascript" gwd-events="handlers">
+        gwd.handleSignal = function(event) {
+          signal.dispatch(event);
+        };
+        gwd.manageBehavior = function(event) {
+          var setScale = function(z) {
+            document.getElementById('pagedeck').setAttribute('data-scale', z);
+          };
+          var renderOverflow = function() {
+            var evalStmt = 'studioV2.api.creatives[0].getAssets()[0]' + '.getContainerElement().children[0].style.overflow=”visible”'
+            Enabler.invokeExternalJsFunction(evalStmt)
+          };
+          renderOverflow();
+          Enabler.setHint('expansionMode', 'lightbox');
+          Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_DIMENSIONS, function(e) {
+            var availWidth = (e.width),
+              availHeight = (e.height),
+              maxWidth = 1000,
+              maxHeight = 550,
+              height = null,
+              width = null,
+              z = 1;
+            if (availWidth >= maxWidth && availHeight >= maxHeight) {
+              width = maxWidth;
+              height = maxHeight;
+            } else {
+              var adRatio = maxWidth / maxHeight,
+                availRatio = availWidth / availHeight;
+              if (availRatio <= adRatio) {
+                width = availWidth;
+                height = Math.floor(availWidth / adRatio);
+                z = availWidth / maxWidth;
+              } else {
+                width = Math.floor(availHeight * adRatio);
+                height = availHeight;
+                z = availHeight / maxHeight;
+              }
+            }
+            setScale(z);
+            Enabler.requestFullscreenExpand(width, height);
+            gwd.handleSignal(e)
+            gwd.actions.gwdDoubleclick.goToPage('gwd-ad', 'expanded-page', 'none', 1000, 'linear', 'top');
+          }, false);
+          Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_EXPAND_FINISH, function(e) {
+            Enabler.counter("Lightbox Expand", true);
+            gwd.handleSignal(e)
+            renderOverflow();
+          }, false);
+          Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_COLLAPSE_START, function(e) {
+            Enabler.counter("Lightbox Collapse", true);
+            Enabler.finishCollapse();
+            gwd.handleSignal(e)
+          }, false);
+          Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_COLLAPSE_FINISH, function(e) {
+            gwd.handleSignal(e)
+            renderOverflow();
+          }, false);
+        };
+        gwd.expandControl = function(e) {
+          gwd.handleSignal(e)
+          Enabler.queryFullscreenDimensions();
+        };
+        gwd.getScale = function(e) {
+          gwd.handleSignal(e)
+          var z = document.getElementById('pagedeck').getAttribute('data-scale');
+          var x = document.getElementsByClassName('wrapper');
+          for (var i = 0; i < x.length; i++) {
+            x[i].style.transform = 'scale(' + z + ')';
+            x[i].style.oTransform = 'scale(' + z + ')';
+            x[i].style.webkitTransform = 'scale(' + z + ')';
+          };
+        };
+        gwd.auto_Gwd_taparea_1Action = function(event) {
+          // GWD Predefined Function
+          gwd.actions.gwdDoubleclick.exit('gwd-ad', 'Exit', 'https://www.google.com/culturalinstitute/home', true, true);
+        };
+      </script>
+      <script type="text/javascript" id="gwd-init-code">
+        (function() {
+          document.body.style.opacity = "0";
+          var gwdAd = document.getElementById('gwd-ad');
+
+
+          function handleDomContentLoaded(event) {
+
+            signal.dispatch(event)
+
+          }
+
+          /**
+           * Handles the WebComponentsReady event. This event is fired when all
+           * custom elements have been registered and upgraded.
+           */
+          function handleWebComponentsReady(event) {
+            document.body.style.opacity = "";
+
+            setTimeout(function() {
+              gwdAd.initAd();
+              signal.dispatch(event)
+
+            }, 0);
+          }
+
+          /**
+           * Handles the event that is dispatched after the Ad has been
+           * initialized and before the default page of the Ad is shown.
+           */
+          function handleAdInitialized(event) {
+            // This marks the end of the polite load phase of the Ad. If a
+            // loading image was shown to the user, this is a good place to
+            // remove it.
+            signal.dispatch(event)
+
+
+          }
+
+          window.addEventListener('DOMContentLoaded',
+            handleDomContentLoaded, false);
+          window.addEventListener('WebComponentsReady',
+            handleWebComponentsReady, false);
+          window.addEventListener('adinitialized',
+            handleAdInitialized, false);
+
+
+        })();
+      </script>
+      <script src="jquery-1.11.2.min.js"></script>
+      <script src="ad.js"></script>
+    </div>
+    <gwd-exit metric="Exit" url="https://www.google.com/culturalinstitute/home"></gwd-exit>
+  </gwd-doubleclick>
+</body>
+
+</html>
