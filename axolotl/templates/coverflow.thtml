@@ -5,7 +5,7 @@
         <ul>
             {{#each collection}}
                 <li>
-                    <a style="background-image: url({{thumbnailUrl}})" href="builder/#path=creatives/{{id}}" title="Open {{name}}" data-action="goToItem"></a>
+                    <a style="background-image: url({{thumbnailUrl}})" href="{{link}}" title="Open {{name}}" data-action="goToItem"></a>
                 </li>
             {{/each}}
         </ul>
