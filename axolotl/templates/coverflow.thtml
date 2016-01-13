@@ -1,5 +1,8 @@
 <h1 class="section-heading"><span>Recent Creatives</span></h1>
 
+<link rel="prerender" href="../assets/creative/index.html?5af79c6a">
+<link rel="prefetch" href="../assets/img/test.jpg">
+
 <div>
     <div class="slide-container">
         <ul>
