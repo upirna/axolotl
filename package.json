@@ -7,10 +7,12 @@
     "watch-pg-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
     "build-pg-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
     "watch-pg-less": "nodemon -e less --exec 'npm run build-pg-less'",
-    "build-pg-less": "lessc axolotl/less/index.less public/assets/axolotl.css"
+    "build-pg-less": "lessc axolotl/less/index.less public/assets/axolotl.css",
+    "uglify" : "uglifyjs --compress --mangle -o public/assets/axolotl.js public/assets/axolotl.js"
   },
   "devDependencies": {
     "backbone": "1.1.2",
+    "uglify-js" : "2.6.1",
     "static-eval" : "0.2.3",
     "esprima" : "1.2.2",
     "browserify": "9.0.3",
