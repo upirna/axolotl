@@ -159,10 +159,9 @@ class CampaignsPage extends RecordsPage
             , silent : yes
 
         Q.all([fetchSessionsCube.promise, fetchStatusCube.promise]).then (cubes) ->
-             for z in [0...1]
-                 for y in [0...300]
-                     cubes[0].slice('campaignId')
-                     cubes[1].slice('utcDate')
+            w = new Worker("../assets/slicer.js")
+            w.postMessage([cubes[0].facts, cubes[1].facts])
+            w.onmessage = (e) -> console.log 'finished'
         
         fetchingOfRequiredResources
 

@@ -2,12 +2,14 @@
   "name": "dashboarder",
   "author": "<developers@celtra.com>",
   "scripts": {
-    "start": "node server.js & npm run watch-pg-less & npm run watch-pg-coffee",
-    "build": "npm run build-pg-less && npm run build-pg-coffee",
+    "start": "node server.js & npm run watch-pg-less & npm run watch-pg-coffee & npm run watch-slicer-coffee",
+    "build": "npm run build-pg-less && npm run build-pg-coffee && && npm run build-slicer-coffee",
     "watch-pg-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
+    "watch-slicer-coffee": "watchify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/slicer.coffee -o public/assets/slicer.js",
     "build-pg-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/app.coffee -o public/assets/axolotl.js",
     "watch-pg-less": "nodemon -e less --exec 'npm run build-pg-less'",
     "build-pg-less": "lessc axolotl/less/index.less public/assets/axolotl.css",
+    "build-slicer-coffee": "browserify -t [ hbsfy -e thtml ] -t coffeeify axolotl/src/slicer.coffee -o public/assets/slicer.js",
     "uglify" : "uglifyjs --compress --mangle -o public/assets/axolotl.js public/assets/axolotl.js"
   },
   "devDependencies": {
