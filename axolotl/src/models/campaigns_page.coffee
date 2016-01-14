@@ -127,20 +127,25 @@ class CampaignsPage extends RecordsPage
                 progress = timestamp - start
 
                 if progress - last > 25
-                    objects = []
-                    for z in [0...500]
-                        for y in [0...50]
-                            objects.push(
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
-                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2)
-                            )
+                    if objects.length is 0
+                        for z in [0...500]
+                            for y in [0...50]
+                                objects.push(
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                    new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2)
+                                )
+                    else
+                        for z in [0...500]
+                            for y in [0...50]
+                                objects[z * y].x += 1
+                                objects[z * y].y += 1
 
                     last = progress
 
