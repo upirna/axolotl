@@ -109,6 +109,45 @@ class CampaignsPage extends RecordsPage
                 options?.error?(error)
         )
 
+        Q.all([fetchSessionsCube.promise, fetchStatusCube.promise]).then (cubes) ->
+            start = null
+            last  = 0
+
+            class Point
+                x : null
+                y : null
+
+                constructor: (x, y) ->
+                    @x = x
+                    @y = y
+
+            objects = []
+            algo = (timestamp) =>
+                start = timestamp unless start
+                progress = timestamp - start
+
+                if progress - last > 25
+                    objects = []
+                    for z in [0...500]
+                        for y in [0...50]
+                            objects.push(
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2),
+                                new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2), new Point(1,2)
+                            )
+
+                    last = progress
+
+                window.requestAnimationFrame(algo)
+
+            window.requestAnimationFrame algo
+
         fetchSessionsCube.promise.then (sessionsCube) =>
             @set
                 sessionsCube : sessionsCube
